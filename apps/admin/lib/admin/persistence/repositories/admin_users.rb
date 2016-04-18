@@ -1,9 +1,10 @@
+require "icelab_com_au/repository"
 require "admin/entities/admin_user"
 
 module Admin
   module Persistence
     module Repositories
-      class AdminUsers < ROM::Repository
+      class AdminUsers < IcelabComAu::Repository[:admin_users]
         relations :admin_users
 
         def [](id)
