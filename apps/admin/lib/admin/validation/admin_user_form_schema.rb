@@ -1,7 +1,7 @@
 require "dry-validation"
 require "dry/validation/schema/form"
 
-module Main
+module Admin
   module Validation
     class UserFormSchema < Dry::Validation::Schema::Form
       configure { config.messages = :i18n }
