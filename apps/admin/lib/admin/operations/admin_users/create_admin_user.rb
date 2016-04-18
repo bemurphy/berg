@@ -7,9 +7,9 @@ module Admin
   module Operations
     class CreateAdminUser
       include Admin::Import(
+        "admin.persistence.repositories.admin_users",
         "admin.authentication.encrypt_password",
         "admin.validation.admin_user_form_schema",
-        "core.persistence.create_admin_user"
       )
 
       extend Transproc::Registry

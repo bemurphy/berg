@@ -5,7 +5,7 @@ module Admin
   module Persistence
     module Repositories
       class AdminUsers < IcelabComAu::Repository[:admin_users]
-        relations :admin_users
+        commands :create
 
         def [](id)
           admin_users.by_id(id).as(Entities::AdminUser).one
