@@ -23,6 +23,7 @@ gem "rom-support", git: "https://github.com/rom-rb/rom-support"
 gem "que"
 
 # Application dependencies
+gem "bcrypt-ruby"
 gem "dry-equalizer"
 gem "dry-result_matcher"
 gem "dry-transaction"
