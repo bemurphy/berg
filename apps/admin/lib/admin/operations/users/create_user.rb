@@ -1,28 +1,28 @@
 require "kleisli"
-require "admin/entities/admin_user"
+require "admin/entities/user"
 require "admin/import"
 require "transproc"
 
 module Admin
   module Operations
-    class CreateAdminUser
+    class CreateUser
       include Admin::Import(
-        "admin.persistence.repositories.admin_users",
+        "admin.persistence.repositories.users",
         "admin.authentication.encrypt_password",
-        "admin.validation.admin_user_form_schema",
+        "admin.validation.user_form_schema",
       )
 
       extend Transproc::Registry
       import Transproc::HashTransformations
 
       def call(params = {})
-        validation = admin_user_form_schema.(params)
+        validation = user_form_schema.(params)
 
         if validation.messages.any?
           Left(validation.messages)
         else
-          result = create_admin_user.(prepare_attributes(validation.params))
-          Right(Entities::AdminUser.new(result))
+          result = create_user.(prepare_attributes(validation.params))
+          Right(Entities::User.new(result))
         end
       end
 

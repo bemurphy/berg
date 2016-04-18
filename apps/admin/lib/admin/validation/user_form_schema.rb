@@ -3,7 +3,7 @@ require "dry/validation/schema/form"
 
 module Admin
   module Validation
-    class AdminUserFormSchema < Dry::Validation::Schema::Form
+    class UserFormSchema < Dry::Validation::Schema::Form
       configure { config.messages = :i18n }
 
       key(:name) { |name| name.filled? }

@@ -2,7 +2,7 @@ require "types"
 
 module Admin
   module Entities
-    class AdminUser < Dry::Types::Value
+    class User < Dry::Types::Value
       attribute :id, Types::Strict::Int
       attribute :name, Types::Strict::String
       attribute :email, Types::Strict::String
