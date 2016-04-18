@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require "fileutils"
+
+APP_ROOT = File.expand_path("../../",  __FILE__)
+
+Dir.chdir(APP_ROOT) do
+  puts "== Installing dependencies =="
+  system "bundle"
+
+  puts "== Initializing config =="
+  FileUtils.cp "config/application.example.yml", "config/application.yml" unless File.exist?("config/application.yml")
+
+  puts "== Creating database =="
+  system "createdb icelab_com_au_development || true"
+  system "createdb icelab_com_au_test || true"
+
+  puts "== Migrating database =="
+  system "RACK_ENV=development bundle exec rake db:migrate"
+  system "RACK_ENV=test bundle exec rake db:migrate"
+end
+
