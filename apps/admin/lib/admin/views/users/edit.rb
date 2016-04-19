@@ -1,5 +1,5 @@
 require "admin/view"
-require "admin/forms/users/edit_form"
+require "admin/users/forms/edit_form"
 
 module Admin
   module Views
@@ -16,7 +16,7 @@ module Admin
           input = result ? result.output : form_input(account)
           errors = result ? result.messages : {}
 
-          form = Forms::Users::EditForm.build(input, errors)
+          form = Users::Forms::EditForm.build(input, errors)
 
           super.merge(
             account: account,

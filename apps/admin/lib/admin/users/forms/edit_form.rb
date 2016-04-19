@@ -2,8 +2,8 @@ require "formalist"
 require "formalist/elements/standard"
 
 module Admin
-  module Forms
-    module Users
+  module Users
+    module Forms
       EditForm = Class.new(Formalist::Form) do
         define do
           section :user do

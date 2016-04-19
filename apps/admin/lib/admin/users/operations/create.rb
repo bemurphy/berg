@@ -1,13 +1,13 @@
-require "admin/validation/user_schema"
+require "admin/users/validation/user_schema"
 require "admin/entities/user"
 require "admin/import"
 require "either_result_matcher"
 require "kleisli"
 
 module Admin
-  module Operations
-    module Users
-      class UpdateUser
+  module Users
+    module Operations
+      class Create
         include Admin::Import(
           "admin.persistence.repositories.users",
           "core.authentication.encrypt_password"
@@ -15,14 +15,14 @@ module Admin
 
         include EitherResultMatcher.for(:call)
 
-        def call(user_id, attributes)
+        def call(attributes)
           validation = Validation::UserSchema.(attributes)
 
           if validation.messages.any?
             Left(validation.messages)
           else
-            update_user.by_id(user_id).(prepare_attributes(validation.output))
-            Right(users[user_id])
+            user = Entities::User.new(create_user.(prepare_attributes(validation.output)))
+            Right(user)
           end
         end
 
