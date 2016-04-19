@@ -41,6 +41,17 @@ GIT
       dry-types (~> 0.7, >= 0.7.1)
 
 GIT
+  remote: https://github.com/icelab/formalist
+  revision: d1d2c6d6c48c51c3806090de3d969dfbca3bef22
+  branch: master
+  specs:
+    formalist (0.2.3)
+      dry-configurable
+      dry-container
+      dry-types
+      inflecto
+
+GIT
   remote: https://github.com/rom-rb/rom
   revision: 794d5d9649b7d6a76535e635095dc4f80394e8fa
   specs:
@@ -272,6 +283,7 @@ DEPENDENCIES
   dry-validation!
   dry-web!
   either_result_matcher (~> 0.2.0)
+  formalist!
   guard-rspec
   i18n
   inflecto
