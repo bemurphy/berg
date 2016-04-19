@@ -1,43 +1,40 @@
-require "kleisli"
+require "admin/validation/user_create_schema"
 require "admin/entities/user"
 require "admin/import"
-require "transproc"
+require "either_result_matcher"
+require "kleisli"
 
 module Admin
   module Operations
-    class CreateUser
-      include Admin::Import(
-        "admin.persistence.repositories.users",
-        "admin.authentication.encrypt_password",
-        "admin.validation.user_form_schema",
-      )
+    module Users
+      class CreateUser
+        include Admin::Import(
+          "admin.persistence.repositories.users",
+          "admin.authentication.encrypt_password"
+        )
 
-      extend Transproc::Registry
-      import Transproc::HashTransformations
+        include EitherResultMatcher.for(:call)
 
-      def call(params = {})
-        validation = user_form_schema.(params)
+        def call(attributes)
+          validation = Validation::UserCreateSchema.(attributes)
 
-        if validation.messages.any?
-          Left(validation.messages)
-        else
-          result = create_user.(prepare_attributes(validation.params))
-          Right(Entities::User.new(result))
+          if validation.messages.any?
+            Left(validation.messages)
+          else
+            user = Entities::User.new(create_user.(prepare_attributes(validation.output)))
+            Right(user)
+          end
         end
-      end
 
-      private
+        private
 
-      def prepare_attributes(params)
-        attrs = transformer.(params)
-        attrs.merge(encrypted_password: encrypt_password.(params[:password]))
-      end
-
-      def transformer
-        self.class[:accept_keys, [
-          :email,
-          :name
-        ]]
+        def prepare_attributes(attributes)
+          if attributes[:password]
+            attributes.merge(encrypted_password: encrypt_password.(attributes[:password]))
+          else
+            attributes
+          end
+        end
       end
     end
   end
