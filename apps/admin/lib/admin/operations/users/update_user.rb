@@ -1,4 +1,4 @@
-require "admin/validation/user_create_schema"
+require "admin/validation/user_schema"
 require "admin/entities/user"
 require "admin/import"
 require "either_result_matcher"
