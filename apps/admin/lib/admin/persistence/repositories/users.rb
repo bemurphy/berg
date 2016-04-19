@@ -5,7 +5,9 @@ module Admin
   module Persistence
     module Repositories
       class Users < IcelabComAu::Repository[:users]
-        commands :create
+        commands :create, update: [:by_id, :by_email]
+
+        alias_method :update, :update_by_id
 
         def [](id)
           users.by_id(id).as(Entities::User).one

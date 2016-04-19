@@ -7,7 +7,7 @@ require "kleisli"
 module Admin
   module Operations
     module Users
-      class CreateUser
+      class UpdateUser
         include Admin::Import(
           "admin.persistence.repositories.users",
           "core.authentication.encrypt_password"
@@ -15,14 +15,14 @@ module Admin
 
         include EitherResultMatcher.for(:call)
 
-        def call(attributes)
+        def call(user_id, attributes)
           validation = Validation::UserSchema.(attributes)
 
           if validation.messages.any?
             Left(validation.messages)
           else
-            user = Entities::User.new(create_user.(prepare_attributes(validation.output)))
-            Right(user)
+            update_user.by_id(user_id).(prepare_attributes(validation.output))
+            Right(users[user_id])
           end
         end
 
