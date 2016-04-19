@@ -1,8 +1,8 @@
-require "either_result_matcher"
+require "dry-result_matcher"
 
 module Authentication
   class Authenticate
-    include EitherResultMatcher.for(:call)
+    include Dry::ResultMatcher.for(:call)
 
     def call(attributes)
       email, password = attributes.values_at("email", "password")

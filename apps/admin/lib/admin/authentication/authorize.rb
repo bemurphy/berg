@@ -1,5 +1,5 @@
 require "admin/import"
-require "either_result_matcher"
+require "dry-result_matcher"
 
 module Admin
   module Authentication
@@ -9,7 +9,7 @@ module Admin
         "admin.persistence.repositories.users"
       )
 
-      include EitherResultMatcher.for(:call)
+      include Dry::ResultMatcher.for(:call)
 
       def call(session)
         id = session[:user_id]

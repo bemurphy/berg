@@ -1,7 +1,7 @@
 require "admin/users/validation/user_schema"
 require "admin/entities/user"
 require "admin/import"
-require "either_result_matcher"
+require "dry-result_matcher"
 require "kleisli"
 
 module Admin
@@ -13,7 +13,7 @@ module Admin
           "core.authentication.encrypt_password"
         )
 
-        include EitherResultMatcher.for(:call)
+        include Dry::ResultMatcher.for(:call)
 
         def call(attributes)
           validation = Validation::UserSchema.(attributes)

@@ -169,8 +169,6 @@ GEM
       dry-equalizer (~> 0.2)
       inflecto (~> 0)
       tilt (~> 2.0)
-    either_result_matcher (0.2.0)
-      kleisli
     equalizer (0.0.11)
     ffi (1.9.10)
     formatador (0.2.5)
@@ -282,7 +280,6 @@ DEPENDENCIES
   dry-types!
   dry-validation!
   dry-web!
-  either_result_matcher (~> 0.2.0)
   formalist!
   guard-rspec
   i18n
