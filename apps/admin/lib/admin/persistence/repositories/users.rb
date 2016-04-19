@@ -1,10 +1,10 @@
-require "icelab_com_au/repository"
+require "berg/repository"
 require "admin/entities/user"
 
 module Admin
   module Persistence
     module Repositories
-      class Users < IcelabComAu::Repository[:users]
+      class Users < Berg::Repository[:users]
         commands :create, update: [:by_id, :by_email]
 
         alias_method :update, :update_by_id

@@ -1,13 +1,13 @@
 require "open-uri"
 
-module IcelabComAu
+module Berg
   class Assets
     attr_reader :root
     attr_reader :precompiled
     attr_reader :precompiled_host
     attr_reader :server_url
 
-    def self.new(container = IcelabComAu::Container)
+    def self.new(container = Berg::Container)
       super(
         root: container.config.root,
         precompiled: container["config"].precompiled_assets,

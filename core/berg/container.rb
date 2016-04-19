@@ -1,6 +1,6 @@
 require "dry/web/container"
 
-module IcelabComAu
+module Berg
   class Container < Dry::Web::Container
     configure do
       config.name = :core

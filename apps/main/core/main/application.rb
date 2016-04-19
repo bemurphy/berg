@@ -13,7 +13,7 @@ module Main
 
     opts[:root] = Pathname(__FILE__).join("../..").realpath.dirname
 
-    use Rack::Session::Cookie, key: "icelab_com_au.session", secret: IcelabComAu::Container["config"].session_secret
+    use Rack::Session::Cookie, key: "berg.session", secret: Berg::Container["config"].session_secret
     use Rack::Csrf, raise: true
     use Bugsnag::Rack
 

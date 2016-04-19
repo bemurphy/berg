@@ -1,11 +1,11 @@
 require "dry-transaction"
 
-require "icelab_com_au/transactions"
+require "berg/transactions"
 require "main/container"
 require "main/import"
 
 module Main
-  class Transactions < IcelabComAu::Transactions
+  class Transactions < Berg::Transactions
     class StepAdapters < Dry::Transaction::StepAdapters
       class Enqueue
         include Main::Import("enqueue")

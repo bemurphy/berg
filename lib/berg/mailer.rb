@@ -1,11 +1,11 @@
-require "icelab_com_au/import"
+require "berg/import"
 
-module IcelabComAu
+module Berg
   class Mailer
-    include IcelabComAu::Import("logger", "postmark")
+    include Berg::Import("logger", "postmark")
 
     def deliver(mail)
-      logger.debug("[IcelabComAu::Mailer] delivering: #{mail.inspect}")
+      logger.debug("[Berg::Mailer] delivering: #{mail.inspect}")
       postmark.deliver(mail.to_h.merge(from: from))
     end
 

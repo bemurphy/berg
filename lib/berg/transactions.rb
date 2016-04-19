@@ -1,7 +1,7 @@
 require "dry-configurable"
 require "dry-transaction"
 
-module IcelabComAu
+module Berg
   class Transactions
     extend Dry::Configurable
 

@@ -1,6 +1,6 @@
 development: &base
   session_secret: xxx
-  database_url: 'postgres://localhost/icelab_com_au_development'
+  database_url: 'postgres://localhost/berg_development'
   assets_server_url: "http://localhost:1234"
   precompiled_assets: false
   precompiled_assets_host:
@@ -8,6 +8,6 @@ development: &base
   bugsnag_api_key:
 test:
   <<: *base
-  database_url: 'postgres://localhost/icelab_com_au_test'
+  database_url: 'postgres://localhost/berg_test'
 production:
   <<: *base

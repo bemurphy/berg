@@ -2,11 +2,11 @@ module TestHelpers
   module_function
 
   def container
-    IcelabComAu::Container
+    Berg::Container
   end
 
   def app
-    IcelabComAu::Application.app
+    Berg::Application.app
   end
 
   def rom

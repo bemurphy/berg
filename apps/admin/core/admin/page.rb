@@ -1,6 +1,6 @@
-require "icelab_com_au/page"
+require "berg/page"
 
 module Admin
-  class Page < IcelabComAu::Page
+  class Page < Berg::Page
   end
 end

@@ -1,8 +1,8 @@
-require "icelab_com_au/email"
+require "berg/email"
 require "admin/container"
 
 module Admin
-  class Email < IcelabComAu::Email
+  class Email < Berg::Email
     configure do |config|
       config.root = Container.root.join("emails")
       config.name = "email"

@@ -1,11 +1,11 @@
 require "dry-transaction"
 
-require "icelab_com_au/transactions"
+require "berg/transactions"
 require "admin/container"
 require "admin/import"
 
 module Admin
-  class Transactions < IcelabComAu::Transactions
+  class Transactions < Berg::Transactions
     class StepAdapters < Dry::Transaction::StepAdapters
       class Enqueue
         include Admin::Import("enqueue")

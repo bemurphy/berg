@@ -1,7 +1,7 @@
 require "types"
 require "yaml"
 
-module IcelabComAu
+module Berg
   class Config < Dry::Types::Struct
     RequiredString = Types::Strict::String.constrained(min_size: 1)
 

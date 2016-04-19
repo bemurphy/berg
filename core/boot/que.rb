@@ -1,6 +1,6 @@
 require "que"
 
-IcelabComAu::Container.namespace :que do |container|
+Berg::Container.namespace :que do |container|
   container.finalize :que do
     container.boot! :logger
     container.boot :rom

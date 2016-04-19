@@ -1,7 +1,7 @@
 module Admin
   class Container < Dry::Web::Container
-    require root.join("core/icelab_com_au/container")
-    import IcelabComAu::Container
+    require root.join("core/berg/container")
+    import Berg::Container
 
     configure do |config|
       config.root = Pathname(__FILE__).join("../..").realpath.dirname.freeze

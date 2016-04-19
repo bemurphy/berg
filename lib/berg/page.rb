@@ -1,4 +1,4 @@
-module IcelabComAu
+module Berg
   class Page
     attr_reader :options
 

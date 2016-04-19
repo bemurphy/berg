@@ -1,6 +1,6 @@
 require "bugsnag"
 
-module IcelabComAu
+module Berg
   class Application < Roda
     use Bugsnag::Rack
 

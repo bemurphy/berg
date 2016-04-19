@@ -4,10 +4,10 @@ require "dry-view"
 require "admin/container"
 require "admin/page"
 
-require "icelab_com_au/assets"
+require "berg/assets"
 
 module Admin
-  Container.register "admin.page", Page.new(assets: IcelabComAu::Assets.new)
+  Container.register "admin.page", Page.new(assets: Berg::Assets.new)
 
   class View < Dry::View::Layout
     setting :root, Container.root.join("web/templates")

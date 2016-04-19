@@ -2,12 +2,12 @@ require "dry-equalizer"
 require "dry-view"
 require "slim"
 require "tilt/erb"
-require "icelab_com_au/import"
+require "berg/import"
 
-module IcelabComAu
+module Berg
   class Email < Dry::View::Layout
     include Dry::Equalizer(:to_h)
-    include IcelabComAu::HashImport["i18n.t"]
+    include Berg::HashImport["i18n.t"]
 
     attr_reader :options
 

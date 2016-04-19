@@ -1,15 +1,15 @@
 require "rom-repository"
-require "icelab_com_au/container"
-require "icelab_com_au/import"
+require "berg/container"
+require "berg/import"
 
-IcelabComAu::Container.boot! :rom
+Berg::Container.boot! :rom
 
-module IcelabComAu
+module Berg
   class Repository < ROM::Repository
     # This .new shouldn't be needed, since repos should work with dry-
     # auto_inject. This is not working yet, so this remains as a workaround.
     def self.new(rom = nil)
-      super(rom || IcelabComAu::Container["persistence.rom"])
+      super(rom || Berg::Container["persistence.rom"])
     end
   end
 end
