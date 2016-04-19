@@ -7,13 +7,13 @@ require "admin/page"
 require "icelab_com_au/assets"
 
 module Admin
-  Container.register "page", Page.new(assets: IcelabComAu::Assets.new)
+  Container.register "admin.page", Page.new(assets: IcelabComAu::Assets.new)
 
   class View < Dry::View::Layout
     setting :root, Container.root.join("web/templates")
-    setting :scope, Container["page"]
+    setting :scope, Container["admin.page"]
     setting :formats, {html: :slim}
-    setting :name, "admin"
+    setting :name, "application"
 
     def locals(options)
       super.merge(options[:scope].view_locals)
