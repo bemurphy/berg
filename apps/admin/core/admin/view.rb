@@ -13,7 +13,7 @@ module Admin
     setting :root, Container.root.join("web/templates")
     setting :scope, Container["page"]
     setting :formats, {html: :slim}
-    setting :name, "application"
+    setting :name, "admin"
 
     def locals(options)
       super.merge(options[:scope].view_locals)

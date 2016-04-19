@@ -6,7 +6,7 @@ module Admin
     class Job < Que::Job
       def run(identifier, *args)
         Container["core.que.connection"].transaction do
-          operation = Container[identifier]
+          operation = Admin::Container[identifier]
           operation.call_from_queue(*args)
           destroy
         end
