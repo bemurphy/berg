@@ -10,7 +10,7 @@ module Admin
       class CreateUser
         include Admin::Import(
           "admin.persistence.repositories.users",
-          "admin.authentication.encrypt_password"
+          "core.authentication.encrypt_password"
         )
 
         include EitherResultMatcher.for(:call)
