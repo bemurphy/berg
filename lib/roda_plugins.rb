@@ -27,7 +27,49 @@ class Roda
       end
     end
 
+    module Auth
+      module RequestMethods
+        def authorize
+          resolve("admin.authentication.authorize") do |authorize|
+            authorize.(scope.session) do |m|
+              m.success do |user|
+                set_current_user!(user)
+
+                if authorize.default_password?(current_user)
+                  scope.flash.now["system"] = auth_error(:pass_change_required)
+                end
+              end
+
+              m.failure do |error|
+                on accept: "application/json" do
+                  halt 401
+                end
+
+                scope.flash["notice"] = auth_error(error)
+                redirect "/admin/sign-in"
+              end
+
+              yield
+            end
+          end
+        end
+
+        def auth_error(id)
+          scope.class["core.i18n.t"]["admin.errors.auth.#{id}"]
+        end
+
+        def current_user
+          scope.env["admin.current_user"]
+        end
+
+        def set_current_user!(user)
+          scope.env["admin.current_user"] = user
+        end
+      end
+    end
+
     register_plugin :page, Page
     register_plugin :view, View
+    register_plugin :auth, Auth
   end
 end

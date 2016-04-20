@@ -1,7 +1,7 @@
 require "bugsnag"
 require "rack/csrf"
 require "dry/web/application"
-require_relative "container"
+require "admin/container"
 require "roda_plugins"
 
 module Admin
@@ -13,27 +13,42 @@ module Admin
 
     opts[:root] = Pathname(__FILE__).join("../..").realpath.dirname
 
-    use Rack::Session::Cookie, key: "berg.session", secret: Berg::Container["config"].session_secret
+    use Rack::Session::Cookie,
+      key: "berg.session",
+      secret: Berg::Container["config"].session_secret
+
     use Rack::Csrf, raise: true
     use Bugsnag::Rack
 
     plugin :error_handler
     plugin :flash
-
     plugin :view
     plugin :page
+    plugin :auth
 
     def name
-      :main
+      :admin
+    end
+
+    def current_user
+      env["admin.current_user"]
+    end
+
+    def current_page
+      current_user ? super.authorized(current_user) : super
     end
 
     route do |r|
-      r.root do
-        r.view "home"
-      end
-
       r.multi_route
+
+      r.authorize do
+        r.is do
+          r.view("home")
+        end
+      end
     end
+
+    load_routes!
 
     error do |e|
       if ENV["RACK_ENV"] == "production"
@@ -49,7 +64,5 @@ module Admin
         raise e
       end
     end
-
-    load_routes!
   end
 end
