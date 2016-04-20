@@ -10,7 +10,7 @@ module Admin
       )
 
       def fetch(email)
-        admin_users.by_email(email)
+        users.by_email(email)
       end
     end
   end
