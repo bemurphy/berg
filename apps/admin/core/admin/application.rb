@@ -38,6 +38,10 @@ module Admin
       current_user ? super.authorized(current_user) : super
     end
 
+    def t
+      self.class["core.i18n.t"]
+    end
+
     route do |r|
       r.multi_route
 
