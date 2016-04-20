@@ -7,11 +7,11 @@ require "admin/page"
 require "berg/assets"
 
 module Admin
-  Container.register "admin.page", Page.new(assets: Berg::Assets.new)
+  Container.register "page", Page.new(assets: Berg::Assets.new)
 
   class View < Dry::View::Layout
     setting :root, Container.root.join("web/templates")
-    setting :scope, Container["admin.page"]
+    setting :scope, Container["page"]
     setting :formats, {html: :slim}
     setting :name, "admin"
 
