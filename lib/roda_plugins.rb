@@ -41,10 +41,6 @@ class Roda
               end
 
               m.failure do |error|
-                on accept: "application/json" do
-                  halt 401
-                end
-
                 scope.flash["notice"] = auth_error(error)
                 redirect "/admin/sign-in"
               end
