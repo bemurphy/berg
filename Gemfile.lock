@@ -129,7 +129,7 @@ GEM
       abstract_type (~> 0.0.7)
       adamantium (~> 0.2)
       equalizer (~> 0.0.11)
-    bcrypt-ruby (2.1.4)
+    bcrypt (3.1.10)
     bugsnag (2.8.12)
       json (~> 1.7, >= 1.7.7)
     byebug (5.0.0)
@@ -268,7 +268,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt-ruby
+  bcrypt
   bugsnag
   capybara
   capybara-screenshot
