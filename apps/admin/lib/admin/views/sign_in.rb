@@ -4,7 +4,7 @@ module Admin
   module Views
     class SignIn < Admin::View
       configure do |config|
-        config.name = "application"
+        config.name = "admin"
         config.template = "sign_in"
       end
     end
