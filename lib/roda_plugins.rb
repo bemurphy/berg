@@ -34,10 +34,6 @@ class Roda
             authorize.(scope.session) do |m|
               m.success do |user|
                 set_current_user!(user)
-
-                if authorize.default_password?(current_user)
-                  scope.flash.now["system"] = auth_error(:pass_change_required)
-                end
               end
 
               m.failure do |error|
