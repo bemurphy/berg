@@ -16,6 +16,10 @@ module Admin
         def by_email(email)
           users.by_email(email).as(Entities::User).one
         end
+
+        def listing
+          users.as(Entities::User).to_a
+        end
       end
     end
   end
