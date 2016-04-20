@@ -6,4 +6,5 @@ html
     script type="text/javascript" src=page.assets["public.js"]
   body
     == page.flash
+    == page.nav if page.authorized?
     == yield
