@@ -1,0 +1,23 @@
+== actions
+
+h1.h-1 Users
+
+.panel
+  .panel__primary
+    .table.link-children
+      table
+        thead
+          tr
+            th ID
+            th Email
+            th Name
+            th
+        tbody
+          - users.each do |user|
+            tr id="user-#{user.id}"
+              td.f-mono = user.id
+              td.f-mono = user.email
+              td = user.name
+              td
+                a href="/admin/users/#{user.id}/edit" Edit
+                a href="/admin/users/#{user.id}/password" Change password

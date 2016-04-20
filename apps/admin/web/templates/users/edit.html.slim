@@ -1,0 +1,21 @@
+== actions
+
+p.link-children
+  a> href="/admin/users" Users
+  span.c-grey-mid
+    ' /
+    h1.h-1 = "Editing ‘#{user.name}’"
+
+.tabs
+  span.tab.tab--active Edit user
+  a.tab href="/admin/users/#{user.id}/password" Change password
+.panel
+  .panel__primary
+    form action="/admin/users/#{user.id}" method="post"
+      == csrf_tag
+      input type="hidden" name="_method" value="put"
+      fieldset
+        legend.hide-visually Edit User
+        div data-view-formalist=user_form
+      p
+        button.button.button--primary type="submit" Save changes
