@@ -7,6 +7,10 @@ module Berg
     plugin :error_handler
 
     route do |r|
+      r.on "admin" do
+        r.run Admin::Application.freeze.app
+      end
+
       r.run Main::Application.freeze.app
     end
 
