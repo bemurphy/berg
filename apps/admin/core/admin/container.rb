@@ -4,6 +4,8 @@ module Admin
     import Berg::Container
 
     configure do |config|
+      config.name = :admin
+
       config.root = Pathname(__FILE__).join("../..").realpath.dirname.freeze
 
       config.auto_register = %w[
