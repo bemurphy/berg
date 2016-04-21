@@ -3,6 +3,8 @@ var path = require("path");
 var webpack = require("webpack");
 var loadConfig = require("./config");
 
+var config = loadConfig(path.join(__dirname, "config.yml"));
+
 /**
  * Custom webpack plugins
  */
@@ -11,18 +13,34 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 /**
  * PostCSS packages
  */
-
-var autoprefixer = require("autoprefixer-core");
 var cssimport = require("postcss-import");
-var cssnext = require("cssnext");
+var cssnext = require("postcss-cssnext");
+var modulesValues = require("postcss-modules-values");
+var atImport = require("postcss-import");
+
+/**
+ * Sass plugins
+ */
+
+ var bourbon = require('node-bourbon');
+ var neat = require('node-neat');
 
 /**
  * General configuration
  */
-var config  = loadConfig(path.join(__dirname, "config.yml"));
 var TARGETS = path.join(__dirname, "targets");
 var BUILD   = path.join(__dirname, "build");
 
+/**
+ * Map the includePaths from the Sass plugins into parameters for
+ * Webpack to load
+ * @type {Array}
+ */
+var sassPaths = bourbon.includePaths
+  .concat(neat.includePaths)
+  .map(function(sassPath) {
+    return "includePaths[]=" + sassPath;
+  }).join("&");
 
 /**
  * isDirectory
@@ -89,11 +107,14 @@ module.exports = {
   // Plugin/loader specific-configuration
   plugins: [
     new webpack.DefinePlugin({
-      DEVELOPMENT: true
+      DEVELOPMENT: false,
+      'process.env.NODE_ENV': '"production"'
     }),
     new ExtractTextPlugin("[name].css", {
       allChunks: true
-    })
+    }),
+    // Ignore moments other locales
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en-au/)
   ],
 
   postcss: function() {
@@ -107,23 +128,46 @@ module.exports = {
           }.bind(this)
         }),
         cssnext(),
-        autoprefixer
-      ],
-      cleaner:  [autoprefixer({ browsers: ["last 2 versions"] })]
+        modulesValues,
+        atImport()
+      ]
     };
+  },
+
+  // Set the resolve paths to _our_ node_modules
+  // For modules
+  resolve: {
+    alias: {
+      "formalist-theme": 'formalist-standard-react/lib/components/ui'
+    },
+    moduleDirectories: [
+      path.join(__dirname, '../node_modules'),
+      path.join(__dirname, '../node_modules/roneo/node_modules')
+    ],
+    fallback: [
+      path.join(__dirname, '../node_modules'),
+      path.join(__dirname, '../node_modules/roneo/node_modules')
+    ]
+  },
+  // Same issue, for loaders like babel
+  resolveLoader: {
+    fallback: [
+      path.join(__dirname, '../node_modules')
+    ]
   },
 
   // General configuration
   module: {
-    preLoaders: [
-      // Run all JavaScript through jshint before loading
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "jshint-loader"
-      }
-    ],
     loaders: [
+      {
+        test: require.resolve('turbolinks'),
+        loader: 'imports?this=>window'
+      },
+      {
+        test: /\.js/,
+        loader: "babel?presets[]=react,presets[]=es2015",
+        include: TARGETS
+      },
       {
         test: /\.(jpe?g|png|gif|svg|woff|ttf|otf|eot|ico)/,
         loader: "file-loader?name=[path][name].[ext]"
@@ -133,12 +177,23 @@ module.exports = {
         loader: "html-loader"
       },
       {
+        test: /\.scss$/,
+        // The ExtractTextPlugin pulls all CSS out into static files
+        // rather than inside the JavaScript/webpack bundle
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader?" + sassPaths)
+      },
+      {
+        test: /\.mcss$/,
+        // The ExtractTextPlugin pulls all CSS out into static files
+        // rather than inside the JavaScript/webpack bundle
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader')
+      },
+      {
         test: /\.css$/,
         // The ExtractTextPlugin pulls all CSS out into static files
         // rather than inside the JavaScript/webpack bundle
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader")
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
       }
     ]
   }
-
 };
