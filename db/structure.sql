@@ -90,7 +90,9 @@ CREATE TABLE users (
     name text NOT NULL,
     encrypted_password text NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    access_token text,
+    access_token_expiration timestamp without time zone
 );
 
 
