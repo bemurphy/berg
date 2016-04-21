@@ -9,10 +9,8 @@ module Admin
       config.root = Pathname(__FILE__).join("../..").realpath.dirname.freeze
 
       config.auto_register = %w[
-        lib/admin/authentication
-        lib/admin/operations
-        lib/admin/validation
-        lib/admin/views
+        lib/admin
+        lib/views
       ]
     end
 
