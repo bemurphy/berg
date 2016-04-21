@@ -1,13 +1,12 @@
-require "admin/users/validation/user_schema"
-require "admin/entities/user"
 require "admin/import"
+require "admin/entities/user"
+require "admin/users/validation/user_schema"
 require "dry-result_matcher"
-require "kleisli"
 
 module Admin
   module Users
     module Operations
-      class Update
+      class ChangePassword
         include Admin::Import(
           "admin.persistence.repositories.users",
           "core.authentication.encrypt_password"
@@ -15,14 +14,14 @@ module Admin
 
         include Dry::ResultMatcher.for(:call)
 
-        def call(user_id, attributes)
+        def call(id, attributes)
           validation = Validation::UserSchema.(attributes)
 
           if validation.messages.any?
             Left(validation.messages)
           else
-            users.update(id, prepare_attributes(validation))
-            Right(users[user_id])
+            result = users.update(id, prepare_attributes(validation))
+            Right(result)
           end
         end
 

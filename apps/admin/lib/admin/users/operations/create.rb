@@ -21,7 +21,7 @@ module Admin
           if validation.messages.any?
             Left(validation.messages)
           else
-            user = Entities::User.new(create_user.(prepare_attributes(validation.output)))
+            user = Entities::User.new(users.create(prepare_attributes(validation)))
             Right(user)
           end
         end
