@@ -12,7 +12,7 @@ module Admin
   class View < Dry::View::Layout
     setting :root, Container.root.join("web/templates")
     setting :scope, Container["page"]
-    setting :formats, {html: :slim}
+    setting :formats, { html: :slim }
     setting :name, "admin"
 
     def locals(options)
