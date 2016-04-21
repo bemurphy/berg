@@ -14,16 +14,14 @@ module Admin
         include Dry::ResultMatcher.for(:call)
 
         def call(email)
+          return Left(:email_not_found) unless users.by_email(email)
+
           attributes = users.update_by_email(email,
             access_token: access_token.value,
             access_token_expiration: access_token.expires_at
           )
 
-          if attributes
-            Right(Entities::User.new(attributes))
-          else
-            Left(:user_not_found)
-          end
+          Right(Entities::User.new(attributes))
         end
       end
     end

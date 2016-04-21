@@ -14,7 +14,7 @@ class Admin::Application < Dry::Web::Application
             end
 
             m.failure do |error|
-              flash.now(t["errors.#{error}"])
+              flash.now["notice"] = t["admin.errors.auth.#{error}"]
               r.view("users.password_reset")
             end
           end
