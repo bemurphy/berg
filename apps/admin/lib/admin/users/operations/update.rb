@@ -29,11 +29,9 @@ module Admin
         private
 
         def prepare_attributes(attributes)
-          if attributes[:password]
-            attributes.merge(encrypted_password: encrypt_password.(attributes[:password]))
-          else
-            attributes
-          end
+          attributes.merge(
+            encrypted_password: encrypt_password.(attributes[:password])
+          )
         end
       end
     end
