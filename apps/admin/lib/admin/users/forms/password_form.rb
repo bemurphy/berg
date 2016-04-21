@@ -1,14 +1,13 @@
-require "formalist"
-require "formalist/elements/standard"
+require "berg/form"
 
 module Admin
   module Users
     module Forms
-      PasswordForm = Class.new(Formalist::Form) do
+      class PasswordForm < Berg::Form
+        prefix :user
+
         define do
-          section :user do
-            text_field :password, type: "string", password: true, label: "Password"
-          end
+          text_field :password, type: "string", password: true, label: "Password"
         end
       end
     end
