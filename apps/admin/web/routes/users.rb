@@ -22,6 +22,38 @@ class Admin::Application < Dry::Web::Application
       end
     end
 
+    r.on("update-password/:access_token") do |access_token|
+      r.resolve("admin.authentication.access_token") do |auth|
+        auth.(access_token) do |m|
+          m.success do |user|
+            r.get do
+              r.view("users.update_password", id: user.id)
+            end
+
+            r.put do
+              r.resolve("admin.users.operations.change_password") do |change_password|
+                change_password.(user.id, r[:user]) do |t|
+                  t.success do
+                    session[:user_id] = user.id
+                    r.redirect "/admin"
+                  end
+
+                  t.failure do |validation|
+                    r.view("users.update_password", id: user.id, validation: validation)
+                  end
+                end
+              end
+            end
+          end
+
+          m.failure do |error|
+            flash["notice"] = t["admin.errors.auth.#{error}"]
+            r.redirect "/admin/sign-in"
+          end
+        end
+      end
+    end
+
     r.authorize do
       r.get("") do
         r.view("users.index", page: r[:page] || 1)

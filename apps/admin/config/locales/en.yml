@@ -4,3 +4,8 @@ en:
       auth:
         user_not_found: "Email or password is not correct"
         unauthorized: "You need to sign in to access this page"
+        access_token_invalid: 'Token is invalid or expired'
+    mails:
+      users:
+        password_reset:
+          subject: "Berg Admin Account / Password Reset"

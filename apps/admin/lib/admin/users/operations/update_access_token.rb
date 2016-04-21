@@ -8,7 +8,7 @@ module Admin
       class UpdateAccessToken
         include Admin::Import(
           "admin.persistence.repositories.users",
-          "admin.users.access_token",
+          "admin.users.access_token"
         )
 
         include Dry::ResultMatcher.for(:call)

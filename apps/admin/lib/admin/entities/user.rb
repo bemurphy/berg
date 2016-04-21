@@ -7,6 +7,8 @@ module Admin
       attribute :name, Types::Strict::String
       attribute :email, Types::Strict::String
       attribute :encrypted_password, Types::Strict::String
+      attribute :access_token, Types::String
+      attribute :access_token_expiration, Types::DateTime
     end
   end
 end

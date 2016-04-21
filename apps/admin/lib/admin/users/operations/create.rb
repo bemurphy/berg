@@ -10,6 +10,7 @@ module Admin
       class Create
         include Admin::Import(
           "admin.persistence.repositories.users",
+          "admin.users.access_token",
           "core.authentication.encrypt_password"
         )
 
@@ -30,7 +31,9 @@ module Admin
 
         def prepare_attributes(attributes)
           attributes.merge(
-            encrypted_password: encrypt_password.(attributes[:password])
+            encrypted_password: encrypt_password.(attributes[:password]),
+            access_token: access_token.value,
+            access_token_expiration: access_token.expires_at
           )
         end
       end
