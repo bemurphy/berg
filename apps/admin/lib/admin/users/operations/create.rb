@@ -1,4 +1,4 @@
-require "admin/users/validation/user_schema"
+require "admin/users/validation/form"
 require "admin/entities/user"
 require "admin/import"
 require "dry-result_matcher"
@@ -17,7 +17,7 @@ module Admin
         include Dry::ResultMatcher.for(:call)
 
         def call(attributes)
-          validation = Validation::UserSchema.(attributes)
+          validation = Validation::Form.(attributes)
 
           if validation.messages.any?
             Left(validation.messages)
