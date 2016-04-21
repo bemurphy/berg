@@ -10,7 +10,6 @@ module Admin
 
       config.auto_register = %w[
         lib/admin
-        lib/views
       ]
     end
 
