@@ -25,6 +25,20 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 SET search_path = public, pg_catalog;
 
+--
+-- Name: set_updated_at_column(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION set_updated_at_column() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      BEGIN
+        NEW.updated_at = CURRENT_TIMESTAMP;
+        RETURN NEW;
+      END;
+      $$;
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -89,10 +103,10 @@ CREATE TABLE users (
     email text NOT NULL,
     name text NOT NULL,
     encrypted_password text NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    access_token text,
-    access_token_expiration timestamp without time zone
+    access_token text NOT NULL,
+    access_token_expiration timestamp without time zone NOT NULL,
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    updated_at timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
@@ -151,6 +165,13 @@ ALTER TABLE ONLY schema_migrations
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: set_updated_at_on_users; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER set_updated_at_on_users BEFORE UPDATE ON users FOR EACH ROW EXECUTE PROCEDURE set_updated_at_column();
 
 
 --
