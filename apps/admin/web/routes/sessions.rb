@@ -14,7 +14,7 @@ class Admin::Application < Dry::Web::Application
           end
 
           m.failure do |error|
-            flash["notice"] = t["errors.#{error}"]
+            flash["notice"] = t["admin.errors.auth.#{error}"]
             r.redirect "/admin/sign-in"
           end
         end
