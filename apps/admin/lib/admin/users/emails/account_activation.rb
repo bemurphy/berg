@@ -17,11 +17,15 @@ module Admin
         end
 
         def subject
-          t["admin.mails.users.account_activation.subject"]
+          t["admin.emails.users.account_activation.subject"]
         end
 
         def user_activation_url
-          "#{Container.options.admin_url}/users/update-password/#{user.access_token}"
+          "#{options.admin_url}/users/update-password/#{user.access_token}"
+        end
+
+        def options
+          Container.options
         end
 
         def user
