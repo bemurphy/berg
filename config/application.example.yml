@@ -1,14 +1,15 @@
 development: &base
   session_secret: xxx
-  database_url: 'postgres://localhost/berg_development'
+  database_url: "postgres://localhost/berg_development"
   assets_server_url: "http://localhost:8080"
   precompiled_assets: false
   precompiled_assets_host:
+  admin_mailer_email: "admin@berg.dev"
   app_mailer_from_email:
   bugsnag_api_key:
   postmark_api_key:
 test:
   <<: *base
-  database_url: 'postgres://localhost/berg_test'
+  database_url: "postgres://localhost/berg_test"
 production:
   <<: *base
