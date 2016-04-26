@@ -1,10 +1,29 @@
-html
+html lang="en"
   head
     meta charset="utf-8"
-    title Berg
-    link rel="stylesheet" type="text/css" href=page.assets["public.css"]
-    script type="text/javascript" src=page.assets["public.js"]
-  body
+    meta name="turbolinks-cache-control" content="no-cache"
+    / Inlined JS
+    script
+      == page.assets.read("inline-admin-header.js")
+    / CSS
+    link rel="stylesheet" type="text/css" href=page.assets["admin.css"]
+    / JS
+    script type="text/javascript" src=page.assets["admin.js"]
+    title Berg — Admin
+    == page.csrf_metatag
+  body data-view-fast-click=true data-view-disable-input-zoom=true
     == page.flash
     == page.nav if page.authorized?
-    == yield
+    == page.header
+    .page.nav-aware role="main"
+      .page__contents
+        == yield
+    button.page-overlay.nav-aware.hide-widescreen data-view-toggle-class=JSON.generate({ \
+      event: "click", \
+      targetSelector: ".nav-aware", \
+      targetToggleClassName: "nav-open", \
+      triggerToggleClassName: "nav-toggle--nav-open" })
+        span.hide-visually Toggle nav
+    / Inlined JS
+    script
+      == page.assets.read("inline-admin-footer.js")

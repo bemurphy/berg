@@ -1,8 +1,24 @@
-- if page.flash?
-  .flash
-    - if page.flash[:notice]
-      .notice
-        p = page.flash[:notice]
-    - if page.flash[:alert]
-      .alert
-        p = page.flash[:alert]
+- if page.flash
+  .flash.c-white.nav-aware
+    - if page.flash['system']
+      .flash__message.flash__message--hidden.flash__message--system.bgc-warning.clearfix.px-large.py-medium.br-medium
+        p.fl-left = page.flash['system']
+        button.flash__dismiss.fl-right data-view-toggle-class=JSON.generate({ \
+          event: "click", \
+          triggerAfter: 8000, \
+          targetSelector: ".flash__message--system", \
+          targetLoadClassName: "flash__message--hidden", \
+          targetToggleClassName: "flash__message--hidden" })
+          span.hide-all Dismiss
+          span.flash__x.f-fallthrough.t-large ×
+    - if page.flash['notice']
+      .flash__message.flash__message--hidden.flash__message--notice.bgc-notice.clearfix.px-large.py-medium.br-medium
+        p.fl-left = page.flash['notice']
+        button.flash__dismiss.fl-right data-view-toggle-class=JSON.generate({ \
+          event: "click", \
+          triggerAfter: 8000, \
+          targetSelector: ".flash__message--notice", \
+          targetLoadClassName: "flash__message--hidden", \
+          targetToggleClassName: "flash__message--hidden" })
+          span.hide-all Dismiss
+          span.flash__x.f-fallthrough.t-large ×
