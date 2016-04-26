@@ -7,6 +7,7 @@ ROM::SQL.migration do
       String :encrypted_password, null: false
       String :access_token, null: false
       DateTime :access_token_expiration, null: false
+      TrueClass :active, null: false, default: true
       DateTime :created_at, null: false, default: Sequel::CURRENT_TIMESTAMP
       DateTime :updated_at, null: false, default: Sequel::CURRENT_TIMESTAMP
     end

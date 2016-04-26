@@ -105,6 +105,7 @@ CREATE TABLE users (
     encrypted_password text NOT NULL,
     access_token text NOT NULL,
     access_token_expiration timestamp without time zone NOT NULL,
+    active boolean DEFAULT true NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL
 );
