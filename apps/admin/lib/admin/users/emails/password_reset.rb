@@ -17,11 +17,15 @@ module Admin
         end
 
         def subject
-          t["admin.mails.users.password_reset.subject"]
+          t["admin.emails.users.password_reset.subject"]
         end
 
         def password_reset_url
-          "#{Container.options.admin_url}/users/update-password/#{user.access_token}"
+          "#{options.admin_url}/users/update-password/#{user.access_token}"
+        end
+
+        def options
+          Container.options
         end
 
         def user
