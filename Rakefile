@@ -19,6 +19,9 @@ require "bugsnag/tasks"
 
 require "rom/sql/rake_task"
 require "sequel"
+
+Rake.add_rakelib "lib/tasks"
+
 namespace :db do
   task :setup do
     Berg::Container.boot!(:rom)
