@@ -1,7 +1,6 @@
-require "admin/users/validation/form"
-require "admin/entities/user"
 require "admin/import"
-require "dry-result_matcher"
+require "admin/entities/user"
+require "admin/users/validation/form"
 require "kleisli"
 
 module Admin
@@ -14,15 +13,13 @@ module Admin
           "core.authentication.encrypt_password"
         )
 
-        include Dry::ResultMatcher.for(:call)
-
         def call(attributes)
           validation = Validation::Form.(attributes)
 
           if validation.messages.any?
             Left(validation.messages)
           else
-            user = Entities::User.new(users.create(prepare_attributes(validation)))
+            user = Entities::User.new(users.create(prepare_attributes(validation.output)))
             Right(user)
           end
         end
