@@ -11,6 +11,10 @@ module Persistence
       def by_email(email)
         where(email: email)
       end
+
+      def by_access_token(token)
+        where(access_token: token)
+      end
     end
   end
 end
