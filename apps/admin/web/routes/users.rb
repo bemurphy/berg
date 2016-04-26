@@ -6,8 +6,8 @@ class Admin::Application < Dry::Web::Application
       end
 
       r.post do
-        r.resolve "admin.transactions.password_reset_request" do |password_reset_request|
-          password_reset_request.(r[:email]) do |m|
+        r.resolve "admin.transactions.request_password_reset" do |request_password_reset|
+          request_password_reset.(r[:email]) do |m|
             m.success do
               flash["notice"] = "Check your email for password reset instructions"
               r.redirect "/admin/sign-in"
