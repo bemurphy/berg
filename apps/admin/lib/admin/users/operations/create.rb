@@ -2,6 +2,7 @@ require "admin/import"
 require "admin/entities/user"
 require "admin/users/validation/form"
 require "kleisli"
+require "types"
 
 module Admin
   module Users
@@ -28,7 +29,7 @@ module Admin
 
         def prepare_attributes(attributes)
           attributes.merge(
-            encrypted_password: encrypt_password.(attributes[:password]),
+            encrypted_password: Types::Password.value,
             access_token: access_token.value,
             access_token_expiration: access_token.expires_at
           )
