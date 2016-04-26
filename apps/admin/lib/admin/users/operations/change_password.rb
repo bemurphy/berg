@@ -20,7 +20,7 @@ module Admin
           if validation.messages.any?
             Left(validation.messages)
           else
-            result = users.update(id, prepare_attributes(validation))
+            result = users.update(id, prepare_attributes(validation.output))
             Right(result)
           end
         end
