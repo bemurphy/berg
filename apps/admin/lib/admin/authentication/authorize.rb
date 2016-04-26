@@ -16,7 +16,7 @@ module Admin
         user = id && users[id]
 
         if user
-          Right(user)
+          user.active ? Right(user) : Left(:user_deactivated)
         else
           Left(:unauthorized)
         end

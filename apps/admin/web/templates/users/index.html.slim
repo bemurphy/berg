@@ -11,6 +11,7 @@ h1.h-1 Users
             th ID
             th Email
             th Name
+            th Status
             th
         tbody
           - users.each do |user|
@@ -18,5 +19,6 @@ h1.h-1 Users
               td.f-mono = user.id
               td.f-mono = user.email
               td = user.name
+              td = user.active ? "Active" : "Deactivated"
               td
                 a href="/admin/users/#{user.id}/edit" Edit
