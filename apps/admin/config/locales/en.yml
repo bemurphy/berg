@@ -2,13 +2,14 @@ en:
   admin:
     errors:
       auth:
-        user_not_found: "Email or password is not correct"
-        email_not_found: "No user found with that email address"
-        unauthorized: "You need to sign in to access this page"
         access_token_invalid: "Token is invalid or expired"
+        email_not_found: "No user found with that email address"
+        pass_change_required: "You need to change your password"
+        unauthorized: "You need to sign in to access this page"
+        user_not_found: "Email or password is not correct"
     mails:
       users:
-        password_reset:
-          subject: "Berg Admin Account / Password Reset"
         account_activation:
           subject: "Berg Admin Account"
+        password_reset:
+          subject: "Berg Admin Account / Password Reset"

@@ -21,6 +21,10 @@ module Admin
           Left(:unauthorized)
         end
       end
+
+      def default_password?(user)
+        encrypt_password.same?(user.encrypted_password, Types::Password.value)
+      end
     end
   end
 end
