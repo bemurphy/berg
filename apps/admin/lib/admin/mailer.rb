@@ -12,11 +12,7 @@ module Admin
     private
 
     def from
-      options.admin_mailer_email
-    end
-
-    def options
-      Container.options
+      Berg::Container["config"].admin_mailer_email
     end
   end
 end

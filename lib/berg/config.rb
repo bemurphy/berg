@@ -6,6 +6,7 @@ module Berg
     RequiredString = Types::Strict::String.constrained(min_size: 1)
 
     attribute :admin_url, RequiredString
+    attribute :admin_mailer_email, RequiredString
 
     attribute :database_url, RequiredString
     attribute :session_secret, RequiredString
