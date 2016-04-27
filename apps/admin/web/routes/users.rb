@@ -34,7 +34,7 @@ class Admin::Application < Dry::Web::Application
               r.resolve "admin.users.operations.change_password" do |change_password|
                 change_password.(user.id, r[:user]) do |m|
                   m.success do
-                    flash["notice"] = t["admin.auth.account_activated"]
+                    flash["notice"] = t["admin.auth.password_set"]
                     session[:user_id] = user.id
                     r.redirect "/admin"
                   end

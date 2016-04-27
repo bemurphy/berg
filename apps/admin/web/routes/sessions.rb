@@ -8,7 +8,7 @@ class Admin::Application < Dry::Web::Application
       r.resolve "admin.authentication.authenticate" do |authenticate|
         authenticate.(r[:user]) do |m|
           m.success do |user|
-            flash["notice"] = "You are now signed in"
+            flash["notice"] = ["admin.auth.signed_in"]
             session[:user_id] = user.id
             r.redirect "/admin"
           end
@@ -23,7 +23,7 @@ class Admin::Application < Dry::Web::Application
   end
 
   route "sign-out" do |r|
-    flash["notice"] = "You are now signed out"
+    flash["notice"] = ["admin.auth.signed_out"]
     session[:user_id] = env["admin.current_user"] = nil
     r.redirect "/admin/sign-in"
   end
