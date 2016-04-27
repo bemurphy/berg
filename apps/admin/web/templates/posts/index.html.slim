@@ -1,0 +1,24 @@
+== actions
+
+h1.h-1 Posts
+
+.panel
+  .panel__primary
+    .table.link-children
+      table
+        thead
+          tr
+            th ID
+            th Title
+            th Content
+            th Slug
+            th
+        tbody
+          - posts.each do |post|
+            tr id="post-#{post.id}"
+              td.f-mono = post.id
+              td.f-mono = post.title
+              td = post.content
+              td = post.slug
+              td
+                a href="/admin/posts/#{post.id}/edit" Edit
