@@ -3,7 +3,7 @@ require "berg/form"
 module Admin
   module Posts
     module Forms
-      class CreateForm < Berg::Form
+      class EditForm < Berg::Form
         prefix :post
 
         define do
