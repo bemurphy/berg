@@ -1,5 +1,5 @@
 class Admin::Application < Dry::Web::Application
-  route "sign-in"  do |r|
+  route "sign-in" do |r|
     r.get do
       r.view "sign_in"
     end
