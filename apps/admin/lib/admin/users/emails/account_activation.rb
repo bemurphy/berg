@@ -21,11 +21,7 @@ module Admin
         end
 
         def user_activation_url
-          "#{options.admin_url}/users/update-password/#{user.access_token}"
-        end
-
-        def options
-          Container.options
+          "#{Berg::Container["config"].admin_url}/users/update-password/#{user.access_token}"
         end
 
         def user

@@ -5,6 +5,8 @@ module Berg
   class Config < Dry::Types::Struct
     RequiredString = Types::Strict::String.constrained(min_size: 1)
 
+    attribute :admin_url, RequiredString
+
     attribute :database_url, RequiredString
     attribute :session_secret, RequiredString
 
