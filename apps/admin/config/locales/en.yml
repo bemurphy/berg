@@ -18,6 +18,6 @@ en:
     emails:
       users:
         account_activation:
-          subject: "Berg Admin Account"
+          subject: "Activate your Berg account"
         password_reset:
-          subject: "Berg Admin Account / Password Reset"
+          subject: "Berg password reset request"

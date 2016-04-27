@@ -51,7 +51,7 @@ class Roda
         end
 
         def auth_error(id)
-          scope.class["core.i18n.t"]["admin.errors.auth.#{id}"]
+          scope.class["core.i18n.t"]["admin.auth.#{id}"]
         end
 
         def current_user
