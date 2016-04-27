@@ -9,12 +9,12 @@ class Admin::Application < Dry::Web::Application
         r.resolve "admin.transactions.request_password_reset" do |request_password_reset|
           request_password_reset.(r[:email]) do |m|
             m.success do
-              flash["notice"] = "Check your email for password reset instructions"
+              flash["notice"] = t["admin.auth.password_reset"]
               r.redirect "/admin/sign-in"
             end
 
             m.failure do |error|
-              flash.now["notice"] = t["admin.errors.auth.#{error}"]
+              flash.now["notice"] = t["admin.auth.#{error}"]
               r.view "users.password_reset"
             end
           end
@@ -30,15 +30,16 @@ class Admin::Application < Dry::Web::Application
               r.view "users.update_password", id: user.id
             end
 
-            r.put do
+            r.post do
               r.resolve "admin.users.operations.change_password" do |change_password|
-                change_password.(user.id, r[:user]) do |t|
-                  t.success do
+                change_password.(user.id, r[:user]) do |m|
+                  m.success do
+                    flash["notice"] = t["admin.auth.account_activated"]
                     session[:user_id] = user.id
                     r.redirect "/admin"
                   end
 
-                  t.failure do |validation|
+                  m.failure do |validation|
                     r.view "users.update_password", id: user.id, validation: validation
                   end
                 end
@@ -47,7 +48,7 @@ class Admin::Application < Dry::Web::Application
           end
 
           m.failure do |error|
-            flash["notice"] = t["admin.errors.auth.#{error}"]
+            flash["notice"] = t["admin.auth.#{error}"]
             r.redirect "/admin/sign-in"
           end
         end
@@ -56,19 +57,15 @@ class Admin::Application < Dry::Web::Application
 
     r.authorize do
       r.is do
-        r.get "" do
+        r.get do
           r.view "users.index", page: r[:page] || 1
-        end
-
-        r.get "new" do
-          r.view "users.new"
         end
 
         r.post do
           r.resolve "admin.transactions.create_user" do |create_user|
             create_user.(r[:user]) do |m|
               m.success do
-                flash["notice"] = "User has been created"
+                flash["notice"] = t["admin.users.user_created"]
                 r.redirect "/admin/users"
               end
 
@@ -80,6 +77,10 @@ class Admin::Application < Dry::Web::Application
         end
       end
 
+      r.get "new" do
+        r.view "users.new"
+      end
+
       r.on ":id" do |id|
         r.get "edit" do
           r.view "users.edit", id: id
@@ -89,7 +90,7 @@ class Admin::Application < Dry::Web::Application
           r.resolve "admin.users.operations.update" do |update_user|
             update_user.(id, r[:user]) do |m|
               m.success do
-                flash["notice"] = "User has been updated"
+                flash["notice"] = t["admin.users.user_updated"]
                 r.redirect "/admin/users/#{id}/edit"
               end
 
@@ -108,7 +109,7 @@ class Admin::Application < Dry::Web::Application
             r.resolve "admin.users.operations.change_password" do |change_password|
               change_password.(id, r[:user]) do |m|
                 m.success do
-                  flash["notice"] = "Password has been changed"
+                  flash["notice"] = t["admin.users.password_changed"]
                   r.redirect "/admin/users/#{id}/password"
                 end
 
