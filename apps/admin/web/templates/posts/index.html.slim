@@ -17,8 +17,8 @@ h1.h-1 Posts
           - posts.each do |post|
             tr id="post-#{post.id}"
               td.f-mono = post.id
-              td.f-mono = post.title
+              td = post.title
               td = post.content
-              td = post.slug
+              td.f-mono = post.slug
               td
                 a href="/admin/posts/#{post.id}/edit" Edit
