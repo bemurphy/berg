@@ -1,8 +1,15 @@
 module Persistence
   module Relations
     class Users < ROM::Relation[:sql]
-      dataset :users
-      register_as :users
+      schema(:users) do
+        attribute :id, Types::Serial
+        attribute :email, Types::String
+        attribute :name, Types::String
+        attribute :encrypted_password, Types::String
+        attribute :active, Types::Bool
+        attribute :access_token, Types::String
+        attribute :access_token_expiration, Types::Time
+      end
 
       def by_id(id)
         where(id: id)
