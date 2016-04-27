@@ -17,7 +17,7 @@ module Admin
           if validation.messages.any?
             Left(validation.messages)
           else
-            post = Entities::Post.new(users.create(validation.output))
+            post = Entities::Post.new(posts.create(validation.output))
             Right(post)
           end
         end
