@@ -21,17 +21,9 @@ module Admin
           if validation.messages.any?
             Left(validation.messages)
           else
-            users.update(id, prepare_attributes(validation))
+            users.update(user_id, validation.output)
             Right(users[user_id])
           end
-        end
-
-        private
-
-        def prepare_attributes(attributes)
-          attributes.merge(
-            encrypted_password: encrypt_password.(attributes[:password])
-          )
         end
       end
     end
