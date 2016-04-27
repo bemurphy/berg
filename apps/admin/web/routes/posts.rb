@@ -36,7 +36,7 @@ class Admin::Application < Dry::Web::Application
             update_post.(id, r[:post]) do |m|
               m.success do
                 flash["notice"] = t["admin.posts.post_updated"]
-                r.redirect "/admin/posts/#{id}/edit"
+                r.redirect "/admin/posts"
               end
 
               m.failure do |validation|
