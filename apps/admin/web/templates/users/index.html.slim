@@ -23,4 +23,5 @@ h1.h-1 Users
               td = user.last_name
               td = user.active ? "Active" : "Deactivated"
               td
-                a href="/admin/users/#{user.id}/edit" Edit
+                a> href="/admin/users/#{user.id}/edit" Edit
+                a href="/admin/users/#{user.id}/password" Change password
