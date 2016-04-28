@@ -12,5 +12,6 @@ development: &base
 test:
   <<: *base
   database_url: "postgres://localhost/berg_test"
+  postmark_api_key: "POSTMARK_API_TEST"
 production:
   <<: *base

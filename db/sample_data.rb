@@ -27,7 +27,8 @@ end
 # Default password is changeme
 create_user(
   email: "hello@icelab.com.au",
-  name: "Icelab Admin",
+  first_name: "Icelab",
+  last_name: "Admin",
   active: true
 )
 

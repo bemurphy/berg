@@ -13,7 +13,9 @@ module Admin
               filled: true,
               format: "/.+@.+\..+/i"
             }
-          text_field :name, label: "Name"
+          text_field :first_name, label: "First name"
+          text_field :last_name, label: "Last name"
+          check_box :active, label: "Status", question_text: "Mark as active?"
         end
       end
     end

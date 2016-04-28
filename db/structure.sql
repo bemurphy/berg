@@ -134,7 +134,8 @@ CREATE TABLE schema_migrations (
 CREATE TABLE users (
     id integer NOT NULL,
     email text NOT NULL,
-    name text NOT NULL,
+    first_name text NOT NULL,
+    last_name text NOT NULL,
     encrypted_password text NOT NULL,
     access_token text NOT NULL,
     access_token_expiration timestamp without time zone NOT NULL,

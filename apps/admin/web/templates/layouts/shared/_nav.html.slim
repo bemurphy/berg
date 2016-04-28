@@ -6,13 +6,12 @@ nav.nav.nav-aware role="nav"
         a.nav-list__link href="/admin" Admin Home
         a.nav-list__link href="/admin/users" Users
         a.nav-list__link href="/admin/posts" Posts
-        a.nav-list__link href="/admin/sign-out" Log out
     .nav-user
       .copy
         p
           ' You’re logged in as:
           strong.t-nowrap
-            == current_user.name
+            == current_user.full_name
 
       .nav-list
         a.nav-list__link href="#" data-view-confirm-action=JSON.generate(action: "/admin/sign-out") Log out
