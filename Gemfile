@@ -48,6 +48,7 @@ group :test do
   gem "capybara-screenshot", require: false
   gem "database_cleaner"
   gem "inflecto"
+  gem "poltergeist"
   gem "rspec"
   gem "site_prism"
 end
