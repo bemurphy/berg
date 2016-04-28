@@ -14,11 +14,11 @@ module Admin
         def call(attributes)
           validation = Validation::Form.(attributes)
 
-          if validation.messages.any?
-            Left(validation.messages)
-          else
+          if validation.success?
             post = Entities::Post.new(posts.create(validation.output))
             Right(post)
+          else
+            Left(validation)
           end
         end
       end

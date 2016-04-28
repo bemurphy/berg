@@ -13,14 +13,14 @@ module Admin
 
         include Dry::ResultMatcher.for(:call)
 
-        def call(post_id, attributes)
+        def call(id, attributes)
           validation = Validation::Form.(attributes)
 
-          if validation.messages.any?
-            Left(validation.messages)
+          if validation.success?
+            posts.update(id, validation.output)
+            Right(posts[id])
           else
-            posts.update(post_id, validation.output)
-            Right(posts[post_id])
+            Left(validation)
           end
         end
       end
