@@ -17,11 +17,11 @@ module Admin
         def call(id, attributes)
           validation = Validation::Form.(attributes)
 
-          if validation.messages.any?
-            Left(validation.messages)
-          else
+          if validation.success?
             result = users.update(id, prepare_attributes(validation.output))
             Right(result)
+          else
+            Left(validation)
           end
         end
 

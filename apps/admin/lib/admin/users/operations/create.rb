@@ -17,11 +17,11 @@ module Admin
         def call(attributes)
           validation = Validation::Form.(attributes)
 
-          if validation.messages.any?
-            Left(validation.messages)
-          else
+          if validation.success?
             user = Entities::User.new(users.create(prepare_attributes(validation.output)))
             Right(user)
+          else
+            Left(validation)
           end
         end
 
