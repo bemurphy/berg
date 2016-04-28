@@ -10,7 +10,7 @@ Dir[SPEC_ROOT.join("pages/**/*.rb").to_s].each(&method(:require))
 # MyFriendsPage -> TestPageHelpers#my_friends_page
 # MyFavorites   -> TestPageHelpers#my_favorites
 module TestPageHelpers
-  (ObjectSpace.each_object(SitePrism::Page).to_a  - SitePrism::Page).each do |page_class|
+  (ObjectSpace.each_object(Class).select { |klass| klass < SitePrism::Page }).each do |page_class|
     page_helper_name = Inflecto.underscore(page_class.name)
     page_helper_name += "_page" unless page_helper_name =~ /_page$/
 
