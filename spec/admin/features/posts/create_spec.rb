@@ -18,8 +18,6 @@ RSpec.feature "Admin / Posts / Create", js: true do
 
     find("button", text: "Create post").trigger("click")
 
-    # Not getting past the new user form
-
     expect(page).to have_content("Post has been created")
 
     expect(page).to have_content("A sample title")
