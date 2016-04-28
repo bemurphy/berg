@@ -14,6 +14,8 @@ module Admin
           "core.authentication.encrypt_password"
         )
 
+        include Dry::ResultMatcher.for(:call)
+
         def call(attributes)
           validation = Validation::Form.(attributes)
 
