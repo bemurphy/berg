@@ -4,7 +4,8 @@ module Persistence
       schema(:users) do
         attribute :id, Types::Serial
         attribute :email, Types::String
-        attribute :name, Types::String
+        attribute :first_name, Types::String
+        attribute :last_name, Types::String
         attribute :encrypted_password, Types::String
         attribute :active, Types::Bool
         attribute :access_token, Types::String

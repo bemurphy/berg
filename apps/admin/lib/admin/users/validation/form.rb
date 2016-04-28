@@ -5,7 +5,8 @@ module Admin
     module Validation
       Form = Berg::Validation.Form do
         optional(:email).required
-        optional(:name).required
+        optional(:first_name).required
+        optional(:last_name).required
         optional(:active).required(:bool?)
         optional(:password).required(min_size?: 8)
       end

@@ -11,7 +11,7 @@ nav.nav.nav-aware role="nav"
         p
           ' You’re logged in as:
           strong.t-nowrap
-            == current_user.name
+            == current_user.full_name
 
       .nav-list
         a.nav-list__link href="#" data-view-confirm-action=JSON.generate(action: "/admin/sign-out") Log out
