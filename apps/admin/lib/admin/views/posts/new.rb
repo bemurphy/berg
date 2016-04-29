@@ -1,3 +1,4 @@
+require "admin/import"
 require "admin/view"
 require "admin/posts/forms/create_form"
 
