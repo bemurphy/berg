@@ -5,10 +5,12 @@ development: &base
   admin_url: "http://localhost:3000/admin"
   precompiled_assets: false
   precompiled_assets_host:
-  admin_mailer_email: "admin@berg.dev"
   app_mailer_from_email:
+  admin_mailer_from_email: "admin@berg.dev"
   bugsnag_api_key:
   postmark_api_key:
+  basic_auth_user:
+  basic_auth_password:
 test:
   <<: *base
   database_url: "postgres://localhost/berg_test"
