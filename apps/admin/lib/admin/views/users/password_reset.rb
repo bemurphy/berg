@@ -1,4 +1,3 @@
-require "admin/import"
 require "admin/view"
 
 module Admin
