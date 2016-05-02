@@ -12,7 +12,7 @@ module Admin
     private
 
     def from
-      Berg::Container["config"].admin_mailer_email
+      Berg::Container["config"].admin_mailer_from_email
     end
   end
 end
