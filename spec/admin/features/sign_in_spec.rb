@@ -4,7 +4,7 @@ RSpec.feature "Admin / Sign-in", js: true do
   include_context "admin users"
 
   scenario "I see user index after signing-in" do
-    sign_in(jane.email)
+    sign_in(jane.email, jane.password)
 
     find("nav a", text: "Users").trigger("click")
 
@@ -15,14 +15,8 @@ RSpec.feature "Admin / Sign-in", js: true do
     end
   end
 
-  scenario "I see a warning about default password" do
-    sign_in(jane.email)
-
-    expect(page).to have_content("You need to change your password")
-  end
-
   scenario "I can sign-out from admin" do
-    sign_in(jane.email)
+    sign_in(jane.email, jane.password)
 
     find("nav a", text: "Log out").trigger("click")
 
@@ -30,12 +24,12 @@ RSpec.feature "Admin / Sign-in", js: true do
   end
 
   context "as a deactivated user" do
-    let!(:john) { create_deactivated_user("John") }
+    let!(:john) { create_deactivated_user(name: "John", password: "password123") }
 
-    scenario "I can't login and see info message" do
-      sign_in(john.email)
+    scenario "I can't sign in" do
+      sign_in(john.email, john.password)
 
-      expect(page).to have_content("Your account is not active")
+      expect(page).to have_content("Email or password is incorrect")
     end
   end
 end

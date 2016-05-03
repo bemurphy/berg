@@ -15,15 +15,11 @@ module Admin
         id = session[:user_id]
         user = id && users[id]
 
-        if user
-          user.active ? Right(user) : Left(:user_deactivated)
+        if user && user.active?
+          Right(user)
         else
           Left(:unauthorized)
         end
-      end
-
-      def default_password?(user)
-        encrypt_password.same?(user.encrypted_password, Types::Password.value)
       end
     end
   end

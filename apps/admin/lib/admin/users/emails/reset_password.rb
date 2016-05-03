@@ -3,13 +3,13 @@ require "admin/email"
 module Admin
   module Users
     module Emails
-      class AccountActivation < Admin::Email
+      class ResetPassword < Admin::Email
         configure do |config|
-          config.template = "account_activation"
+          config.template = "reset_password"
         end
 
         def locals(*)
-          { user: user, user_activation_url: user_activation_url }
+          { user: user, reset_password_url: reset_password_url }
         end
 
         def to
@@ -17,10 +17,10 @@ module Admin
         end
 
         def subject
-          t["admin.emails.users.account_activation.subject"]
+          t["admin.emails.users.reset_password.subject"]
         end
 
-        def user_activation_url
+        def reset_password_url
           "#{Berg::Container["config"].admin_url}/reset-password/#{user.access_token}"
         end
 

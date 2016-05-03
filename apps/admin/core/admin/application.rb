@@ -51,8 +51,63 @@ module Admin
     route do |r|
       r.multi_route
 
-      r.authorize do
-        r.is do
+      r.on "forgot-password" do
+        r.get do
+          r.view "forgot_password"
+        end
+
+        r.post do
+          r.resolve "admin.transactions.request_password_reset" do |request_password_reset|
+            request_password_reset.(r[:email]) do |m|
+              m.success do
+                flash[:notice] = t["admin.auth.reset_password"]
+                r.redirect "/admin/sign-in"
+              end
+
+              m.failure do |error|
+                flash.now[:notice] = t["admin.auth.#{error}"]
+                r.view "forgot_password"
+              end
+            end
+          end
+        end
+      end
+
+      r.on "reset-password/:access_token" do |access_token|
+        r.resolve "admin.authentication.access_token" do |authenticate_access_token|
+          authenticate_access_token.(access_token) do |m|
+            m.success do |user|
+              r.get do
+                r.view "reset_password", id: user.id
+              end
+
+              r.post do
+                r.resolve "admin.users.operations.change_password" do |change_password|
+                  change_password.(user.id, r[:user]) do |m|
+                    m.success do
+                      flash[:notice] = t["admin.auth.password_set"]
+                      session[:user_id] = user.id
+                      r.redirect "/admin"
+                    end
+
+                    m.failure do |validation|
+                      r.view "reset_password", id: user.id, pass_validation: validation
+                    end
+                  end
+                end
+              end
+            end
+
+            m.failure do |error|
+              flash[:notice] = t["admin.auth.#{error}"]
+              r.redirect "/admin/sign-in"
+            end
+          end
+        end
+      end
+
+      r.is do
+        r.authorize do
           r.view("home")
         end
       end

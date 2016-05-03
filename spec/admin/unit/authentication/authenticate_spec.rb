@@ -8,7 +8,7 @@ RSpec.describe Admin::Authentication::Authenticate do
   end
 
   let(:encrypt_password) { instance_double(Authentication::EncryptPassword) }
-  let(:users_repo) { instance_double(Admin::Persistence::Repositories::Users, by_email: user) }
+  let(:users_repo) { instance_double(Admin::Persistence::Repositories::Users, by_email_for_authentication: user) }
 
   let(:input) { { "email" => "jane@doe.org", "password" => "foo" } }
 

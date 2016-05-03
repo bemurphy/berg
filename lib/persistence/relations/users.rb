@@ -23,6 +23,10 @@ module Persistence
       def by_access_token(token)
         where(access_token: token)
       end
+
+      def active
+        where(active: true)
+      end
     end
   end
 end
