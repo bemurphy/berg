@@ -13,10 +13,8 @@ if (webpackConfig.entry === undefined) {
  * General configuration
  */
 var config            = loadConfig(path.join(__dirname, "config.yml"));
-var BUILD             = path.join(__dirname, "build");
-var DEVELOPMENT_HOST  = config.ASSETS_DEVELOPMENT_SERVER_HOST
+var DEVELOPMENT_HOST  = config.ASSETS_DEVELOPMENT_SERVER_HOST || "localhost";
 var DEVELOPMENT_PORT  = config.ASSETS_DEVELOPMENT_SERVER_PORT || 8080;
-
 
 /**
  * Development server
@@ -29,7 +27,6 @@ var DEVELOPMENT_PORT  = config.ASSETS_DEVELOPMENT_SERVER_PORT || 8080;
  */
 var compiler = webpack(webpackConfig);
 var devServerOptions = {
-  contentBase: BUILD,
   hot: true,
   quiet: false,
   noInfo: true,
@@ -55,4 +52,4 @@ var devServerOptions = {
   }
 };
 var devServer = new WebpackDevServer(compiler, devServerOptions);
-devServer.listen(DEVELOPMENT_PORT, "localhost", function() {});
+devServer.listen(DEVELOPMENT_PORT, DEVELOPMENT_HOST, function() {});
