@@ -36,12 +36,12 @@ class Roda
                 set_current_user!(user)
 
                 if authorize.default_password?(current_user)
-                  scope.flash.now["system"] = auth_error(:pass_change_required)
+                  scope.flash.now[:alert] = auth_error(:pass_change_required)
                 end
               end
 
               m.failure do |error|
-                scope.flash["notice"] = auth_error(error)
+                scope.flash[:alert] = auth_error(error)
                 redirect "/admin/sign-in"
               end
 

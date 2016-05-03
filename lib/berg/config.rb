@@ -18,8 +18,10 @@ module Berg
     attribute :app_mailer_from_email, Types::String
 
     attribute :bugsnag_api_key, Types::String
-
     attribute :postmark_api_key, Types::String
+
+    attribute :basic_auth_user, Types::String
+    attribute :basic_auth_password, Types::String
 
     def self.load(root, name, env)
       path = root.join("config").join("#{name}.yml")

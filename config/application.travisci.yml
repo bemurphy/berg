@@ -3,7 +3,7 @@ development: &base
   database_url: "postgres://localhost/berg_development"
   assets_server_url: "http://localhost:8080"
   admin_url: "http://localhost:3000/admin"
-  precompiled_assets: false
+  precompiled_assets: true
   precompiled_assets_host:
   app_mailer_from_email: "hello@berg.dev"
   admin_mailer_from_email: "admin@berg.dev"

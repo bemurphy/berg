@@ -33,11 +33,18 @@ module Berg
 
     def read(asset)
       path = self[asset]
+      uri = begin
+        URI(path)
+      rescue URI::InvalidURIError
+        nil
+      end
 
-      if File.exist?(path)
-        File.read(path)
+      if uri&.absolute?
+        open(uri.to_s, "r:UTF-8").read
+      elsif File.exist?("#{root}/public#{path}")
+        File.read("#{root}/public#{path}")
       else
-        open(path, "r:UTF-8").read
+        raise ArgumentError, "asset not found"
       end
     end
 

@@ -17,6 +17,12 @@ module Main
     use Rack::Csrf, raise: true
     use Bugsnag::Rack
 
+    if Berg::Container["config"].basic_auth_user && Berg::Container["config"].basic_auth_password
+      use Rack::Auth::Basic do |username, password|
+        username == Berg::Container["config"].basic_auth_user && password == Berg::Container["config"].basic_auth_password
+      end
+    end
+
     plugin :error_handler
     plugin :flash
 
