@@ -10,7 +10,7 @@ class Admin::Application < Dry::Web::Application
           r.resolve "admin.posts.operations.create" do |create_post|
             create_post.(r[:post]) do |m|
               m.success do
-                flash["notice"] = t["admin.posts.post_created"]
+                flash[:notice] = t["admin.posts.post_created"]
                 r.redirect "/admin/posts"
               end
 
@@ -35,7 +35,7 @@ class Admin::Application < Dry::Web::Application
           r.resolve "admin.posts.operations.update" do |update_post|
             update_post.(id, r[:post]) do |m|
               m.success do
-                flash["notice"] = t["admin.posts.post_updated"]
+                flash[:notice] = t["admin.posts.post_updated"]
                 r.redirect "/admin/posts"
               end
 
