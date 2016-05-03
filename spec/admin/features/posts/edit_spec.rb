@@ -5,7 +5,7 @@ RSpec.feature "Admin / Posts / Edit", js: true do
   include_context "admin posts"
 
   background do
-    sign_in(jane.email)
+    sign_in(jane.email, jane.password)
   end
 
   scenario "I can edit a post" do
