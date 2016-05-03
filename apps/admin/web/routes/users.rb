@@ -9,12 +9,12 @@ class Admin::Application < Dry::Web::Application
         r.resolve "admin.transactions.request_password_reset" do |request_password_reset|
           request_password_reset.(r[:email]) do |m|
             m.success do
-              flash["notice"] = t["admin.auth.password_reset"]
+              flash[:notice] = t["admin.auth.password_reset"]
               r.redirect "/admin/sign-in"
             end
 
             m.failure do |error|
-              flash.now["notice"] = t["admin.auth.#{error}"]
+              flash.now[:notice] = t["admin.auth.#{error}"]
               r.view "users.password_reset"
             end
           end
@@ -34,7 +34,7 @@ class Admin::Application < Dry::Web::Application
               r.resolve "admin.users.operations.change_password" do |change_password|
                 change_password.(user.id, r[:user]) do |m|
                   m.success do
-                    flash["notice"] = t["admin.auth.password_set"]
+                    flash[:notice] = t["admin.auth.password_set"]
                     session[:user_id] = user.id
                     r.redirect "/admin"
                   end
@@ -48,7 +48,7 @@ class Admin::Application < Dry::Web::Application
           end
 
           m.failure do |error|
-            flash["notice"] = t["admin.auth.#{error}"]
+            flash[:notice] = t["admin.auth.#{error}"]
             r.redirect "/admin/sign-in"
           end
         end
@@ -65,7 +65,7 @@ class Admin::Application < Dry::Web::Application
           r.resolve "admin.transactions.create_user" do |create_user|
             create_user.(r[:user]) do |m|
               m.success do
-                flash["notice"] = t["admin.users.user_created"]
+                flash[:notice] = t["admin.users.user_created"]
                 r.redirect "/admin/users"
               end
 
@@ -90,7 +90,7 @@ class Admin::Application < Dry::Web::Application
           r.resolve "admin.users.operations.update" do |update_user|
             update_user.(id, r[:user]) do |m|
               m.success do
-                flash["notice"] = t["admin.users.user_updated"]
+                flash[:notice] = t["admin.users.user_updated"]
                 r.redirect "/admin/users/#{id}/edit"
               end
 
@@ -109,7 +109,7 @@ class Admin::Application < Dry::Web::Application
             r.resolve "admin.users.operations.change_password" do |change_password|
               change_password.(id, r[:user]) do |m|
                 m.success do
-                  flash["notice"] = t["admin.users.password_changed"]
+                  flash[:notice] = t["admin.users.password_changed"]
                   r.redirect "/admin/users/#{id}/password"
                 end
 
