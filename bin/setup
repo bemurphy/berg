@@ -12,8 +12,8 @@ Dir.chdir(APP_ROOT) do
   FileUtils.cp "config/application.example.yml", "config/application.yml" unless File.exist?("config/application.yml")
 
   puts "== Creating database =="
-  system "createdb icelab_com_au_development || true"
-  system "createdb icelab_com_au_test || true"
+  system "createdb berg_development || true"
+  system "createdb berg_test || true"
 
   puts "== Migrating database =="
   system "RACK_ENV=development bundle exec rake db:migrate"

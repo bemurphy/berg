@@ -1,0 +1,16 @@
+nav.nav.nav-aware role="nav"
+  .nav__content
+    .nav-group
+      h2.nav-group__header Admin
+      .nav-list
+        a.nav-list__link href="/admin" Admin Home
+        a.nav-list__link href="/admin/users" Users
+    .nav-user
+      .copy
+        p
+          ' You’re logged in as:
+          strong.t-nowrap
+            == current_user.full_name
+
+      .nav-list
+        a.nav-list__link href="#" data-view-confirm-action=JSON.generate(action: "/admin/sign-out") Log out

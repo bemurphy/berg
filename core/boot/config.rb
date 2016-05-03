@@ -1,4 +1,4 @@
-IcelabComAu::Container.finalize(:config) do |container|
-  require "icelab_com_au/config"
-  container.register "config", IcelabComAu::Config.load(container.root, "application", container.config.env)
+Berg::Container.finalize(:config) do |container|
+  require "berg/config"
+  container.register "config", Berg::Config.load(container.root, "application", container.config.env)
 end

@@ -23,11 +23,13 @@ gem "rom-support", git: "https://github.com/rom-rb/rom-support"
 gem "que"
 
 # Application dependencies
+gem "bcrypt"
 gem "dry-equalizer"
 gem "dry-result_matcher"
 gem "dry-transaction"
-gem "dry-types"
-gem "dry-validation", git: "https://github.com/dryrb/dry-validation"
+gem "dry-types", git: "https://github.com/dryrb/dry-types", branch: "master"
+gem "dry-validation", git: "https://github.com/dryrb/dry-validation", branch: "master"
+gem "formalist", git: "https://github.com/icelab/formalist", branch: "master"
 gem "i18n"
 gem "slim"
 gem "transproc", git: "https://github.com/solnic/transproc"
@@ -46,6 +48,7 @@ group :test do
   gem "capybara-screenshot", require: false
   gem "database_cleaner"
   gem "inflecto"
+  gem "poltergeist"
   gem "rspec"
   gem "site_prism"
 end

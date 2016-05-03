@@ -13,9 +13,15 @@ module Main
 
     opts[:root] = Pathname(__FILE__).join("../..").realpath.dirname
 
-    use Rack::Session::Cookie, key: "icelab_com_au.session", secret: IcelabComAu::Container["config"].session_secret
+    use Rack::Session::Cookie, key: "berg.session", secret: Berg::Container["config"].session_secret
     use Rack::Csrf, raise: true
     use Bugsnag::Rack
+
+    if Berg::Container["config"].basic_auth_user && Berg::Container["config"].basic_auth_password
+      use Rack::Auth::Basic do |username, password|
+        username == Berg::Container["config"].basic_auth_user && password == Berg::Container["config"].basic_auth_password
+      end
+    end
 
     plugin :error_handler
     plugin :flash
@@ -36,16 +42,16 @@ module Main
     end
 
     error do |e|
-      Bugsnag.auto_notify e
-
       if ENV["RACK_ENV"] == "production"
         if e.is_a?(ROM::TupleCountMismatchError)
           response.status = 404
           self.class["main.views.errors.error_404"].(scope: current_page)
         else
+          Bugsnag.auto_notify e
           self.class["main.views.errors.error_500"].(scope: current_page)
         end
       else
+        Bugsnag.auto_notify e
         raise e
       end
     end

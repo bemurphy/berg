@@ -1,4 +1,4 @@
 require "postmark"
 
-IcelabComAu::Container.boot! :config
-IcelabComAu::Container.register "postmark", Postmark::ApiClient.new(IcelabComAu::Container["config"].postmark_api_key)
+Berg::Container.boot! :config
+Berg::Container.register "postmark", Postmark::ApiClient.new(Berg::Container["config"].postmark_api_key)

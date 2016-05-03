@@ -1,0 +1,15 @@
+.sign-in.p-xlarge.mx-auto
+  h1.h-2 Sign in
+  .panel
+    .panel__primary
+      form.sign-in__form action="/admin/sign-in" method="POST"
+        == csrf_tag
+        fieldset.mb-small
+          label.form-label.mb-xsmall for="user-email" Email
+          input.form-input type="email" name="user[email]" id="user-email" placeholder="your@email.com"
+        fieldset.mb-large
+          label.form-label.mb-xsmall for="user-password"Password
+          input.form-input type="password" name="user[password]" id="user-password" placeholder="Your password"
+        p
+          button.button.button--primary type="submit" Sign in
+          a.ml-small.link href="/admin/forgot-password" Forgot your password?

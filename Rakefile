@@ -10,23 +10,26 @@ begin
 rescue LoadError
 end
 
-require_relative "core/icelab_com_au/container"
-IcelabComAu::Container.boot! :config
+require_relative "core/berg/container"
+Berg::Container.boot! :config
 
-IcelabComAu::Container.boot! :bugsnag
+Berg::Container.boot! :bugsnag
 require "bugsnag/rake"
 require "bugsnag/tasks"
 
 require "rom/sql/rake_task"
 require "sequel"
+
+Rake.add_rakelib "lib/tasks"
+
 namespace :db do
   task :setup do
-    IcelabComAu::Container.boot!(:rom)
+    Berg::Container.boot!(:rom)
   end
 
   # The following migration tasks are adapted from https://gist.github.com/kalmbach/4471560
   Sequel.extension :migration
-  DB = Sequel.connect(IcelabComAu::Container["config"].database_url)
+  DB = Sequel.connect(Berg::Container["config"].database_url)
 
   desc "Prints current schema version"
   task :version do
@@ -96,6 +99,6 @@ namespace :assets do
   desc "Remove compiled assets"
   task :clobber do
     require "fileutils"
-    FileUtils.rm_rf("#{IcelabComAu::Container.config.root}/public/assets")
+    FileUtils.rm_rf("#{Berg::Container.config.root}/public/assets")
   end
 end

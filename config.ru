@@ -1,2 +1,2 @@
 require_relative "core/boot"
-run IcelabComAu::Application.freeze.app
+run Berg::Application.freeze.app
