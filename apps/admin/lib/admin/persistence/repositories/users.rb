@@ -17,6 +17,10 @@ module Admin
           users.by_email(email).as(Entities::User).one
         end
 
+        def by_email_for_authentication(email)
+          users.active.by_email(email).as(Entities::User).one
+        end
+
         def by_access_token(token)
           users
             .by_access_token(token) { access_token_expiration > DateTime.now }

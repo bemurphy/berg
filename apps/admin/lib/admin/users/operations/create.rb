@@ -31,7 +31,7 @@ module Admin
 
         def prepare_attributes(attributes)
           attributes.merge(
-            encrypted_password: encrypt_password.(Types::Password.value),
+            encrypted_password: nil,
             access_token: access_token.value,
             access_token_expiration: access_token.expires_at
           )

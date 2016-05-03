@@ -4,7 +4,7 @@ RSpec.feature "Admin / Users / Create", js: true do
   include_context "admin users"
 
   background do
-    sign_in(jane.email)
+    sign_in(jane.email, jane.password)
   end
 
   scenario "I can create a user" do

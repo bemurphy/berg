@@ -1,6 +1,6 @@
 require "admin/import"
 require "admin/entities/user"
-require "admin/users/validation/form"
+require "admin/users/validation/password_form"
 require "dry-result_matcher"
 
 module Admin
@@ -15,7 +15,7 @@ module Admin
         include Dry::ResultMatcher.for(:call)
 
         def call(id, attributes)
-          validation = Validation::Form.(attributes)
+          validation = Validation::PasswordForm.(attributes)
 
           if validation.success?
             result = users.update(id, prepare_attributes(validation.output))
@@ -28,7 +28,7 @@ module Admin
         private
 
         def prepare_attributes(attributes)
-          { encrypted_password: encrypt_password.(attributes[:password]) }
+          {encrypted_password: encrypt_password.(attributes[:password])}
         end
       end
     end

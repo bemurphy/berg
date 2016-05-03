@@ -3,14 +3,13 @@ en:
     auth:
       access_token_invalid: "Token is invalid or expired"
       email_not_found: "No user found with that email address"
-      pass_change_required: "You need to change your password"
-      password_reset: "Check your email for password reset instructions"
+      password_change_required: "You need to change your password"
       password_set: "Your password has been set"
+      reset_password: "Check your email for password reset instructions"
       signed_in: "You are now signed in"
       signed_out: "You are now signed out"
       unauthorized: "You need to sign in to access this page"
-      user_deactivated: "Your account is not active"
-      user_not_found: "Email or password is not correct"
+      user_not_found: "Email or password is incorrect"
     users:
       user_created: "User has been created"
       user_updated: "User has been updated"
@@ -19,5 +18,5 @@ en:
       users:
         account_activation:
           subject: "Activate your Berg account"
-        password_reset:
+        reset_password:
           subject: "Berg password reset request"

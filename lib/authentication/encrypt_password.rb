@@ -9,6 +9,8 @@ module Authentication
     end
 
     def same?(hash, password)
+      return false if hash.nil?
+
       Password.new(hash) == password
     end
   end

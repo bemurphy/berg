@@ -1,18 +1,18 @@
 require "admin/import"
 require "admin/entities/user"
-require "admin/users/emails/password_reset"
+require "admin/users/emails/reset_password"
 
 module Admin
   module Users
     module Operations
-      class SendPasswordResetEmail
+      class SendResetPasswordEmail
         include Admin::Import(
           "admin.mailer",
           "admin.persistence.repositories.users"
         )
 
         def call(user)
-          mail = Emails::PasswordReset.new(user: user)
+          mail = Emails::ResetPassword.new(user: user)
           mailer.deliver(mail)
         end
 

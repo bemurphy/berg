@@ -5,7 +5,7 @@ ROM::SQL.migration do
       String :email, null: false, unique: true
       String :first_name, null: false
       String :last_name, null: false
-      String :encrypted_password, null: false
+      String :encrypted_password
       String :access_token, null: false
       DateTime :access_token_expiration, null: false
       TrueClass :active, null: false, default: true

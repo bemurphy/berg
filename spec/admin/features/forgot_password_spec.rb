@@ -1,6 +1,6 @@
 require "admin_app_helper"
 
-RSpec.feature "Admin / Sign-in / Password Reset" do
+RSpec.feature "Admin / Forgot Password" do
   include_context "admin users"
 
   scenario "I can ask for a reset-password email" do

@@ -103,7 +103,7 @@ CREATE TABLE users (
     email text NOT NULL,
     first_name text NOT NULL,
     last_name text NOT NULL,
-    encrypted_password text NOT NULL,
+    encrypted_password text,
     access_token text NOT NULL,
     access_token_expiration timestamp without time zone NOT NULL,
     active boolean DEFAULT true NOT NULL,
