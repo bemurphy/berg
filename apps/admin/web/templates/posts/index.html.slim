@@ -12,6 +12,7 @@ h1.h-1 Posts
             th Title
             th Body
             th Slug
+            th State
             th
         tbody
           - posts.each do |post|
@@ -20,5 +21,6 @@ h1.h-1 Posts
               td = post.title
               td = post.body
               td.f-mono = post.slug
+              td = post.state
               td
                 a href="/admin/posts/#{post.id}/edit" Edit
