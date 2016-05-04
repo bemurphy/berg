@@ -8,7 +8,7 @@ RSpec.feature "Admin / Posts / Edit", js: true do
     sign_in(jane.email, jane.password)
   end
 
-  scenario "I can edit a post" do
+  scenario "I can edit a post, and change the slug" do
     find("nav a", text: "Posts").trigger("click")
 
     within("#post-#{sample_post.id}") {
@@ -16,6 +16,7 @@ RSpec.feature "Admin / Posts / Edit", js: true do
     }
 
     find("#title").set("A new title")
+    find("#slug").set("a-new-title")
 
     find("button", text: "Save changes").trigger("click")
 
@@ -24,6 +25,7 @@ RSpec.feature "Admin / Posts / Edit", js: true do
     find("nav a", text: "Posts").trigger("click")
 
     expect(page).to have_content("A new title")
+    expect(page).to have_content("a-new-title")
   end
 
   scenario "I can see validation errors" do

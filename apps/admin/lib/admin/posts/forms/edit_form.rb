@@ -11,6 +11,7 @@ module Admin
         define do
           text_field :title, label: "Title"
           text_area :body, label: "Body"
+          text_field :slug, label: "Slug"
           selection_field :author_id, label: "Author", options: dep(:author_list)
           select_box :status, label: "Status", options: [
             ["draft", "Draft"], ["published", "Published"], ["deleted", "Deleted"]
