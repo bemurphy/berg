@@ -3,7 +3,7 @@ RSpec.shared_context "admin posts" do
     # TODO: we need fixtures
     Admin::Container["admin.posts.operations.create"].({
       "title" => title,
-      "content" => "Some sample content for this post",
+      "body" => "Some sample content for this post",
       "slug" => "a-sample-post"
     }.merge(attrs)).value
   end

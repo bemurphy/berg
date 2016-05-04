@@ -13,7 +13,7 @@ RSpec.feature "Admin / Posts / Create", js: true do
     find("a", text: "Add a post").trigger("click")
 
     find("#title").set("A sample title")
-    find("#content").set("Some sample content for this post")
+    find("#body").set("Some sample content for this post")
     find("#slug").set("a-sample-title")
 
     find("button", text: "Create post").trigger("click")
@@ -29,7 +29,7 @@ RSpec.feature "Admin / Posts / Create", js: true do
     find("a", text: "Add a post").trigger("click")
 
     find("#title").set("")
-    find("#content").set("Some sample content for this post")
+    find("#body").set("Some sample content for this post")
     find("#slug").set("a-sample-title")
 
     find("button", text: "Create post").trigger("click")
