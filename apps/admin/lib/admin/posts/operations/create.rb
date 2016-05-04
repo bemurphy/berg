@@ -13,15 +13,23 @@ module Admin
 
         include Dry::ResultMatcher.for(:call)
 
-        def call(attributes)
+        def call(author, attributes)
           validation = Validation::Form.(attributes)
 
           if validation.success?
-            post = Entities::Post.new(posts.create(validation.output))
+            post = Entities::Post.new(posts.create(prepare_attributes(author, validation.output)))
             Right(post)
           else
             Left(validation)
           end
+        end
+
+        private
+
+        def prepare_attributes(author, attributes)
+          attributes.merge(
+            author_id: author.id
+          )
         end
       end
     end
