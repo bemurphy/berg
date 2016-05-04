@@ -18,7 +18,6 @@ def create_user(attrs)
   end
 end
 
-# Default password is changeme
 create_user(
   email: "hello@icelab.com.au",
   first_name: "Icelab",
