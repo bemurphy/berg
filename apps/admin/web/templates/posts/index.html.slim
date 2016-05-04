@@ -10,7 +10,7 @@ h1.h-1 Posts
           tr
             th ID
             th Title
-            th Content
+            th Body
             th Slug
             th
         tbody
@@ -18,7 +18,7 @@ h1.h-1 Posts
             tr id="post-#{post.id}"
               td.f-mono = post.id
               td = post.title
-              td = post.content
+              td = post.body
               td.f-mono = post.slug
               td
                 a href="/admin/posts/#{post.id}/edit" Edit
