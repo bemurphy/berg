@@ -8,7 +8,8 @@ module Admin
     module Operations
       class Create
         include Admin::Import(
-          "admin.persistence.repositories.posts"
+          "admin.persistence.repositories.posts",
+          "admin.posts.slugify"
         )
 
         include Dry::ResultMatcher.for(:call)
@@ -17,11 +18,19 @@ module Admin
           validation = Validation::Form.(attributes)
 
           if validation.success?
-            post = Entities::Post.new(posts.create(validation.output))
+            post = Entities::Post.new(posts.create(prepare_attributes(validation.output)))
             Right(post)
           else
             Left(validation)
           end
+        end
+
+        private
+
+        def prepare_attributes(attributes)
+          attributes.merge(
+            slug: slugify.(attributes[:title], posts.method(:slug_exists?))
+          )
         end
       end
     end

@@ -17,6 +17,10 @@ module Admin
           posts.by_slug(slug).as(Entities::Post).one
         end
 
+        def slug_exists?(slug)
+          !!posts.matching_slugs(slug).one
+        end
+
         def listing
           posts.as(Entities::Post).to_a
         end

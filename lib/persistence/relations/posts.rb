@@ -18,6 +18,10 @@ module Persistence
       def by_slug(slug)
         where(slug: slug)
       end
+
+      def matching_slugs(slug)
+        select(:slug).by_slug(slug)
+      end
     end
   end
 end
