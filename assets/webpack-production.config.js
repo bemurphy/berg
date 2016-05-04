@@ -23,6 +23,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
  */
 var cssimport = require("postcss-import");
 var cssnext = require("postcss-cssnext");
+var modulesValues = require("postcss-modules-values");
 
 /**
  * createEntries
@@ -50,6 +51,7 @@ function createEntries(entries, dir) {
  * Webpack configuration
  */
 module.exports = {
+
   // Set the context as the apps directory
   context: APPS_BASE,
 
@@ -68,16 +70,24 @@ module.exports = {
   // Plugin/loader specific-configuration
   plugins: [
     new webpack.DefinePlugin({
-      DEVELOPMENT: true
+      DEVELOPMENT: false,
+      'process.env.NODE_ENV': '"production"'
     }),
     new ExtractTextPlugin("[name].css", {
       allChunks: true
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
     })
   ],
 
+  // Post-CSS configuration
   postcss: function() {
     return {
       defaults: [
+        modulesValues,
         cssimport({
           addDependencyTo: webpack
         }),
@@ -86,17 +96,62 @@ module.exports = {
     };
   },
 
+  // Quiet the output
+  stats: {
+    assets:       false,
+    assetsSort:   false,
+    cached:       false,
+    children:     false,
+    chunkModules: false,
+    chunkOrigins: false,
+    chunks:       false,
+    chunksSort:   false,
+    colors:       true,
+    errorDetails: true,
+    hash:         false,
+    modules:      false,
+    modulesSort:  false,
+    reasons:      false,
+    source:       false,
+    timings:      false,
+    version:      false
+  },
+
+  // Resolve formalist-theme and shared
+  resolve: {
+    alias: {
+      "shared": path.join(__dirname, "shared"),
+      "formalist-theme": 'formalist-standard-react/lib/components/ui'
+    },
+    moduleDirectories: [
+      path.join(__dirname, '../node_modules'),
+      path.join(__dirname, '../node_modules/roneo/node_modules')
+    ],
+    fallback: [
+      path.join(__dirname, '../node_modules'),
+      path.join(__dirname, '../node_modules/roneo/node_modules')
+    ]
+  },
+
+  // Same issue, for loaders like babel
+  resolveLoader: {
+    fallback: [
+      path.join(__dirname, '../node_modules')
+    ]
+  },
+
   // General configuration
   module: {
-    preLoaders: [
-      // Run all JavaScript through jshint before loading
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "jshint-loader"
-      }
-    ],
     loaders: [
+      {
+        test: require.resolve('turbolinks'),
+        loader: 'imports?this=>window'
+      },
+      {
+        test: /\.js/,
+        loader: "babel?presets[]=react,presets[]=es2015",
+        include: APPS
+      },
       {
         test: /\.(jpe?g|png|gif|svg|woff|ttf|otf|eot|ico)/,
         loader: "file-loader?name=[path][name].[ext]"
@@ -106,12 +161,17 @@ module.exports = {
         loader: "html-loader"
       },
       {
+        test: /\.mcss$/,
+        // The ExtractTextPlugin pulls all CSS out into static files
+        // rather than inside the JavaScript/webpack bundle
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1!postcss-loader')
+      },
+      {
         test: /\.css$/,
         // The ExtractTextPlugin pulls all CSS out into static files
         // rather than inside the JavaScript/webpack bundle
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader")
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
       }
     ]
   }
-
 };

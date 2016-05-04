@@ -26,6 +26,7 @@ var WebpackNotifierPlugin = require("webpack-notifier");
  */
 var cssimport = require("postcss-import");
 var cssnext = require("postcss-cssnext");
+var modulesValues = require("postcss-modules-values");
 
 /**
  * createEntries
@@ -98,18 +99,11 @@ module.exports = {
   // Plugin definitions
   plugins: plugins,
 
-  // Plugin/loader specific-configuration
-  cssnext: {
-    map: false,
-    compress: false
-  },
-  jshint: {
-    eqnull: true,
-    failOnHint: false
-  },
+  // Post-CSS configiruation
   postcss: function(webpack) {
     return {
       defaults: [
+        modulesValues,
         cssimport({
           addDependencyTo: webpack
         }),
@@ -117,23 +111,42 @@ module.exports = {
       ]
     };
   },
-  // Set the resolve paths for any shared code
+
+  // Resolve formalist-theme and shared
   resolve: {
     alias: {
-      "shared": path.join(__dirname, "shared")
-    }
+      "shared": path.join(__dirname, "shared"),
+      "formalist-theme": 'formalist-standard-react/lib/components/ui'
+    },
+    moduleDirectories: [
+      path.join(__dirname, '../node_modules'),
+      path.join(__dirname, '../node_modules/roneo/node_modules')
+    ],
+    fallback: [
+      path.join(__dirname, '../node_modules'),
+      path.join(__dirname, '../node_modules/roneo/node_modules')
+    ]
   },
+
+  // Same issue, for loaders like babel
+  resolveLoader: {
+    fallback: [
+      path.join(__dirname, '../node_modules')
+    ]
+  },
+
   // General configuration
   module: {
-    preLoaders: [
-      // Run all JavaScript through jshint before loading
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "jshint-loader"
-      }
-    ],
     loaders: [
+      {
+        test: require.resolve('turbolinks'),
+        loader: 'imports?this=>window'
+      },
+      {
+        test: /\.js/,
+        loader: "babel?presets[]=react,presets[]=es2015",
+        include: APPS
+      },
       {
         test: /\.(jpe?g|png|gif|svg|woff|ttf|otf|eot|ico)/,
         loader: "file-loader?name=[path][name].[ext]"
@@ -143,12 +156,17 @@ module.exports = {
         loader: "html-loader"
       },
       {
+        test: /\.mcss$/,
+        // The ExtractTextPlugin pulls all CSS out into static files
+        // rather than inside the JavaScript/webpack bundle
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader')
+      },
+      {
         test: /\.css$/,
         // The ExtractTextPlugin pulls all CSS out into static files
         // rather than inside the JavaScript/webpack bundle
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader")
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
       }
     ]
   }
-
 };
