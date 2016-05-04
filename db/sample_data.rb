@@ -24,7 +24,6 @@ def create_post(attrs)
   end
 end
 
-# Default password is changeme
 create_user(
   email: "hello@icelab.com.au",
   first_name: "Icelab",
