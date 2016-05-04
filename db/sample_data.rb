@@ -31,9 +31,11 @@ create_user(
   active: true
 )
 
+author = admin["admin.persistence.repositories.users"].by_email("hello@icelab.com.au")
 create_post(
   title: "This is a test post",
   body: "Some sample content for this test post",
   slug: "this-is-a-test-post",
-  status: "draft"
+  status: "draft",
+  author_id: author.id
 )
