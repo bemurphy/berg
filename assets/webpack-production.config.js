@@ -2,8 +2,7 @@ var path = require("path");
 var webpack = require("webpack");
 var merge = require("webpack-merge");
 var baseConfig = require('./webpack-base.config.js');
-var commonConfig = require('./webpack-common.config.js');
-
+var applicationConfig = require('./webpack-application.config.js');
 
 /**
  * Webpack configuration
@@ -12,7 +11,7 @@ var commonConfig = require('./webpack-common.config.js');
   baseConfig({
     quiet: true
   }),
-  commonConfig,
+  applicationConfig,
   {
     // Plugin/loader specific-configuration
     plugins: [

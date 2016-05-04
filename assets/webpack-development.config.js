@@ -3,7 +3,7 @@ var webpack = require("webpack");
 var merge = require("webpack-merge");
 var WebpackNotifierPlugin = require("webpack-notifier");
 var baseConfig = require('./webpack-base.config.js');
-var commonConfig = require('./webpack-common.config.js');
+var applicationConfig = require('./webpack-application.config.js');
 var loadConfig = require("./config");
 
 /**
@@ -50,7 +50,7 @@ var baseOptions = {
  */
 module.exports = merge(
   baseConfig(baseOptions),
-  commonConfig,
+  applicationConfig,
   {
     output: {
       // Ensure the publicPath matches the expected location in development
