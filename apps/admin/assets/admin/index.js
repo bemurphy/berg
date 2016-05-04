@@ -1,7 +1,6 @@
 import 'es5-shim'
 import 'es6-shim'
 import roneo from 'roneo'
-import domReady from 'domready'
 import viewloader from 'viewloader'
 import views from './views'
 
@@ -14,7 +13,6 @@ roneo()
 /**
  * Kick things off on domReady
  */
-domReady(() => {
+document.addEventListener('turbolinks:load', function onTurboLinksLoad () {
   viewloader.execute(views)
 })
-
