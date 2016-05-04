@@ -6,7 +6,7 @@ module Persistence
         attribute :title, Types::String
         attribute :body, Types::String
         attribute :slug, Types::String
-        attribute :state, Types::String
+        attribute :status, Types::String
         attribute :author_id, Types::Serial
         attribute :published_at, Types::DateTime
       end

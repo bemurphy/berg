@@ -5,7 +5,7 @@ ROM::SQL.migration do
       String :title, null: false
       String :body, null: false
       String :slug, unique: true
-      String :state
+      String :status
       Integer :author_id
       DateTime :published_at
       DateTime :created_at, null: false, default: Sequel::CURRENT_TIMESTAMP

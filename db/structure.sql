@@ -50,9 +50,9 @@ SET default_with_oids = false;
 CREATE TABLE posts (
     id integer NOT NULL,
     title text NOT NULL,
-    body text,
+    body text NOT NULL,
     slug text,
-    state text,
+    status text,
     author_id integer,
     published_at timestamp without time zone,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
