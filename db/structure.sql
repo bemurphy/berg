@@ -52,8 +52,8 @@ CREATE TABLE posts (
     title text NOT NULL,
     body text NOT NULL,
     slug text,
-    status text,
-    author_id integer,
+    status text NOT NULL,
+    author_id integer NOT NULL,
     published_at timestamp without time zone,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL
