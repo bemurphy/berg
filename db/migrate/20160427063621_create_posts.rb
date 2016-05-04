@@ -3,7 +3,7 @@ ROM::SQL.migration do
     create_table :posts do
       primary_key :id
       String :title, null: false
-      String :body
+      String :body, null: false
       String :slug, unique: true
       String :state
       Integer :author_id
