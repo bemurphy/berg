@@ -10,7 +10,7 @@ module Admin
 
         define do
           text_field :title, label: "Title"
-          text_field :body, label: "Body"
+          text_area :body, label: "Body"
           text_field :slug, label: "Slug"
           selection_field :author_id, label: "Author", options: dep(:author_list)
         end
