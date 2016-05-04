@@ -64,6 +64,6 @@
     "prebuild-production": "npm run clean-build",
     "build-production": "NODE_ENV=production webpack --config ./assets/webpack-production.config.js -p --bail",
     "postbuild-production": "npm run precompile",
-    "lint": "eslint 'assets/targets/**/*.js'; exit 0"
+    "lint": "eslint 'apps/**/assets/**/*.js'; exit 0"
   }
 }
