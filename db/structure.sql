@@ -52,7 +52,7 @@ CREATE TABLE posts (
     title text NOT NULL,
     body text NOT NULL,
     slug text,
-    status text NOT NULL,
+    status text DEFAULT 'draft'::text,
     author_id integer NOT NULL,
     published_at timestamp without time zone,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
