@@ -112,6 +112,13 @@ module.exports = {
     };
   },
 
+  // eslint configuration
+  eslint: {
+    configFile: path.join(__dirname, "../.eslintrc.json"),
+    emitError: false,
+    emitWarning: true
+  },
+
   // Resolve formalist-theme and shared
   resolve: {
     alias: {
@@ -144,7 +151,10 @@ module.exports = {
       },
       {
         test: /\.js/,
-        loader: "babel?presets[]=react,presets[]=es2015",
+        loaders: [
+          "babel?presets[]=react,presets[]=es2015",
+          "eslint-loader"
+        ],
         include: APPS
       },
       {
