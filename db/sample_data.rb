@@ -33,6 +33,6 @@ create_user(
 
 create_post(
   title: "This is a test post",
-  content: "Some sample content for this test post",
+  body: "Some sample content for this test post",
   slug: "this-is-a-test-post"
 )

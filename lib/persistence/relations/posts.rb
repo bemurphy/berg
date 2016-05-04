@@ -4,8 +4,11 @@ module Persistence
       schema(:posts) do
         attribute :id, Types::Serial
         attribute :title, Types::String
-        attribute :content, Types::String
+        attribute :body, Types::String
         attribute :slug, Types::String
+        attribute :state, Types::String
+        attribute :author_id, Types::Serial
+        attribute :published_at, Types::DateTime
       end
 
       def by_id(id)

@@ -3,8 +3,11 @@ ROM::SQL.migration do
     create_table :posts do
       primary_key :id
       String :title, null: false
-      String :content, null: false
-      String :slug, null: false, unique: true
+      String :body
+      String :slug, unique: true
+      String :state
+      Integer :author_id
+      DateTime :published_at
       DateTime :created_at, null: false, default: Sequel::CURRENT_TIMESTAMP
       DateTime :updated_at, null: false, default: Sequel::CURRENT_TIMESTAMP
     end

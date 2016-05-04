@@ -8,7 +8,7 @@ module Admin
 
         define do
           text_field :title, label: "Title"
-          text_field :content, label: "Content"
+          text_field :body, label: "Body"
           text_field :slug, label: "Slug"
         end
       end

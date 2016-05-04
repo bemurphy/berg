@@ -5,7 +5,7 @@ module Admin
     module Validation
       Form = Berg::Validation.Form do
         optional(:title).filled
-        optional(:content).filled
+        optional(:body).filled
         optional(:slug).filled
       end
     end
