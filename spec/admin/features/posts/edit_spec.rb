@@ -23,7 +23,7 @@ RSpec.feature "Admin / Posts / Edit", js: true do
 
     find("nav a", text: "Posts").trigger("click")
 
-    expect(page).to have_content("A new title")
+    expect(page).to have_content("A Sample Post")
   end
 
   scenario "I can see validation errors" do
