@@ -5,23 +5,18 @@
   "author": "Icelab",
   "repository": {},
   "dependencies": {
-    "component-emitter": "^1.2.0",
     "domready": "^1.0.8",
     "es5-shim": "4.5.2",
     "es6-shim": "^0.34.2",
     "immutable": "^3.7.6",
-    "jquery": "^2.1.4",
     "metaquery": "^1.2.0",
-    "node-bourbon": "^4.2.3",
-    "node-neat": "^1.7.2",
-    "parsleyjs": "^2.2.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
     "roneo": "icelab/roneo",
-    "viewloader": "^1.1.0"
+    "viewloader": "^1.1.0",
+    "webpack-merge": "0.12.0"
   },
   "devDependencies": {
-    "autoprefixer-core": "^5.2.1",
     "babel-core": "^6.4.0",
     "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.3.13",
@@ -42,24 +37,22 @@
     "gulp-rev-all": "^0.7.6",
     "gulp-rev-rails-manifest": "0.0.1",
     "gulp-tap": "^0.1.3",
-    "html-loader": "^0.4.0",
-    "imports-loader": "0.6.5",
+    "imports-loader": "^0.6.5",
     "js-yaml": "^1.0.2",
-    "node-sass": "^3.4.1",
     "postcss": "^5.0.14",
     "postcss-cssnext": "^2.4.0",
     "postcss-import": "^7.1.3",
     "postcss-loader": "^0.8.0",
     "postcss-modules-values": "^1.1.1",
     "run-sequence": "^1.0.2",
-    "sass-loader": "^3.1.1",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.11",
-    "webpack-dev-server": "1.8.2",
+    "webpack": "^1.13.0",
+    "webpack-config": "4.0.0",
+    "webpack-dev-server": "1.14.0",
     "webpack-notifier": "^1.2.1"
   },
   "engines": {
-    "node": "4.4.2",
+    "node": ">= 4.4.2",
     "npm": "3.8.6"
   },
   "scripts": {
@@ -70,8 +63,8 @@
     "prebuild-development": "npm run clean-build",
     "build-development": "webpack --config ./assets/webpack-development.config.js",
     "prebuild-production": "npm run clean-build",
-    "build-production": "NODE_ENV=production webpack --config ./assets/webpack-production.config.js -p",
+    "build-production": "NODE_ENV=production webpack --config ./assets/webpack-production.config.js -p --bail",
     "postbuild-production": "npm run precompile",
-    "lint": "eslint 'assets/targets/**/*.js'; exit 0"
+    "lint": "eslint 'apps/**/assets/**/*.js'; exit 0"
   }
 }

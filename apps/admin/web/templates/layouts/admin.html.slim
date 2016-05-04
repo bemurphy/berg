@@ -4,11 +4,11 @@ html lang="en"
     meta name="turbolinks-cache-control" content="no-cache"
     / Inlined JS
     script
-      == page.assets.read("inline-admin-header.js")
+      == page.assets.read("admin__inline-admin-header.js")
     / CSS
-    link rel="stylesheet" type="text/css" href=page.assets["admin.css"]
+    link rel="stylesheet" type="text/css" href=page.assets["admin__admin.css"]
     / JS
-    script type="text/javascript" src=page.assets["admin.js"]
+    script type="text/javascript" src=page.assets["admin__admin.js"]
     title Berg — Admin
     == page.csrf_metatag
   body data-view-fast-click=true data-view-disable-input-zoom=true
@@ -26,4 +26,4 @@ html lang="en"
         span.hide-visually Toggle nav
     / Inlined JS
     script
-      == page.assets.read("inline-admin-footer.js")
+      == page.assets.read("admin__inline-admin-footer.js")
