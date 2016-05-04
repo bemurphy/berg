@@ -4,7 +4,8 @@ RSpec.shared_context "admin posts" do
     Admin::Container["admin.posts.operations.create"].({
       "title" => title,
       "body" => "Some sample content for this post",
-      "slug" => "a-sample-post"
+      "slug" => "a-sample-post",
+      "author_id" => Admin::Container["admin.persistence.repositories.users"].by_email("jane@doe.org").id
     }.merge(attrs)).value
   end
 
