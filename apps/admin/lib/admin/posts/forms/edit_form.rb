@@ -4,22 +4,22 @@ module Admin
   module Posts
     module Forms
       class EditForm < Berg::Form
+        include Admin::Import["admin.persistence.repositories.users"]
+
         prefix :post
 
         define do
           text_field :title, label: "Title"
           text_field :body, label: "Body"
           text_field :slug, label: "Slug"
-          select_box :author, label: "Author", options: [
-            dep(:author_list)
-          ]
+          selection_field :author_id, label: "Author", options: dep(:author_list)
           select_box :status, label: "Status", options: [
             ["draft", "Draft"], ["published", "Published"], ["deleted", "Deleted"]
           ]
         end
 
         def author_list
-          Entities::User.full_name.map { |full_name| [full_name, full_name.capitalize] }
+          users.listing.map { |user| { id: user.id, label: user.full_name } }
         end
       end
     end
