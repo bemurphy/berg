@@ -1,0 +1,4 @@
+en:
+  errors:
+    email_unique?: "email address is already taken"
+    slug_unique?: "slug is already taken"

@@ -19,8 +19,6 @@ RSpec.feature "Admin / Users / Create", js: true do
 
     find("button", text: "Create user").trigger("click")
 
-    # Not getting past the new user form
-
     expect(page).to have_content("User has been created")
 
     expect(page).to have_content("jade@doe.org")
