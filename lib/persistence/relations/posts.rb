@@ -22,6 +22,10 @@ module Persistence
       def matching_slugs(slug)
         select(:slug).by_slug(slug)
       end
+
+      def published
+        where(status: "published")
+      end
     end
   end
 end
