@@ -17,10 +17,22 @@ module Admin
           validation = Validation::Form.(attributes)
 
           if validation.success?
-            posts.update(id, validation.output)
+            posts.update(id, prepare_attributes(validation.output))
             Right(posts[id])
           else
             Left(validation)
+          end
+        end
+
+        private
+
+        def prepare_attributes(attributes)
+          if attributes[:status] == "published"
+            attributes.merge(
+              published_at: DateTime.now
+            )
+          else
+            attributes
           end
         end
       end
