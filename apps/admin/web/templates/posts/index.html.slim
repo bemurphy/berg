@@ -16,11 +16,11 @@ h1.h-1 Posts
             th Actions
         tbody
           - posts.each do |post|
-            tr id="post-#{post.id}"
+            tr id="post-#{post.slug}"
               td.f-mono = post.id
               td = post.title
               td = post.body
               td.f-mono = post.slug
               td = post.status
               td
-                a href="/admin/posts/#{post.id}/edit" Edit
+                a href="/admin/posts/#{post.slug}/edit" Edit

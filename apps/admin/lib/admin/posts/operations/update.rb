@@ -8,17 +8,18 @@ module Admin
     module Operations
       class Update
         include Admin::Import(
-          "admin.persistence.repositories.posts"
+          "admin.persistence.repositories.posts",
+          "admin.posts.slugify"
         )
 
         include Dry::ResultMatcher.for(:call)
 
-        def call(id, attributes)
+        def call(slug, attributes)
           validation = Validation::Form.(attributes)
 
           if validation.success?
-            posts.update(id, prepare_attributes(validation.output))
-            Right(posts[id])
+            posts.update(slug, prepare_attributes(slug, validation.output))
+            Right(posts[slug])
           else
             Left(validation)
           end
@@ -26,15 +27,25 @@ module Admin
 
         private
 
-        def prepare_attributes(attributes)
-          if attributes[:status] == "published"
-            attributes.merge(
-              published_at: DateTime.now
-            )
-          else
-            attributes
+        def prepare_attributes(slug, attributes)
+          # Only update the slug if a slug is present in the attrs, and it's been modified
+          if attributes[:slug] && attributes[:slug] != slug
+            slug = slugify.(attributes[:slug], posts.method(:slug_exists?))
           end
+          attributes.merge(
+            slug: slug
+          )
         end
+
+        # def prepare_attributes(attributes)
+        #   if attributes[:status] == "published"
+        #     attributes.merge(
+        #       published_at: DateTime.now
+        #     )
+        #   else
+        #     attributes
+        #   end
+        # end
       end
     end
   end

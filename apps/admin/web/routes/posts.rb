@@ -26,14 +26,14 @@ class Admin::Application < Dry::Web::Application
         r.view "posts.new"
       end
 
-      r.on ":id" do |id|
+      r.on ":slug" do |slug|
         r.get "edit" do
-          r.view "posts.edit", id: id
+          r.view "posts.edit", slug: slug
         end
 
         r.is do
           r.resolve "admin.posts.operations.update" do |update_post|
-            update_post.(id, r[:post]) do |m|
+            update_post.(slug, r[:post]) do |m|
               m.success do
                 flash[:notice] = t["admin.posts.post_updated"]
                 r.redirect "/admin/posts"
