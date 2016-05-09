@@ -19,10 +19,13 @@ module Main
           !!posts.matching_slugs(slug).one
         end
 
-        def listing
+        def listing(page: 1, per_page: 20)
           posts
+            .published
+            .per_page(per_page)
+            .page(page)
             .combine(one: { author: [users, author_id: :id] })
-            .as(Entities::Post::WithAuthor).to_a
+            .as(Entities::Post::WithAuthor)
         end
       end
     end
