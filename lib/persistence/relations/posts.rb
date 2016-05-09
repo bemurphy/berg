@@ -8,8 +8,12 @@ module Persistence
         attribute :body, Types::String
         attribute :slug, Types::String
         attribute :status, Types::String
-        attribute :author_id, Types::Serial
+        attribute :author_id, Types::ForeignKey(:users)
         attribute :published_at, Types::DateTime
+
+        associate do
+          belongs :author, relation: :users
+        end
       end
 
       use :pagination
