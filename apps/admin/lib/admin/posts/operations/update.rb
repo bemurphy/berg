@@ -18,7 +18,7 @@ module Admin
           validation = Validation::Form.(attributes)
 
           if validation.success?
-            posts.update(slug, prepare_attributes(slug, validation.output))
+            posts.update.by_slug(slug).(prepare_attributes(slug, validation.output))
             Right(posts[slug])
           else
             Left(validation)
@@ -32,20 +32,17 @@ module Admin
           if attributes[:slug] && attributes[:slug] != slug
             slug = slugify.(attributes[:slug], posts.method(:slug_exists?))
           end
-          attributes.merge(
-            slug: slug
-          )
+          if attributes[:status] == "published"
+            attributes.merge(
+              published_at: DateTime.now,
+              slug: slug
+            )
+          else
+            attributes.merge(
+              slug: slug
+            )
+          end
         end
-
-        # def prepare_attributes(attributes)
-        #   if attributes[:status] == "published"
-        #     attributes.merge(
-        #       published_at: DateTime.now
-        #     )
-        #   else
-        #     attributes
-        #   end
-        # end
       end
     end
   end
