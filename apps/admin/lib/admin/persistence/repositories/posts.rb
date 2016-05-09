@@ -22,7 +22,7 @@ module Admin
         end
 
         def listing
-          posts.as(Entities::Post).to_a
+          posts.order(:created_at).reverse.as(Entities::Post).to_a
         end
       end
     end
