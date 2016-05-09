@@ -17,7 +17,7 @@ module Admin
 
         optional(:title).filled
         optional(:body).filled
-        optional(:slug).filled(:slug_unique?)
+        optional(:slug).filled
         optional(:author_id).filled(:int?)
         optional(:status).filled(inclusion?: Entities::Post::Status.values)
       end
