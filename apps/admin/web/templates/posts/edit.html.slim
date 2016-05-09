@@ -10,7 +10,7 @@ p.link-children
   span.tab.tab--active Edit post
 .panel
   .panel__primary
-    form action="/admin/posts/#{post.id}" method="post"
+    form action="/admin/posts/#{post.slug}" method="post"
       == csrf_tag
       input type="hidden" name="_method" value="put"
       fieldset
