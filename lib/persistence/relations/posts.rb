@@ -4,6 +4,7 @@ module Persistence
       schema(:posts) do
         attribute :id, Types::Serial
         attribute :title, Types::String
+        attribute :teaser, Types::String
         attribute :body, Types::String
         attribute :slug, Types::String
         attribute :status, Types::String

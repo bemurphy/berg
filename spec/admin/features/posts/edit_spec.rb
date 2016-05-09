@@ -11,7 +11,7 @@ RSpec.feature "Admin / Posts / Edit", js: true do
   scenario "I can edit a post, and change the slug" do
     find("nav a", text: "Posts").trigger("click")
 
-    within("#post-#{sample_post.id}") {
+    within("#post-#{sample_post.slug}") {
       find("a", text: "Edit").trigger("click")
     }
 
@@ -31,7 +31,7 @@ RSpec.feature "Admin / Posts / Edit", js: true do
   scenario "I can see validation errors" do
     find("nav a", text: "Posts").trigger("click")
 
-    within("#post-#{sample_post.id}") {
+    within("#post-#{sample_post.slug}") {
       find("a", text: "Edit").trigger("click")
     }
 

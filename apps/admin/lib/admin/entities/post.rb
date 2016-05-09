@@ -7,6 +7,7 @@ module Admin
 
       attribute :id, Types::Strict::Int
       attribute :title, Types::Strict::String
+      attribute :teaser, Types::String
       attribute :body, Types::String
       attribute :slug, Types::Strict::String
       attribute :status, Status

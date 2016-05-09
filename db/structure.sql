@@ -56,7 +56,8 @@ CREATE TABLE posts (
     author_id integer NOT NULL,
     published_at timestamp without time zone,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp without time zone DEFAULT now() NOT NULL
+    updated_at timestamp without time zone DEFAULT now() NOT NULL,
+    teaser text DEFAULT ''::text NOT NULL
 );
 
 

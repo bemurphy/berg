@@ -16,6 +16,7 @@ module Admin
         end
 
         optional(:title).filled
+        optional(:teaser).filled
         optional(:body).filled
         optional(:slug).filled(:slug_unique?)
         optional(:author_id).filled(:int?)

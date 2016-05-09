@@ -15,6 +15,7 @@ RSpec.feature "Admin / Posts / Create", js: true do
     find("a", text: "Add a post").trigger("click")
 
     find("#title").set("A sample title")
+    find("#teaser").set("A teaser for this sample article")
     find("#body").set("Some sample content for this post")
     find("#author_id").select("Jane")
 
@@ -33,6 +34,7 @@ RSpec.feature "Admin / Posts / Create", js: true do
     find("a", text: "Add a post").trigger("click")
 
     find("#title").set("")
+    find("#teaser").set("A teaser for this sample article")
     find("#body").set("Some sample content for this post")
 
     find("button", text: "Create post").trigger("click")
