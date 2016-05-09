@@ -8,20 +8,14 @@ h1.h-1 Posts
       table
         thead
           tr
-            th ID
             th Title
-            th Teaser
-            th Slug
             th Status
             th Published
             th Actions
         tbody
           - posts.each do |post|
             tr id="post-#{post.slug}"
-              td.f-mono = post.id
               td = post.title
-              td = post.teaser
-              td.f-mono = post.slug
               td = post.status
               - unless post.published_at == nil
                 td.f-mono = post.published_at.strftime("%e %b %Y %H:%M:%S%p")
