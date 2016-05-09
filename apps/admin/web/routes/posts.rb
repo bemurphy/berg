@@ -40,7 +40,7 @@ class Admin::Application < Dry::Web::Application
               end
 
               m.failure do |validation|
-                r.view "posts.edit", post_validation: validation
+                r.view "posts.edit", slug: slug, post_validation: validation
               end
             end
           end
