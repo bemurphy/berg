@@ -13,6 +13,7 @@ h1.h-1 Posts
             th Body
             th Slug
             th Status
+            th Published
             th Actions
         tbody
           - posts.each do |post|
@@ -22,5 +23,9 @@ h1.h-1 Posts
               td = post.body
               td.f-mono = post.slug
               td = post.status
+              - unless post.published_at == nil
+                td.f-mono = post.published_at.strftime("%e %b %Y %H:%M:%S%p")
+              - else
+                td
               td
                 a href="/admin/posts/#{post.slug}/edit" Edit
