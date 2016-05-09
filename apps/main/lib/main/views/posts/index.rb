@@ -13,7 +13,7 @@ module Main
         end
 
         def locals(options = {})
-          options = {per_page: 1, page: 1}.merge(options)
+          options = {per_page: 20, page: 1}.merge(options)
           all_posts = posts.listing(page: options[:page], per_page: options[:per_page])
 
           super.merge(
