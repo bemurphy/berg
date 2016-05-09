@@ -1,4 +1,5 @@
 require "admin/import"
+require "admin/paginator"
 require "admin/view"
 
 module Admin
@@ -12,8 +13,12 @@ module Admin
         end
 
         def locals(options = {})
+          options = { per_page: 20, page: 1 }.merge(options)
+          all_posts = posts.listing(page: options[:page], per_page: options[:per_page])
+
           super.merge(
-            posts: posts.listing
+            posts: all_posts.to_a,
+            paginator: Paginator.new(all_posts.pager, url_template: "/admin/posts?page=%")
           )
         end
       end

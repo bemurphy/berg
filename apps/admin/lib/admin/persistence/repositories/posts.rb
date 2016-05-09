@@ -21,8 +21,13 @@ module Admin
           !!posts.matching_slugs(slug).one
         end
 
-        def listing
-          posts.order(:created_at).reverse.as(Entities::Post).to_a
+        def listing(per_page: 20, page: 1)
+          posts
+            .per_page(per_page)
+            .page(page)
+            .order(:created_at)
+            .reverse
+            .as(Entities::Post)
         end
       end
     end

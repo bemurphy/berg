@@ -12,6 +12,8 @@ module Persistence
         attribute :published_at, Types::DateTime
       end
 
+      use :pagination
+
       def by_id(id)
         where(id: id)
       end
