@@ -15,6 +15,8 @@ module Persistence
         end
       end
 
+      use :pagination
+
       def by_id(id)
         where(id: id)
       end
