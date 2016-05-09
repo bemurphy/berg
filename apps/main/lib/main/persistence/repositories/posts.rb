@@ -19,7 +19,6 @@ module Main
           !!posts.matching_slugs(slug).one
         end
 
-
         def listing(page: 1, per_page: 20)
           posts
             .published
