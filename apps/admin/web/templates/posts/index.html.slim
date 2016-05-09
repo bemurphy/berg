@@ -16,13 +16,23 @@ h1.h-1 Posts
           - posts.each do |post|
             tr id="post-#{post.slug}"
               td = post.title
-              td = post.status
+              td.vertical-align--middle
+                - if post.status == "published"
+                  .label.label--success
+                    = post.status
+                - elsif post.status == "deleted"
+                  .label.label--warning
+                    = post.status
+                - else
+                  .label.label--ghost
+                    = post.status
               - unless post.published_at == nil
                 td.f-mono = post.published_at.strftime("%e %b %Y %H:%M:%S%p")
               - else
                 td
               td
                 a href="/admin/posts/#{post.slug}/edit" Edit
+                a href="/posts/#{post.slug}" View
 
 p
   == paginator.pagination
