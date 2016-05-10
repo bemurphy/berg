@@ -12,7 +12,7 @@ RSpec.feature "Admin / Posts / Edit", js: true do
     find("nav a", text: "Posts").trigger("click")
 
     within("#post-#{sample_post.slug}") {
-      find("a", text: "Edit").trigger("click")
+      find("a", text: "#{sample_post.title}").trigger("click")
     }
 
     find("#title").set("A new title")
@@ -25,14 +25,13 @@ RSpec.feature "Admin / Posts / Edit", js: true do
     find("nav a", text: "Posts").trigger("click")
 
     expect(page).to have_content("A new title")
-    expect(page).to have_content("a-new-title")
   end
 
   scenario "I can see validation errors" do
     find("nav a", text: "Posts").trigger("click")
 
     within("#post-#{sample_post.slug}") {
-      find("a", text: "Edit").trigger("click")
+      find("a", text: "#{sample_post.title}").trigger("click")
     }
 
     find("#title").set("")
