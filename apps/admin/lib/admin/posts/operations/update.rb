@@ -17,7 +17,7 @@ module Admin
           validation = Validation::Form.(prepare_attributes_for_validation(slug, attributes))
 
           if validation.success?
-            posts.update_by_slug(slug, prepare_attributes_for_update(validation.output))
+            posts.update_by_slug(slug, validation.output)
             Right(posts.by_slug(validation.output.fetch(:slug) { slug }))
           else
             Left(validation)
@@ -30,14 +30,6 @@ module Admin
           attributes.dup.tap do |attrs|
             # Only keep the slug for validation/update if it has been modified
             attrs.delete("slug") if (new_slug = attributes["slug"]) && new_slug == slug
-          end
-        end
-
-        def prepare_attributes_for_update(attributes)
-          if attributes[:status] == "published"
-            attributes.merge(published_at: Time.now)
-          else
-            attributes
           end
         end
       end
