@@ -14,6 +14,7 @@ module Admin
           text_field :url, label: "URL"
           text_area :intro, label: "Introduction"
           text_area :body, label: "Body"
+          text_field :slug, label: "Slug"
           text_field :tags, label: "Tags"
           select_box :status, label: "Status", options: [
             ["draft", "Draft"], ["published", "Published"], ["deleted", "Deleted"]
