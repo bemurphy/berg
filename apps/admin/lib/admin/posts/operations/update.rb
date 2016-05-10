@@ -8,7 +8,7 @@ module Admin
     module Operations
       class Update
         include Admin::Import(
-          "admin.persistence.repositories.posts",
+          "admin.persistence.repositories.posts"
         )
 
         include Dry::ResultMatcher.for(:call)
