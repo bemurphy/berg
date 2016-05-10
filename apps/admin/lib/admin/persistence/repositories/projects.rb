@@ -17,8 +17,13 @@ module Admin
           projects.by_slug(slug).as(Entities::Project).one
         end
 
-        def listing
-          projects.as(Entities::Project).to_a
+        def listing(per_page: 20, page: 1)
+          projects
+            .per_page(per_page)
+            .page(page)
+            .order(:created_at)
+            .reverse
+            .as(Entities::Project)
         end
       end
     end
