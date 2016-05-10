@@ -1,0 +1,14 @@
+
+/* Vertical align in tables */
+
+.vertical-align--top {
+  vertical-align: top;
+}
+
+.vertical-align--middle {
+  vertical-align: middle;
+}
+
+.vertical-align--bottom {
+  vertical-align: bottom;
+}
