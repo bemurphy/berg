@@ -15,7 +15,8 @@ h1.h-1 Posts
         tbody
           - posts.each do |post|
             tr id="post-#{post.slug}"
-              td = post.title
+              td
+                a href="/admin/posts/#{post.slug}/edit" = post.title
               td.vertical-align--middle
                 - if post.status == "published"
                   .label.label--success
@@ -31,8 +32,6 @@ h1.h-1 Posts
               - else
                 td
               td
-                a href="/admin/posts/#{post.slug}/edit" Edit
                 a href="/posts/#{post.slug}" View
-
 p
   == paginator.pagination
