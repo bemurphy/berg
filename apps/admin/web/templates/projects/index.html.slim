@@ -1,0 +1,20 @@
+== actions
+
+h1.h-1 Projects
+
+.panel
+  .panel__primary
+    .table.link-children
+      table
+        thead
+          tr
+            th Title
+            th Client
+            th
+        tbody
+          - projects.each do |project|
+            tr id="project-#{project.slug}"
+              td = project.title
+              td = project.client
+              td
+                a> href="/admin/projects/#{project.slug}/edit" Edit
