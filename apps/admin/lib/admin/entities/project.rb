@@ -3,14 +3,17 @@ require "types"
 module Admin
   module Entities
     class Project < Dry::Types::Value
-      attribute :id, Types::Serial
-      attribute :title, Types::String
-      attribute :slug, Types::String
-      attribute :intro, Types::Text
-      attribute :url, Types::String
-      attribute :client, Types::String
-      attribute :body, Types::Text
-      attribute :tags, Types::String
+      Status = Types::Strict::String.default("draft").enum("draft", "published", "deleted")
+
+      attribute :id, Types::Strict::Int
+      attribute :title, Types::Strict::String
+      attribute :client, Types::Strict::String
+      attribute :url, Types::Strict::String
+      attribute :intro, Types::Strict::String
+      attribute :body, Types::Strict::String
+      attribute :tags, Types::Strict::String
+      attribute :slug, Types::Strict::String
+      attribute :status, Status
     end
   end
 end
