@@ -14,6 +14,7 @@ module Admin
       attribute :tags, Types::Strict::String
       attribute :slug, Types::Strict::String
       attribute :status, Status
+      attribute :published_at, Types::DateTime
     end
   end
 end

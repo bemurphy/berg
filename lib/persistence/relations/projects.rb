@@ -11,6 +11,7 @@ module Persistence
         attribute :tags, Types::String
         attribute :slug, Types::String
         attribute :status, Types::String
+        attribute :published_at, Types::DateTime
       end
 
       use :pagination

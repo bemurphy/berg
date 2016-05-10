@@ -19,6 +19,7 @@ module Admin
           select_box :status, label: "Status", options: [
             ["draft", "Draft"], ["published", "Published"], ["deleted", "Deleted"]
           ]
+          date_time_field :published_at, label: "Published at"
         end
       end
     end

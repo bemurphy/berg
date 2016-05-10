@@ -23,6 +23,10 @@ module Admin
         optional(:slug).filled(:slug_unique?)
         optional(:tags).filled
         optional(:status).filled(inclusion?: Entities::Project::Status.values)
+        optional(:published_at).maybe(:time?)
+        rule(published_at: [:status, :published_at]) do |status, published_at|
+          status.eql?("published").then(published_at.filled?)
+        end
       end
     end
   end

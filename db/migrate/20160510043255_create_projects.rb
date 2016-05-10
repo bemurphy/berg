@@ -10,6 +10,7 @@ ROM::SQL.migration do
       String :tags, null: false
       String :slug, null: false, unique: true
       String :status, default: "draft"
+      DateTime :published_at
       DateTime :created_at, null: false, default: Sequel::CURRENT_TIMESTAMP
       DateTime :updated_at, null: false, default: Sequel::CURRENT_TIMESTAMP
     end
