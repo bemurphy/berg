@@ -14,7 +14,7 @@ module Admin
         include Dry::ResultMatcher.for(:call)
 
         def call(slug, attributes)
-          validation = Validation::Form.(prepare_attributes_for_validation(slug, attributes))
+          validation = Validation::Form.(prepare_attributes(slug, attributes))
 
           if validation.success?
             posts.update_by_slug(slug, validation.output)
@@ -26,7 +26,7 @@ module Admin
 
         private
 
-        def prepare_attributes_for_validation(slug, attributes)
+        def prepare_attributes(slug, attributes)
           attributes.dup.tap do |attrs|
             # Only keep the slug for validation/update if it has been modified
             attrs.delete("slug") if (new_slug = attributes["slug"]) && new_slug == slug
