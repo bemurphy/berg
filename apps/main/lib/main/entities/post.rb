@@ -12,8 +12,8 @@ module Main
       attribute :teaser, Types::String
       attribute :slug, Types::Strict::String
       attribute :status, Status
-      attribute :author_id, Types::Int
-      attribute :published_at, Types::DateTime
+      attribute :author_id, Types::Strict::Int
+      attribute :published_at, Types::Strict::Time
 
       class WithAuthor < Post
         attribute :author, "main.entities.user"
