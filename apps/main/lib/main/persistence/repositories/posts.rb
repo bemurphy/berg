@@ -12,7 +12,10 @@ module Main
         end
 
         def by_slug(slug)
-          posts.by_slug(slug).as(Entities::Post).one
+          posts
+          .by_slug(slug)
+          .combine(one: { author: [users, author_id: :id] })
+          .as(Entities::Post::WithAuthor).one
         end
 
         def slug_exists?(slug)
