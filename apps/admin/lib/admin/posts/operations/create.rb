@@ -9,7 +9,7 @@ module Admin
       class Create
         include Admin::Import(
           "admin.persistence.repositories.posts",
-          "admin.posts.slugify"
+          "admin.slugify"
         )
 
         include Dry::ResultMatcher.for(:call)
