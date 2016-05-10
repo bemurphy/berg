@@ -3,12 +3,13 @@ ROM::SQL.migration do
     create_table :projects do
       primary_key :id
       String :title, null: false
-      String :slug, null: false, unique: true
-      Text :intro, null: false
-      String :url, null: false
       String :client, null: false
+      String :url, null: false
+      String :intro, null: false
       Text :body, null: false
       String :tags, null: false
+      String :slug, null: false, unique: true
+      String :status, default: "draft"
       DateTime :created_at, null: false, default: Sequel::CURRENT_TIMESTAMP
       DateTime :updated_at, null: false, default: Sequel::CURRENT_TIMESTAMP
     end

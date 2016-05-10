@@ -4,12 +4,13 @@ module Persistence
       schema(:projects) do
         attribute :id, Types::Serial
         attribute :title, Types::String
-        attribute :slug, Types::String
-        attribute :intro, Types::Text
-        attribute :url, Types::String
         attribute :client, Types::String
+        attribute :url, Types::String
+        attribute :intro, Types::Text
         attribute :body, Types::Text
         attribute :tags, Types::String
+        attribute :slug, Types::String
+        attribute :status, Types::String
       end
 
       def by_id(id)
