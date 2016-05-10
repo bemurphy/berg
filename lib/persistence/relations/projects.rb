@@ -6,8 +6,8 @@ module Persistence
         attribute :title, Types::String
         attribute :client, Types::String
         attribute :url, Types::String
-        attribute :intro, Types::Text
-        attribute :body, Types::Text
+        attribute :intro, Types::String
+        attribute :body, Types::String
         attribute :tags, Types::String
         attribute :slug, Types::String
         attribute :status, Types::String
@@ -19,6 +19,10 @@ module Persistence
 
       def by_slug(slug)
         where(slug: slug)
+      end
+
+      def matching_slugs(slug)
+        select(:slug).by_slug(slug)
       end
     end
   end

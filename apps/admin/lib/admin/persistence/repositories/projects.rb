@@ -4,7 +4,7 @@ require "admin/entities/project"
 module Admin
   module Persistence
     module Repositories
-      class Users < Berg::Repository[:projects]
+      class Projects < Berg::Repository[:projects]
         commands :create, update: [:by_id, :by_slug]
 
         alias_method :update, :update_by_id

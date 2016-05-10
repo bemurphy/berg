@@ -6,7 +6,7 @@ ROM::SQL.migration do
       String :client, null: false
       String :url, null: false
       String :intro, null: false
-      Text :body, null: false
+      String :body, null: false
       String :tags, null: false
       String :slug, null: false, unique: true
       String :status, default: "draft"
