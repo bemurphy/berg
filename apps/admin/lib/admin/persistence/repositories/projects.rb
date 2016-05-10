@@ -17,6 +17,10 @@ module Admin
           projects.by_slug(slug).as(Entities::Project).one
         end
 
+        def slug_exists?(slug)
+          !!projects.matching_slugs(slug).one
+        end
+
         def listing(per_page: 20, page: 1)
           projects
             .per_page(per_page)
