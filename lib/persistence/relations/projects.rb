@@ -13,6 +13,8 @@ module Persistence
         attribute :status, Types::String
       end
 
+      use :pagination
+
       def by_id(id)
         where(id: id)
       end
