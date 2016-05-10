@@ -1,0 +1,22 @@
+h1== post.title
+p== "By #{post.author.full_name} &middot; #{post.published_date}"
+
+div.post
+  == post.body
+
+div.author-details
+  h3 Author
+  == post.author.full_name
+  / == post.author.avatar
+  / == post.author.bio
+
+div.meta
+  h3 Published on
+  == post.published_date
+
+div.tags
+  h3 Tags
+  / ul
+    / - post.tags.each do |tag|
+      / li
+        / a href="/posts/tagged/#{tag.slug}" tag.name
