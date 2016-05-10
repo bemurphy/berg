@@ -1,3 +1,16 @@
+/* Horizontal align in tables */
+
+.horizontal-align--left {
+  text-align: left;
+}
+
+.horizontal-align--center {
+  text-align: center;
+}
+
+.horizontal-align--right {
+  text-align: right;
+}
 
 /* Vertical align in tables */
 
