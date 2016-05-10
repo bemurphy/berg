@@ -19,7 +19,7 @@ module Admin
 
           if validation.success?
             project = Entities::Project.new(projects.create(prepare_attributes(validation.output)))
-            Right(post)
+            Right(project)
           else
             Left(validation)
           end
