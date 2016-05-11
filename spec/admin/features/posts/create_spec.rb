@@ -24,8 +24,6 @@ RSpec.feature "Admin / Posts / Create", js: true do
     expect(page).to have_content("Post has been created")
 
     expect(page).to have_content("A sample title")
-
-    expect(page).to have_content("a-sample-title")
   end
 
   scenario "I can see validation errors" do

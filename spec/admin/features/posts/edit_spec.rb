@@ -22,8 +22,6 @@ RSpec.feature "Admin / Posts / Edit", js: true do
 
     expect(page).to have_content("Post has been updated")
 
-    find("nav a", text: "Posts").trigger("click")
-
     expect(page).to have_content("A new title")
   end
 
