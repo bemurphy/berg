@@ -57,7 +57,7 @@ end
     url: Faker::Internet.url,
     intro: Faker::Hipster.sentence,
     body: Faker::Hipster.paragraph,
-    tags: Faker::Hipster.words.to_s,
+    tags: Faker::Hipster.word,
     status: "draft"
   )
 end
