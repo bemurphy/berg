@@ -18,20 +18,21 @@ h1.h-1 Posts
               td.vertical-align--middle
                 a href="/admin/posts/#{post.slug}/edit" = post.title
               td.vertical-align--middle
-                - if post.status == "published"
+                - if post.published?
                   .label.label--success
                     = post.status
-                - elsif post.status == "deleted"
+                - elsif post.deleted?
                   .label.label--warning
                     = post.status
                 - else
                   .label.label--ghost
                     = post.status
-              - unless post.published_at == nil
+              - if post.published?
                 td.vertical-align--middle.f-mono = post.published_at.strftime("%e %b %Y %H:%M:%S%p")
+                td.horizontal-align--center.vertical-align--middle
+                  a href="/posts/#{post.slug}" View
               - else
                 td
-              td.horizontal-align--center.vertical-align--middle
-                a href="/posts/#{post.slug}" View
+                td
 p
   == paginator.pagination
