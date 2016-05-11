@@ -6,7 +6,7 @@ module Admin
       class EditForm < Berg::Form
         include Admin::Import["admin.persistence.repositories.projects"]
 
-        prefix :post
+        prefix :project
 
         define do
           text_field :title, label: "Title"
