@@ -27,7 +27,9 @@ module Admin
         private
 
         def prepare_attributes(slug, attributes)
-          attributes.merge("previous_slug" => slug)
+          attributes.merge(
+            previous_slug: slug
+          )
         end
       end
     end
