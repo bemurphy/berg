@@ -40,6 +40,7 @@ gem "bugsnag"
 gem "postmark"
 
 group :development, :test do
+  gem "faker"
   gem "guard-rspec", require: false
   gem "pry-byebug"
 end
