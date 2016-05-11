@@ -1,5 +1,8 @@
 require_relative "admin/container"
 
+# Load manually registered dependencies
+Admin::Container.require "core/container/persistence"
+
 Admin::Container.finalize! do |container|
   require "admin/enqueue"
   container.register :enqueue, Admin::Enqueue.new
