@@ -17,7 +17,7 @@ module Admin
           all_posts = posts.listing(page: options[:page], per_page: options[:per_page])
 
           super.merge(
-            posts: all_posts.to_a,
+            posts: all_posts,
             paginator: Paginator.new(all_posts.pager, url_template: "/admin/posts?page=%")
           )
         end
