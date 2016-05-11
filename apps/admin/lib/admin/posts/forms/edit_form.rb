@@ -20,10 +20,11 @@ module Admin
           select_box :status, label: "Status", options: [
             ["draft", "Draft"], ["published", "Published"], ["deleted", "Deleted"]
           ]
-          multi_selection_field :tag_ids,
+          multi_selection_field :post_tags,
             label: "Tags",
             selector_label: "Choose tags",
             options: dep(:tags_list)
+
         end
 
         def author_list

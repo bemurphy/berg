@@ -11,14 +11,6 @@ module Admin
           tags.by_id(id).as(Entities::Tag).one
         end
 
-        def by_slug(slug)
-          tags.by_slug(slug).as(Entities::Tag).one
-        end
-
-        def slug_exists?(slug)
-          !!tags.matching_slugs(slug).one
-        end
-
         def listing
           tags
             .order(:name)

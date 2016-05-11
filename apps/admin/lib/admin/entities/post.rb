@@ -1,4 +1,5 @@
 require "types"
+require "admin/entities/tag"
 
 module Admin
   module Entities
@@ -13,6 +14,10 @@ module Admin
       attribute :status, Status
       attribute :author_id, Types::Int
       attribute :published_at, Types::DateTime
+    end
+
+    class PostWithTags < Post
+      attribute :post_tags, "array<admin.entities.tag>"
     end
   end
 end
