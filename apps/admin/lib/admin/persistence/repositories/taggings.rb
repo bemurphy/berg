@@ -11,6 +11,10 @@ module Admin
           taggings.by_id(id).as(Entities::Tagging).one
         end
 
+        def by_post_id(post_id)
+          taggings.by_post_id(post_id).as(Entities::Tagging)
+        end
+
         def listing
           taggings
             .as(Entities::Tagging)

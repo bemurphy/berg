@@ -1,4 +1,5 @@
 require "types"
+require "admin/entities/tag"
 
 module Admin
   module Entities
@@ -21,6 +22,10 @@ module Admin
       def published?
         status == "published"
       end
+    end
+
+    class PostWithTags < Post
+      attribute :post_tags, "array<admin.entities.tag>"
     end
   end
 end

@@ -10,6 +10,10 @@ module Persistence
         attribute :status, Types::String
         attribute :author_id, Types::Serial
         attribute :published_at, Types::Time
+
+        associate do
+          many :tags, through: :taggings
+        end
       end
 
       use :pagination

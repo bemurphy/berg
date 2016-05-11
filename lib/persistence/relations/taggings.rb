@@ -1,13 +1,14 @@
 module Persistence
   module Relations
-    class Tags < ROM::Relation[:sql]
-      schema(:tags) do
+    class Taggings < ROM::Relation[:sql]
+      schema(:taggings) do
         attribute :id, Types::Serial
-        attribute :name, Types::Strict::String
-        attribute :slug, Types::Strict::String
+        attribute :post_id, Types::ForeignKey(:posts)
+        attribute :tag_id, Types::ForeignKey(:tags)
 
         associate do
-          many :posts, through: :taggings
+          belongs :tags
+          belongs :posts
         end
       end
 
@@ -15,8 +16,8 @@ module Persistence
         where(id: id)
       end
 
-      def by_slug(slug)
-        where(slug: slug)
+      def by_post_id(id)
+        where(post_id: id)
       end
 
       def matching_slugs(slug)

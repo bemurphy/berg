@@ -34,7 +34,7 @@ module Admin
         rule(slug: [:slug, :previous_slug]) do |slug, previous_slug|
           slug.not_eql?(previous_slug).then(slug.slug_unique?)
         end
-        optional(:tag_ids).each(:int?)
+        optional(:post_tags).each(:int?)
       end
     end
   end

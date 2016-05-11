@@ -21,10 +21,11 @@ module Admin
             ["draft", "Draft"], ["published", "Published"], ["deleted", "Deleted"]
           ]
           date_time_field :published_at, label: "Published at"
-          multi_selection_field :tag_ids,
+          multi_selection_field :post_tags,
             label: "Tags",
             selector_label: "Choose tags",
             options: dep(:tags_list)
+
         end
 
         def author_list

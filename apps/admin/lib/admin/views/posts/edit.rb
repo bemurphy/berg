@@ -8,6 +8,8 @@ module Admin
       class Edit < Admin::View
         include Admin::Import(
           "admin.persistence.repositories.posts",
+          "admin.persistence.repositories.tags",
+          "admin.persistence.repositories.taggings",
           "admin.posts.forms.edit_form"
         )
 
@@ -32,8 +34,15 @@ module Admin
           if validation
             edit_form.build(validation, validation.messages)
           else
-            edit_form.build(post)
+            edit_form.build(form_input(post))
           end
+        end
+
+        def form_input(post)
+          tags = post.post_tags
+          post.to_h.merge(
+            post_tags: tags.map(&:id)
+          )
         end
       end
     end
