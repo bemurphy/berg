@@ -15,7 +15,7 @@ module Admin
         include Dry::ResultMatcher.for(:call)
 
         def call(id, attributes)
-          validation = Validation::Form.(attributes)
+          validation = Validation::Form.(prepare_attributes(attributes))
 
           if validation.success?
             users.update(id, validation.output)
@@ -23,6 +23,14 @@ module Admin
           else
             Left(validation)
           end
+        end
+
+        private
+
+        def prepare_attributes(attributes)
+          attributes.merge(
+            previous_email: attributes["email"]
+          )
         end
       end
     end
