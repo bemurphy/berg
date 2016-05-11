@@ -7,11 +7,12 @@ module Persistence
 
       def execute(tuple)
         result = super
-        if tuple[:tag_ids]
-          post_id = relation.first[:id]
-          tags = tuple[:tag_ids].product([post_id])
 
-          taggings.where(post_id: post_id).delete
+        post_id = relation.first[:id]
+        taggings.where(post_id: post_id).delete
+
+        if tuple[:tag_ids]
+          tags = tuple[:tag_ids].product([post_id])
 
           post_tupples = tags.map do |tag_id, post_id|
             {
