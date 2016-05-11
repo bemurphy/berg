@@ -1,4 +1,4 @@
-require "admin/import"
+require "admin/container"
 require "berg/validation/form"
 
 module Admin
