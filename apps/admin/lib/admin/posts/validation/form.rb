@@ -13,17 +13,26 @@ module Admin
           def slug_unique?(value)
             post_slug_uniqueness_check.(value)
           end
+
+          def not_eql?(input, value)
+            !input.eql?(value)
+          end
         end
 
         optional(:title).filled
         optional(:teaser).filled
         optional(:body).filled
-        optional(:slug).filled(:slug_unique?)
+        optional(:slug).filled
+        optional(:previous_slug).maybe
         optional(:author_id).filled(:int?)
         optional(:status).filled(inclusion?: Entities::Post::Status.values)
         optional(:published_at).maybe(:time?)
         rule(published_at: [:status, :published_at]) do |status, published_at|
           status.eql?("published").then(published_at.filled?)
+        end
+
+        rule(slug: [:slug, :previous_slug]) do |slug, previous_slug|
+          slug.filled? & slug.not_eql?(previous_slug).then(slug.slug_unique?)
         end
       end
     end

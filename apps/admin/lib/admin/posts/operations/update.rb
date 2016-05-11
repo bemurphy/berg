@@ -27,10 +27,7 @@ module Admin
         private
 
         def prepare_attributes(slug, attributes)
-          attributes.dup.tap do |attrs|
-            # Only keep the slug for validation/update if it has been modified
-            attrs.delete("slug") if (new_slug = attributes["slug"]) && new_slug == slug
-          end
+          attributes.merge("previous_slug" => slug)
         end
       end
     end
