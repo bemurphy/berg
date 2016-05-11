@@ -12,7 +12,7 @@ require SPEC_ROOT.join("../core/boot").realpath
 
 Capybara.app = Berg::Application.app
 Capybara.server_port = 3001
-Capybara.save_path = "#{File.dirname(__FILE__)}/../tmp/capybara-screenshot"
+Capybara.save_path = SPEC_ROOT.join("../tmp/capybara-screenshot")
 Capybara.javascript_driver = :poltergeist
 Capybara::Screenshot.prune_strategy = {keep: 10}
 
