@@ -40,7 +40,7 @@ class Admin::Application < Dry::Web::Application
               end
 
               m.failure do |validation|
-                r.view "users.edit", user_validation: validation
+                r.view "users.edit", id: id, user_validation: validation
               end
             end
           end
