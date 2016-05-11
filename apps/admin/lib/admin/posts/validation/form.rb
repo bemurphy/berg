@@ -21,7 +21,7 @@ module Admin
         optional(:slug).filled(:slug_unique?)
         optional(:author_id).filled(:int?)
         optional(:status).filled(inclusion?: Entities::Post::Status.values)
-        key(:tag_ids).each(:int?)
+        optional(:tag_ids).each(:int?)
       end
     end
   end
