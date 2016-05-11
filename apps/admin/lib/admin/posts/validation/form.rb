@@ -32,7 +32,7 @@ module Admin
         end
 
         rule(slug: [:slug, :previous_slug]) do |slug, previous_slug|
-          slug.filled? & slug.not_eql?(previous_slug).then(slug.slug_unique?)
+          slug.not_eql?(previous_slug).then(slug.slug_unique?)
         end
       end
     end
