@@ -1,0 +1,8 @@
+span.prev
+  - disabled_class = (current_page == 1 ? 'disabled' : '')
+  a href="/posts?page=#{prev_page}" rel="prev" class=[disabled_class]
+    | &lsaquo; Newer
+span.next
+  - disabled_class = (current_page == total_pages ? 'disabled' : '')
+  a href="/posts?page=#{next_page}" rel="next" class=[disabled_class]
+    | Older &rsaquo;

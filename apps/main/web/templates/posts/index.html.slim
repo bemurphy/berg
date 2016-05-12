@@ -1,0 +1,9 @@
+== paginator.pager_links
+
+ul
+- posts.each do |post|
+  li == post.snippet
+
+p
+  == paginator.pager_numbers
+  == paginator.pager_links
