@@ -44,3 +44,11 @@
 .d-flex {
   display: flex;
 }
+
+/**
+ * Flexbox
+ */
+
+.flex-v-center {
+  align-items: center;
+}
