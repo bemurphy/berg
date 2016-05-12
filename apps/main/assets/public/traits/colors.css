@@ -14,7 +14,7 @@
   --colorLightGrey:         #9b9b9b;
   --colorLightestGrey:      #d1d1d1;
   --colorPrimaryBackground: var(--colorBeige);
-  --colorPrimaryTextColor:  var(--colorDarkGrey);
+  --colorPrimaryText:       var(--colorDarkGrey);
 }
 
 /* White */

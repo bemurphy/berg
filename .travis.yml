@@ -5,6 +5,10 @@ env:
 - RACK_ENV=test
 addons:
   postgresql: "9.4"
+cache:
+  directories:
+    - vendor/bundle
+    - node_modules
 before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
@@ -21,3 +25,8 @@ script:
 - bundle exec rake spec
 notifications:
   email: false
+  slack:
+    on_success: change
+    on_failure: change
+    rooms:
+      - icelab:6dXO9CHlWw9h4xhLSlGr9Hhv

@@ -6,25 +6,41 @@ html
     script type="text/javascript" src=page.assets["main__public.js"]
   body
     == page.flash
-    .content.mx-auto role="main"
+    a.skip-link.skip-link--main-navigation href="#main-navigation" tabindex="1" Skip to the main navigation
+    a.skip-link.skip-link--main-content href="#main-content" tabindex="2" Skip to the content
+    .content.mx-auto#main-content role="main"
       .content__inner
-        .masthead.clearfix
-          h1.masthead__logo.fl-left
-            a.masthead__logo-anchor href="#"
+        .masthead.flex-y-center
+          h1.masthead__logo
+            a.masthead__logo-anchor.flex-y-center href="#"
               span.masthead__logo-berg.mr-small
               | Icelab
-          ul.main-nav.fl-right
-            li.main-nav__item
-              a.main-nav__anchor.main-nav__anchor--active href="#" Work
-            li.main-nav__item
-              a.main-nav__anchor href="#" About
-            li.main-nav__item
-              a.main-nav__anchor href="#" Notes
-            li.main-nav__item
-              a.main-nav__anchor href="#" Get in touch
+          ul.nav-main.fl-right#main-navigation role="navigation"
+            li.nav-main__item
+              a.nav-main__anchor.nav-main__anchor--active href="#" Work
+            li.nav-main__item
+              a.nav-main__anchor href="#" About
+            li.nav-main__item
+              a.nav-main__anchor href="#" Notes
+            li.nav-main__item
+              a.nav-main__anchor href="#" Get in touch
         == yield
       .get-in-touch.t-center
         p Work with us, we&rsquo;re good people
-    .footer
-      .footer__inner.mx-auto
-        | Icelab
+    .footer role="contentinfo"
+      .footer__inner.mx-auto.clearfix
+        .footer__address.fl-left
+          | Canberra
+        .footer__address.fl-left
+          | Melbourne
+        .footer__contact.fl-left
+          | Get in touch
+        ul.nav-footer.fl-right role="navigation"
+          li.nav-footer__item
+            a.nav-footer__anchor.nav-footer__anchor--active href="#" Work
+          li.nav-footer__item
+            a.nav-footer__anchor href="#" About
+          li.nav-footer__item
+            a.nav-footer__anchor href="#" Notes
+          li.nav-footer__item
+            a.nav-footer__anchor href="#" Get in touch

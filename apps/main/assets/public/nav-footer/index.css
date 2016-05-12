@@ -1,0 +1,31 @@
+/**
+ * Footer navigation
+ */
+
+.nav-footer {
+  margin-left: auto;
+  margin-right: -1.8rem;
+}
+  .nav-footer__item {
+    display: block;
+    float: left;
+  }
+    .nav-footer__anchor {
+      color: #fff;
+      display: block;
+      font-size: 1.8rem;
+      padding-left: 1.8rem;
+      padding-right: 1.8rem;
+      position: relative;
+    }
+    .nav-footer__anchor--active:before {
+      background-color: var(--colorRed);
+      border-radius: 50%;
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-top: -3px;
+      width: 6px;
+      height: 6px;
+    }

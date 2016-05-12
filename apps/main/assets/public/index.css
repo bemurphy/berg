@@ -18,7 +18,7 @@ html {
 
 body {
   background-color: var(--colorPrimaryBackground);
-  color: var(--colorPrimaryTextColor);
+  color: var(--colorPrimaryText);
   font-family: "Helvetica Neue", "Helvetica", sans-serif;
   display: flex;
   flex-direction: column;
@@ -38,9 +38,29 @@ body {
     margin-bottom: 5rem;
   }
 
+a {
+  text-decoration: none;
+}
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+button:focus,
+a:focus {
+  outline: 1px currentColor dotted;
+}
+button:hover,
+a:hover,
+button:active,
+a:active {
+  outline: none;
+}
+
 /**
  * Components
  */
 
- @import "./masthead";
- @import "./footer";
+@import "./skip-links";
+@import "./masthead";
+@import "./nav-main";
+@import "./footer";
+@import "./nav-footer"

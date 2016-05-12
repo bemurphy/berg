@@ -5,8 +5,11 @@
 .footer {
   background-color: var(--colorDarkestGrey);
   color: var(--colorWhite);
-  padding: 5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
   .footer__inner {
     max-width: 142rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
   }

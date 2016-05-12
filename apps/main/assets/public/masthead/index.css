@@ -3,13 +3,12 @@
  */
 
 .masthead {
+  display: flex;
   padding: 5rem;
 }
   .masthead__logo-anchor {
     color: var(--colorRed);
     display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 2rem;
     text-decoration: none;
   }
@@ -20,4 +19,3 @@
       width: 3.9rem;
       height: 4rem;
     }
-

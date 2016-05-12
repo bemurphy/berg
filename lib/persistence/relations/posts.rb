@@ -8,11 +8,16 @@ module Persistence
         attribute :body, Types::String
         attribute :slug, Types::String
         attribute :status, Types::String
-        attribute :author_id, Types::Serial
+        attribute :author_id, Types::ForeignKey(:users)
         attribute :published_at, Types::Time
+
+        associate do
+          belongs :author, relation: :users
+        end
       end
 
       use :pagination
+      per_page 20
 
       def by_id(id)
         where(id: id)

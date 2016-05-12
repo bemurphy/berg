@@ -1,15 +1,12 @@
-# dry-web skeleton
+[travis]: https://travis-ci.org/icelab/berg
+[codeclimate]: https://codeclimate.com/github/icelab/berg
 
-Build a Ruby web app with [dry-web](https://github.com/dry-rb/dry-web), [ROM](http://rom-rb.org/) and [Roda](http://roda.jeremyevans.net).
+# Berg
 
-## Installation
+[![Build Status](https://travis-ci.org/icelab/berg.svg?branch=master)][travis]
+[![Code Climate](https://codeclimate.com/github/icelab/berg/badges/gpa.svg)][codeclimate]
 
-You can clone this skeleton using [Raygun](https://github.com/carbonfive/raygun):
-
-```
-gem install raygun
-rraygun -p icelab/dry-web-skeleton your-app-name
-```
+The new [icelab.com.au](http://icelab.com.au), built with with [dry-web](https://github.com/dry-rb/dry-web), [ROM](http://rom-rb.org/) and [Roda](http://roda.jeremyevans.net).
 
 ## Development
 

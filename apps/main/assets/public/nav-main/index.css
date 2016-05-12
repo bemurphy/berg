@@ -1,0 +1,30 @@
+/**
+ * Main navigation
+ */
+
+.nav-main {
+  margin-left: auto;
+  margin-right: -1.8rem;
+}
+  .nav-main__item {
+    display: block;
+    float: left;
+  }
+    .nav-main__anchor {
+      display: block;
+      font-size: 1.8rem;
+      padding-left: 1.8rem;
+      padding-right: 1.8rem;
+      position: relative;
+    }
+    .nav-main__anchor--active:before {
+      background-color: var(--colorRed);
+      border-radius: 50%;
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-top: -3px;
+      width: 6px;
+      height: 6px;
+    }
