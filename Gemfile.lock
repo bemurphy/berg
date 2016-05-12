@@ -291,6 +291,7 @@ DEPENDENCIES
   bugsnag
   capybara
   capybara-screenshot
+  codeclimate-test-reporter
   database_cleaner
   dry-component!
   dry-equalizer
