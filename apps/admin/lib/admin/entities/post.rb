@@ -12,7 +12,7 @@ module Admin
       attribute :slug, Types::Strict::String
       attribute :status, Status
       attribute :author_id, Types::Strict::Int
-      attribute :published_at, Types::DateTime
+      attribute :published_at, Types::Strict::Time
 
       def deleted?
         status == "deleted"
