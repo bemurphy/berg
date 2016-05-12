@@ -25,8 +25,7 @@ module Admin
           posts
             .per_page(per_page)
             .page(page)
-            .order(:created_at)
-            .reverse
+            .order(Sequel.desc(:created_at))
             .as(Entities::Post)
         end
       end
