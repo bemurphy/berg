@@ -18,15 +18,8 @@ h1.h-1 Posts
               td.vertical-align--middle
                 a href="/admin/posts/#{post.slug}/edit" = post.title
               td.vertical-align--middle
-                - if post.published?
-                  .label.label--success
-                    = post.status
-                - elsif post.deleted?
-                  .label.label--warning
-                    = post.status
-                - else
-                  .label.label--ghost
-                    = post.status
+                .label class="label--#{post.status_class}"
+                  = post.status_label
               - if post.published?
                 td.vertical-align--middle.f-mono = post.published_date
                 td.horizontal-align--center.vertical-align--middle
