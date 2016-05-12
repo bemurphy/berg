@@ -38,6 +38,23 @@ body {
     margin-bottom: 5rem;
   }
 
+a {
+  text-decoration: none;
+}
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+button:focus,
+a:focus {
+  outline: 1px currentColor dotted;
+}
+button:hover,
+a:hover,
+button:active,
+a:active {
+  outline: none;
+}
+
 /**
  * Components
  */
