@@ -25,4 +25,8 @@ script:
 - bundle exec rake spec
 notifications:
   email: false
-  slack: icelab:6dXO9CHlWw9h4xhLSlGr9Hhv
+  slack:
+    on_success: change
+    on_failure: change
+    rooms:
+      - icelab:6dXO9CHlWw9h4xhLSlGr9Hhv
