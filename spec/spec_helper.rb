@@ -1,6 +1,3 @@
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
-
 require "byebug"
 
 ENV["RACK_ENV"] = "test"

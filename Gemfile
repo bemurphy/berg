@@ -49,7 +49,6 @@ end
 group :test do
   gem "capybara", require: false
   gem "capybara-screenshot", require: false
-  gem "codeclimate-test-reporter", require: false
   gem "database_cleaner"
   gem "inflecto"
   gem "poltergeist"
