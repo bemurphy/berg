@@ -31,10 +31,10 @@ RSpec.configure do |config|
   config.include Rack::Test::Methods, Capybara::DSL, type: :feature
 
   config.before :suite do
-    required_phantomjs_version = '2.0.0'
+    required_phantomjs_version = '1.9.8'
     phantomjs_versions = `phantomjs -v`
     if Gem::Version.new(phantomjs_versions) < Gem::Version.new(required_phantomjs_version)
-      puts "\e[31mWARN: Using a version of phantomjs < #{required_phantomjs_version}, please upgrade\e[0m"
+      puts "\e[31mWARN: Using phantomjs #{phantomjs_versions} which is < #{required_phantomjs_version}, please upgrade\e[0m"
       exit(status=false)
     end
     Berg::Application.freeze
