@@ -1,6 +1,5 @@
 require "admin/import"
 require "admin/entities/post"
-# require "admin/posts/validation/form"
 require "kleisli"
 
 module Admin
@@ -15,14 +14,8 @@ module Admin
         include Dry::ResultMatcher.for(:call)
 
         def call(attributes)
-          # validation = Validation::Form.(attributes)
-
-          # if validation.success?
-          post = Entities::Tag.new(tags.create(prepare_attributes(attributes)))
-          #   Right(post)
-          # else
-          #   Left(validation)
-          # end
+          tag = Entities::Tag.new(tags.create(prepare_attributes(attributes)))
+          Right(tag)
         end
 
         private
