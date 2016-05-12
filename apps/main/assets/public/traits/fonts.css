@@ -1,0 +1,34 @@
+:root {
+  --fontPrimary: "Work Sans", "Helvetica", sans-serif;
+  --fontPrimaryFallback: "Helvetica", sans-serif;
+  --fontWeightPrimaryNormal: 400;
+  --fontWeightPrimaryBold: 700;
+  --fontMono: "Inconsolata", monospace;
+  --fontMonoFallback: monospace;
+}
+
+.f-primary {
+  font-family: var(--fontPrimaryFallback);
+}
+
+.f-primary-bold {
+  font-family: var(--fontPrimary);
+  font-weight: var(--fontWeightPrimaryBold);
+}
+
+.f-mono {
+  font-family: var(--fontMonoFallback);
+}
+
+.f-fallthrough {
+  font-family: "Helvetica", san-serif;
+}
+
+/* When fonts are loaded */
+.fonts-loaded .f-primary,
+.fonts-loaded .f-primary-bold {
+  font-family: var(--fontPrimary);
+}
+.fonts-loaded .f-mono {
+  font-family: var(--fontMono);
+}

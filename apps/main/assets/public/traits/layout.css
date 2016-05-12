@@ -1,0 +1,46 @@
+/**
+ * Clearfix
+ */
+.clearfix:after {
+  clear: both;
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+/**
+ * Floats
+ */
+.fl-left {
+  float: left;
+}
+
+.fl-right {
+  float: right;
+}
+
+/**
+ * Display
+ */
+
+.d-inline {
+  display: inline;
+}
+
+.d-inlineblock {
+  display: inline-block;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-table {
+  display: table;
+}
+
+.d-flex {
+  display: flex;
+}
