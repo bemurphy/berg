@@ -9,7 +9,7 @@ module Persistence
         attribute :slug, Types::String
         attribute :status, Types::String
         attribute :author_id, Types::Serial
-        attribute :published_at, Types::DateTime
+        attribute :published_at, Types::Time
       end
 
       use :pagination
