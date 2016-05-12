@@ -175,6 +175,8 @@ GEM
     faker (1.6.3)
       i18n (~> 0.5)
     ffi (1.9.10)
+    foreman (0.78.0)
+      thor (~> 0.19.1)
     formatador (0.2.5)
     guard (2.13.0)
       formatador (>= 0.2.4)
@@ -295,6 +297,7 @@ DEPENDENCIES
   dry-validation!
   dry-web!
   faker
+  foreman
   formalist!
   guard-rspec
   i18n
