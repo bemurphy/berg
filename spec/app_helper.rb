@@ -12,7 +12,7 @@ require SPEC_ROOT.join("../core/boot").realpath
 
 Capybara.app = Berg::Application.app
 Capybara.server_port = 3001
-Capybara.save_path = SPEC_ROOT.join("../tmp/capybara-screenshot")
+Capybara.save_path = "#{File.dirname(__FILE__)}/../tmp/capybara-screenshot"
 Capybara.javascript_driver = :poltergeist
 Capybara::Screenshot.prune_strategy = {keep: 10}
 
@@ -31,9 +31,10 @@ RSpec.configure do |config|
   config.include Rack::Test::Methods, Capybara::DSL, type: :feature
 
   config.before :suite do
+    required_phantomjs_version = '2.0.0'
     phantomjs_versions = `phantomjs -v`
-    if Gem::Version.new(phantomjs_versions) < Gem::Version.new('2.0.0')
-      puts "\e[31mWARN: Using an old version of phantomjs, please upgrade\e[0m"
+    if Gem::Version.new(phantomjs_versions) < Gem::Version.new(required_phantomjs_version)
+      puts "\e[31mWARN: Using a version of phantomjs < #{required_phantomjs_version}, please upgrade\e[0m"
       exit(status=false)
     end
     Berg::Application.freeze
