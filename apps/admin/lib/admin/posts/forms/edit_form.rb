@@ -14,14 +14,16 @@ module Admin
           text_area :body, label: "Body"
           text_field :slug, label: "Slug"
           selection_field :author_id, label: "Author", options: dep(:author_list)
-          select_box :status, label: "Status", options: [
-            ["draft", "Draft"], ["published", "Published"], ["deleted", "Deleted"]
-          ]
+          select_box :status, label: "Status", options: dep(:status_list)
           date_time_field :published_at, label: "Published at"
         end
 
         def author_list
           users.listing.map { |user| { id: user.id, label: user.full_name } }
+        end
+
+        def status_list
+          Entities::Post::Status.values.map { |value| [value, value.capitalize] }
         end
       end
     end

@@ -43,6 +43,7 @@ group :development, :test do
   gem "faker"
   gem "guard-rspec", require: false
   gem "pry-byebug"
+  gem "foreman"
 end
 
 group :test do

@@ -1,0 +1,46 @@
+/**
+ * Reset
+ */
+@import './reset';
+
+/**
+ * General traits
+ */
+@import './traits';
+
+/**
+ * Base
+ */
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--colorPrimaryBackground);
+  color: var(--colorPrimaryTextColor);
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+}
+
+.content {
+  flex: 1 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 142rem;
+  padding: 5rem;
+  width: 100%;
+}
+  .content__inner {
+    background-color: var(--colorWhite);
+    margin-bottom: 5rem;
+  }
+
+/**
+ * Components
+ */
+
+ @import "./masthead";
+ @import "./footer";

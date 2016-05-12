@@ -1,0 +1,110 @@
+/* Miscellaneous traits */
+
+:root {
+  --borderRadiusXSmall: 1px;
+  --borderRadiusSmall: 2px;
+  --borderRadiusMedium: 3px;
+  --borderRadiusLarge: 5px;
+  --borderRadiusHuge: 8px;
+}
+
+/* Radius */
+
+.br-none {
+  border-radius: 0;
+}
+
+.br-xsmall {
+  border-radius: var(--borderRadiusXSmall);
+}
+
+.br-small {
+  border-radius: var(--borderRadiusSmall);
+}
+
+.br-medium {
+  border-radius: var(--borderRadiusMedium);
+}
+
+.br-large {
+  border-radius: var(--borderRadiusLarge);
+}
+
+.br-huge {
+  border-radius: var(--borderRadiusHuge);
+}
+
+/* Visibility */
+
+.hide-all,
+.breakpoint-widescreen .hide-widescreen,
+.breakpoint-desktop .hide-desktop,
+.breakpoint-tablet-wide .hide-tablet-wide,
+.breakpoint-tablet .hide-tablet,
+.breakpoint-phone .hide-phone {
+  display: none;
+}
+
+.breakpoint-widescreen .show-widescreen,
+.breakpoint-desktop .show-desktop,
+.breakpoint-tablet-wide .show-tablet-wide,
+.breakpoint-tablet .show-tablet,
+.breakpoint-phone .show-phone {
+  display: block;
+}
+
+.breakpoint-widescreen .show-widescreen--i,
+.breakpoint-desktop .show-desktop--i,
+.breakpoint-tablet-wide .show-tablet-wide--i,
+.breakpoint-tablet .show-tablet--i,
+.breakpoint-phone .show-phone--i {
+  display: inline;
+}
+
+.breakpoint-widescreen .show-widescreen--ib,
+.breakpoint-desktop .show-desktop--ib,
+.breakpoint-tablet-wide .show-tablet-wide--ib,
+.breakpoint-tablet .show-tablet--ib,
+.breakpoint-phone .show-phone--ib {
+  display: inline-block;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.hide-visually {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.hide-visually.focusable:active,
+.hide-visually.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}

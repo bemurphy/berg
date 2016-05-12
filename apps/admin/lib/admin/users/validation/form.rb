@@ -27,7 +27,7 @@ module Admin
         optional(:password).filled(min_size?: 8)
 
         rule(email: [:email, :previous_email]) do |email, previous_email|
-          email.filled? & email.not_eql?(previous_email).then(email.email_unique?)
+          email.not_eql?(previous_email).then(email.email_unique?)
         end
       end
     end
