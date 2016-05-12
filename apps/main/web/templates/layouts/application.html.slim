@@ -6,4 +6,25 @@ html
     script type="text/javascript" src=page.assets["main__public.js"]
   body
     == page.flash
-    == yield
+    .content.mx-auto role="main"
+      .content__inner
+        .masthead.clearfix
+          h1.masthead__logo.fl-left
+            a.masthead__logo-anchor href="#"
+              span.masthead__logo-berg.mr-small
+              | Icelab
+          ul.main-nav.fl-right
+            li.main-nav__item
+              a.main-nav__anchor.main-nav__anchor--active href="#" Work
+            li.main-nav__item
+              a.main-nav__anchor href="#" About
+            li.main-nav__item
+              a.main-nav__anchor href="#" Notes
+            li.main-nav__item
+              a.main-nav__anchor href="#" Get in touch
+        == yield
+      .get-in-touch.t-center
+        p Work with us, we&rsquo;re good people
+    .footer
+      .footer__inner.mx-auto
+        | Icelab
