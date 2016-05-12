@@ -2,15 +2,15 @@
  * Footer navigation
  */
 
-.footer-nav {
+.nav-footer {
   margin-left: auto;
   margin-right: -1.8rem;
 }
-  .footer-nav__item {
+  .nav-footer__item {
     display: block;
     float: left;
   }
-    .footer-nav__anchor {
+    .nav-footer__anchor {
       color: #fff;
       display: block;
       font-size: 1.8rem;
@@ -18,7 +18,7 @@
       padding-right: 1.8rem;
       position: relative;
     }
-    .footer-nav__anchor--active:before {
+    .nav-footer__anchor--active:before {
       background-color: var(--colorRed);
       border-radius: 50%;
       content: "";
