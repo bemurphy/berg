@@ -1,0 +1,46 @@
+/* Colours */
+
+:root {
+  --colorWhite:             #fff;
+  --colorBeige:             #f4f2f0;
+  --colorRed:               #e46b7a;
+  --colorGreen:             #68b2b1;
+  --colorDarkBlue:          #53839e;
+  --colorBlue:              #0b93b7;
+  --colorLightBlue:         #8ae6ff;
+  --colorDarkestGrey:       #373737;
+  --colorDarkGrey:          #4a4a4a;
+  --colorMediumGrey:        #515050;
+  --colorLightGrey:         #9b9b9b;
+  --colorLightestGrey:      #d1d1d1;
+  --colorPrimaryBackground: var(--colorBeige);
+  --colorPrimaryTextColor:  var(--colorDarkGrey);
+}
+
+/* White */
+
+.c-white {
+  color: var(--colorWhite);
+}
+
+.bgc-white {
+  background-color: var(--colorWhite);
+}
+
+.bc-white {
+  border-color: var(--colorWhite);
+}
+
+/* Beige */
+
+.c-beige {
+  color: var(--colorBeige);
+}
+
+.bgc-beige {
+  background-color: var(--colorBeige);
+}
+
+.bc-beige {
+  border-color: var(--colorBeige);
+}
