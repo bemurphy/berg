@@ -3,7 +3,17 @@
 :root {
   --colorWhite:             #fff;
   --colorBeige:             #f4f2f0;
+  --colorRed:               #e46b7a;
+  --colorGreen:             #68b2b1;
+  --colorBlue:              #0b93b7;
+  --colorLightBlue:         #8ae6ff;
+  --colorDarkestGrey:       #373737;
+  --colorDarkGrey:          #4a4a4a;
+  --colorMediumGrey:        #515050;
+  --colorLightGrey:         #9b9b9b;
+  --colorLightestGrey:      #d1d1d1;
   --colorPrimaryBackground: var(--colorBeige);
+  --colorPrimaryTextColor:  var(--colorDarkGrey);
 }
 
 /* White */
