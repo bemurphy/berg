@@ -15,24 +15,24 @@ GIT
 
 GIT
   remote: https://github.com/dryrb/dry-logic
-  revision: e649fad58546e8e53a048d310c554ad910466a93
+  revision: 201de80e6a3f359f9836a86fc56be6cb65ddae16
   branch: master
   specs:
-    dry-logic (0.2.2)
+    dry-logic (0.2.3)
       dry-container (~> 0.2, >= 0.2.6)
       dry-equalizer (~> 0.2)
 
 GIT
   remote: https://github.com/dryrb/dry-types
-  revision: 3285b957aad84302e83c293934588d9b021ace65
+  revision: ed7a7f605dfacb08ae57d004a36ee4d53881a610
   branch: master
   specs:
-    dry-types (0.7.1)
+    dry-types (0.7.2)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1)
       dry-container (~> 0.3)
       dry-equalizer (~> 0.2)
-      dry-logic (~> 0.2, >= 0.2.0)
+      dry-logic (~> 0.2, >= 0.2.3)
       dry-monads (>= 0.0.1)
       inflecto (~> 0.0.0, >= 0.0.2)
 

@@ -8,7 +8,7 @@ module Persistence
       def execute(tuple)
         result = super
 
-        post_id = relation.first[:id]
+        post_id = result.first[:id]
         taggings.where(post_id: post_id).delete
 
         if tuple[:post_tags]

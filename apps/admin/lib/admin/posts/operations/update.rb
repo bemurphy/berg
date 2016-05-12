@@ -18,7 +18,7 @@ module Admin
           validation = Validation::Form.(prepare_attributes(slug, attributes))
 
           if validation.success?
-            update_post.by_slug(slug).(prepare_attributes_for_update(validation.output))
+            update_post.by_slug(slug).(validation.output)
             Right(posts.by_slug(validation.output.fetch(:slug) { slug }))
           else
             Left(validation)
