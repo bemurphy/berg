@@ -2,22 +2,22 @@
  * Main navigation
  */
 
-.main-nav {
+.nav-main {
   margin-left: auto;
   margin-right: -1.8rem;
 }
-  .main-nav__item {
+  .nav-main__item {
     display: block;
     float: left;
   }
-    .main-nav__anchor {
+    .nav-main__anchor {
       display: block;
       font-size: 1.8rem;
       padding-left: 1.8rem;
       padding-right: 1.8rem;
       position: relative;
     }
-    .main-nav__anchor--active:before {
+    .nav-main__anchor--active:before {
       background-color: var(--colorRed);
       border-radius: 50%;
       content: "";

@@ -60,6 +60,6 @@ a:active {
  */
 
  @import "./masthead";
- @import "./main-nav";
+ @import "./nav-main";
  @import "./footer";
- @import "./footer-nav"
+ @import "./nav-footer"
