@@ -1,0 +1,14 @@
+/**
+ * Body
+ */
+
+.main-panel {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 142rem;
+  padding: 5rem;
+}
+
+  .main-panel__inner {
+    background-color: var(--colorWhite);
+  }
