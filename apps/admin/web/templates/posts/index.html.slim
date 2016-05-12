@@ -28,7 +28,7 @@ h1.h-1 Posts
                   .label.label--ghost
                     = post.status
               - if post.published?
-                td.vertical-align--middle.f-mono = post.published_at.strftime("%e %b %Y %H:%M:%S%p")
+                td.vertical-align--middle.f-mono = post.published_date
                 td.horizontal-align--center.vertical-align--middle
                   a href="/posts/#{post.slug}" View
               - else
