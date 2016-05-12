@@ -18,7 +18,7 @@ html {
 
 body {
   background-color: var(--colorPrimaryBackground);
-  color: var(--colorPrimaryTextColor);
+  color: var(--colorPrimaryText);
   font-family: "Helvetica Neue", "Helvetica", sans-serif;
   display: flex;
   flex-direction: column;
@@ -59,7 +59,8 @@ a:active {
  * Components
  */
 
- @import "./masthead";
- @import "./nav-main";
- @import "./footer";
- @import "./nav-footer"
+@import "./skip-links";
+@import "./masthead";
+@import "./nav-main";
+@import "./footer";
+@import "./nav-footer"

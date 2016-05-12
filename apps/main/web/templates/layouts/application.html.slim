@@ -6,14 +6,16 @@ html
     script type="text/javascript" src=page.assets["main__public.js"]
   body
     == page.flash
-    .content.mx-auto role="main"
+    a.skip-link.skip-link--main-navigation href="#main-navigation" tabindex="1" Skip to the main navigation
+    a.skip-link.skip-link--main-content href="#main-content" tabindex="2" Skip to the content
+    .content.mx-auto#main-content role="main"
       .content__inner
         .masthead.flex-y-center
           h1.masthead__logo
             a.masthead__logo-anchor.flex-y-center href="#"
               span.masthead__logo-berg.mr-small
               | Icelab
-          ul.nav-main.fl-right
+          ul.nav-main.fl-right#main-navigation role="navigation"
             li.nav-main__item
               a.nav-main__anchor.nav-main__anchor--active href="#" Work
             li.nav-main__item
@@ -25,7 +27,7 @@ html
         == yield
       .get-in-touch.t-center
         p Work with us, we&rsquo;re good people
-    .footer
+    .footer role="contentinfo"
       .footer__inner.mx-auto.clearfix
         .footer__address.fl-left
           | Canberra
@@ -33,7 +35,7 @@ html
           | Melbourne
         .footer__contact.fl-left
           | Get in touch
-        ul.nav-footer.fl-right
+        ul.nav-footer.fl-right role="navigation"
           li.nav-footer__item
             a.nav-footer__anchor.nav-footer__anchor--active href="#" Work
           li.nav-footer__item
