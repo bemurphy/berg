@@ -1,0 +1,31 @@
+== actions
+
+h1.h-1 Posts
+
+.panel
+  .panel__primary
+    .table.link-children
+      table
+        thead
+          tr
+            th Title
+            th Status
+            th Published at
+            th.horizontal-align--center Actions
+        tbody
+          - posts.each do |post|
+            tr id="post-#{post.slug}"
+              td.vertical-align--middle
+                a href="/admin/posts/#{post.slug}/edit" = post.title
+              td.vertical-align--middle
+                .label class="label--#{post.status_class}"
+                  = post.status_label
+              - if post.published?
+                td.vertical-align--middle.f-mono = post.published_date
+                td.horizontal-align--center.vertical-align--middle
+                  a href="/posts/#{post.slug}" View
+              - else
+                td
+                td
+p
+  == paginator.pagination

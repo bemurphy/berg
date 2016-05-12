@@ -23,6 +23,7 @@ gem "rom-support", git: "https://github.com/rom-rb/rom-support"
 gem "que"
 
 # Application dependencies
+gem "babosa"
 gem "bcrypt"
 gem "dry-equalizer"
 gem "dry-result_matcher"
@@ -39,6 +40,7 @@ gem "bugsnag"
 gem "postmark"
 
 group :development, :test do
+  gem "faker"
   gem "guard-rspec", require: false
   gem "pry-byebug"
   gem "foreman"

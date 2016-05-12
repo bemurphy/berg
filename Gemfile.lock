@@ -129,6 +129,7 @@ GEM
       abstract_type (~> 0.0.7)
       adamantium (~> 0.2)
       equalizer (~> 0.0.11)
+    babosa (0.3.4)
     bcrypt (3.1.10)
     bugsnag (2.8.12)
       json (~> 1.7, >= 1.7.7)
@@ -171,6 +172,8 @@ GEM
       inflecto (~> 0)
       tilt (~> 2.0)
     equalizer (0.0.11)
+    faker (1.6.3)
+      i18n (~> 0.5)
     ffi (1.9.10)
     formatador (0.2.5)
     guard (2.13.0)
@@ -278,6 +281,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  babosa
   bcrypt
   bugsnag
   capybara
@@ -290,6 +294,7 @@ DEPENDENCIES
   dry-types!
   dry-validation!
   dry-web!
+  faker
   formalist!
   guard-rspec
   i18n

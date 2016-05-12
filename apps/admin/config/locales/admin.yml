@@ -14,6 +14,9 @@ en:
       user_created: "User has been created"
       user_updated: "User has been updated"
       password_changed: "Password has been changed"
+    posts:
+      post_created: "Post has been created"
+      post_updated: "Post has been updated"
     emails:
       users:
         account_activation:

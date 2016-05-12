@@ -1,4 +1,5 @@
 require_relative "../core/boot"
+require "faker"
 
 def core
   Berg::Container
@@ -18,9 +19,27 @@ def create_user(attrs)
   end
 end
 
+def create_post(attrs)
+  if !admin["admin.persistence.repositories.posts"].by_slug(attrs[:slug])
+    admin["admin.posts.operations.create"].call(attrs).value
+  end
+end
+
 create_user(
   email: "hello@icelab.com.au",
   first_name: "Icelab",
   last_name: "Admin",
   active: true
 )
+
+author = admin["admin.persistence.repositories.users"].by_email("hello@icelab.com.au")
+
+20.times do |n|
+  create_post(
+    title: Faker::Hipster.sentence,
+    teaser: Faker::Hipster.sentence,
+    body: Faker::Hipster.paragraph,
+    status: "draft",
+    author_id: author.id
+  )
+end
