@@ -27,5 +27,9 @@ module Admin
     class PostWithTags < Post
       attribute :post_tags, "array<admin.entities.tag>"
     end
+
+    class PostWithTags < Post
+      attribute :post_tags, "array<admin.entities.tag>"
+    end
   end
 end
