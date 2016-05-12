@@ -41,6 +41,7 @@ gem "postmark"
 group :development, :test do
   gem "guard-rspec", require: false
   gem "pry-byebug"
+  gem "foreman"
 end
 
 group :test do
