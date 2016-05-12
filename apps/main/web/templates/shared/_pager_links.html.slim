@@ -1,8 +1,8 @@
 span.prev
-  - disabled_class = (first_page? ? 'disabled' : '')
-  a href=url_for_page(prev_page) rel="prev" class=[disabled_class]
+  - disabled_class = (current_page == 1 ? 'disabled' : '')
+  a href="/posts?page=#{prev_page}" rel="prev" class=[disabled_class]
     | &lsaquo; Newer
 span.next
-  - disabled_class = (last_page? ? 'disabled' : '')
-  a href=url_for_page(next_page) rel="next" class=[disabled_class]
+  - disabled_class = (current_page == total_pages ? 'disabled' : '')
+  a href="/posts?page=#{next_page}" rel="next" class=[disabled_class]
     | Older &rsaquo;

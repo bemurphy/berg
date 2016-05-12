@@ -1,10 +1,4 @@
 nav.pagination
-  - if prev_gap?
-    span.page.gap
-      | &hellip;
-  - each_entry do |page|
-    span.page class=("current" if page.current?)
-      a href=url_for_page(page) = page.number
-  - if next_gap?
-    span.page.gap
-      | &hellip;
+  - (1..total_pages).each do |page|
+    span.page class=("current" if current_page == page)
+      a href="?page=#{page}" = page

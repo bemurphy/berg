@@ -1,5 +1,4 @@
 require "main/import"
-require "main/paginator"
 require "main/view"
 require "main/decorators/public_post"
 
@@ -23,7 +22,7 @@ module Main
 
           super.merge(
             posts: public_posts,
-            paginator: Paginator.new(all_posts.pager, url_template: "/posts?page=%")
+            paginator: all_posts.pager
           )
         end
       end

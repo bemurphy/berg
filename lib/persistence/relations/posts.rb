@@ -17,6 +17,7 @@ module Persistence
       end
 
       use :pagination
+      per_page 20
 
       def by_id(id)
         where(id: id)
