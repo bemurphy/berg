@@ -8,9 +8,9 @@ html
     == page.flash
     .content.mx-auto role="main"
       .content__inner
-        .masthead.flex-v-center.clearfix
-          h1.masthead__logo.fl-left
-            a.masthead__logo-anchor.flex-v-center href="#"
+        .masthead.flex-y-center
+          h1.masthead__logo
+            a.masthead__logo-anchor.flex-y-center href="#"
               span.masthead__logo-berg.mr-small
               | Icelab
           ul.main-nav.fl-right
@@ -26,5 +26,19 @@ html
       .get-in-touch.t-center
         p Work with us, we&rsquo;re good people
     .footer
-      .footer__inner.mx-auto
-        | Icelab
+      .footer__inner.mx-auto.clearfix
+        .footer__address.fl-left
+          | Canberra
+        .footer__address.fl-left
+          | Melbourne
+        .footer__contact.fl-left
+          | Get in touch
+        ul.footer-nav.fl-right
+          li.footer-nav__item
+            a.footer-nav__anchor.footer-nav__anchor--active href="#" Work
+          li.footer-nav__item
+            a.footer-nav__anchor href="#" About
+          li.footer-nav__item
+            a.footer-nav__anchor href="#" Notes
+          li.footer-nav__item
+            a.footer-nav__anchor href="#" Get in touch

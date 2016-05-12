@@ -9,4 +9,6 @@
 }
   .footer__inner {
     max-width: 142rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
