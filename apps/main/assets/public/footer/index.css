@@ -1,0 +1,13 @@
+/**
+ * Footer
+ */
+
+.footer {
+  background-color: var(--colorDarkestGrey);
+  color: var(--colorWhite);
+  padding: 5rem;
+}
+
+  .footer__inner {
+    max-width: 142rem;
+  }

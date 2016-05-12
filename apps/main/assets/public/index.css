@@ -19,6 +19,8 @@ html {
 body {
   background-color: var(--colorPrimaryBackground);
   color: var(--colorPrimaryTextColor);
+  display: flex;
+  flex-direction: column;
   font-size: 1.6rem;
 }
 
@@ -27,3 +29,4 @@ body {
  */
 
  @import "./main-panel";
+ @import "./footer";

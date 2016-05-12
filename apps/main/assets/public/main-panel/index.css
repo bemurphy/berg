@@ -3,12 +3,18 @@
  */
 
 .main-panel {
+  flex: 1 0 auto;
   margin-left: auto;
   margin-right: auto;
   max-width: 142rem;
   padding: 5rem;
+  width: 100%;
 }
 
   .main-panel__inner {
     background-color: var(--colorWhite);
+  }
+
+  .main-panel__get-in-touch {
+    padding-top: 5rem;
   }
