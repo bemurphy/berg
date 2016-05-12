@@ -17,6 +17,7 @@ html {
 }
 
 body {
+  background-color: var(--colorPrimaryBackground);
   font-size: 1.6rem;
 }
 
