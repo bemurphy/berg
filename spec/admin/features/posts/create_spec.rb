@@ -11,7 +11,7 @@ RSpec.feature "Admin / Posts / Create", js: true do
 
   # Currently Formalist appears to not add an ID to selection_field field types so we can't
   # target #author_id - it doesn't exist
-  scenario "I can create a post, with a slug generated automatically" do
+  pending "I can create a post, with a slug generated automatically" do
     find("nav a", text: "Posts").trigger("click")
 
     find("a", text: "Add a post").trigger("click")
@@ -43,7 +43,7 @@ RSpec.feature "Admin / Posts / Create", js: true do
     expect(page).to have_content("must be filled")
   end
 
-  scenario "I can add an existing tag to a post" do
+  pending "I can add an existing tag to a post" do
     find("nav a", text: "Posts").trigger("click")
 
     find("a", text: "Add a post").trigger("click")
