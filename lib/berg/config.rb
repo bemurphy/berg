@@ -1,5 +1,6 @@
 require "types"
 require "yaml"
+require "./lib/berg/validation/application"
 
 module Berg
   class Config < Dry::Types::Struct
@@ -12,7 +13,8 @@ module Berg
     attribute :session_secret, RequiredString
 
     attribute :assets_server_url, Types::String
-    attribute :precompiled_assets, Types::Form::Bool # TODO: add .default(false) when dry-types allows it
+
+    attribute :precompiled_assets, Types::Strict::Bool.default(false)
     attribute :precompiled_assets_host, Types::String
 
     attribute :app_mailer_from_email, Types::String
@@ -26,6 +28,10 @@ module Berg
     def self.load(root, name, env)
       path = root.join("config").join("#{name}.yml")
       yaml = File.exist?(path) ? YAML.load_file(path) : {}
+
+      symbolised_yaml = yaml.fetch(env.to_s, {}).inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+
+      fail Berg::Validation::Application.call(symbolised_yaml).messages.inspect unless Berg::Validation::Application.call(symbolised_yaml).messages.empty?
 
       config = schema.keys.inject({}) { |memo, key|
         value = ENV.fetch(
