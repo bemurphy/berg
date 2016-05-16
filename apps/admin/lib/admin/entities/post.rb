@@ -25,7 +25,7 @@ module Admin
     end
 
     class PostWithTags < Post
-      attribute :post_tags, "array<admin.entities.tag>"
+      attribute :post_tags, Types::Strict::Array.member(Admin::Entities::Tag)
     end
   end
 end
