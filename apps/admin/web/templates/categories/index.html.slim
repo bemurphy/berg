@@ -1,0 +1,22 @@
+== actions
+
+h1.h-1 Categories
+
+.panel
+  .panel__primary
+    .table.link-children
+      table
+        thead
+          tr
+            th Name
+            th Slug
+            th.horizontal-align--center Actions
+        tbody
+          - categories.each do |category|
+            tr id="category-#{category.slug}"
+              td.vertical-align--middle
+                a href="/admin/categories/#{category.slug}/edit" = category.name
+              td.vertical-align--middle
+                = category.slug
+              td.horizontal-align--center.vertical-align--middle
+                a href="#" data-view-confirm-action=JSON.generate(question: "Deleting `#{category.name}` will also remove it from all posts. Continue?", action: "/admin/categories/#{category.slug}", method: "DELETE") Delete

@@ -23,3 +23,7 @@ en:
           subject: "Activate your Berg account"
         reset_password:
           subject: "Berg password reset request"
+    categories:
+      category_created: "Category has been created"
+      category_updated: "Category has been updated"
+      category_deleted: "Category has been deleted"

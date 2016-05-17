@@ -6,20 +6,19 @@ require "kleisli"
 module Admin
   module Categories
     module Operations
-      class Create
+      class Update
         include Admin::Import(
-          "admin.persistence.repositories.categories",
-          "admin.slugify"
+          "admin.persistence.repositories.categories"
         )
 
         include Dry::ResultMatcher.for(:call)
 
-        def call(attributes)
-          validation = Validation::Form.(attributes)
+        def call(slug, attributes)
+          validation = Validation::Form.(prepare_attributes(slug, attributes))
 
           if validation.success?
-            category = Entities::Category.new(categories.create(prepare_attributes(validation.output)))
-            Right(category)
+            categories.update(slug, validation.output)
+            Right(categories.by_slug(validation.output.fetch(:slug) { slug }))
           else
             Left(validation)
           end
@@ -27,9 +26,9 @@ module Admin
 
         private
 
-        def prepare_attributes(attributes)
+        def prepare_attributes(slug, attributes)
           attributes.merge(
-            slug: slugify.(attributes[:name], categories.method(:slug_exists?))
+            previous_slug: slug
           )
         end
       end

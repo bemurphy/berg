@@ -6,23 +6,13 @@ require "kleisli"
 module Admin
   module Categories
     module Operations
-      class Create
-        include Admin::Import(
-          "admin.persistence.repositories.categories",
-          "admin.slugify"
-        )
+      class Delete
+        include Admin::Import("admin.persistence.repositories.categories")
 
         include Dry::ResultMatcher.for(:call)
 
-        def call(attributes)
-          validation = Validation::Form.(attributes)
-
-          if validation.success?
-            category = Entities::Category.new(categories.create(prepare_attributes(validation.output)))
-            Right(category)
-          else
-            Left(validation)
-          end
+        def call(slug)
+          categories.delete(slug)
         end
 
         private
