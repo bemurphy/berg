@@ -31,7 +31,6 @@ module Admin
     plugin :view
     plugin :page
     plugin :auth
-    plugin :all_verbs
 
     def name
       :admin
