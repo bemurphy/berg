@@ -8,7 +8,10 @@ module Main
         relations :posts, :users
 
         def by_slug(slug)
-          posts.by_slug(slug).as(Entities::Post).one
+          posts
+          .by_slug(slug)
+          .combine(one: { author: [users, author_id: :id] })
+          .as(Entities::Post::WithAuthor).one
         end
 
         def listing(page: 1, per_page: 20)

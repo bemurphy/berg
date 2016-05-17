@@ -4,7 +4,10 @@ module Admin
   module Posts
     module Forms
       class EditForm < Berg::Form
-        include Admin::Import["admin.persistence.repositories.users"]
+        include Admin::Import[
+          "admin.persistence.repositories.users",
+          "admin.persistence.repositories.categories"
+        ]
 
         prefix :post
 
@@ -16,6 +19,11 @@ module Admin
           selection_field :author_id, label: "Author", options: dep(:author_list)
           select_box :status, label: "Status", options: dep(:status_list)
           date_time_field :published_at, label: "Published at"
+          multi_selection_field :post_categories,
+            label: "Categories",
+            selector_label: "Choose categories",
+            options: dep(:categories_list)
+
         end
 
         def author_list
@@ -24,6 +32,16 @@ module Admin
 
         def status_list
           Entities::Post::Status.values.map { |value| [value, value.capitalize] }
+        end
+
+        def categories_list
+          categories.listing.to_a.map { |category|
+            {
+              id: category.id,
+              label: category.name,
+              slug: category.slug
+            }
+          }
         end
       end
     end

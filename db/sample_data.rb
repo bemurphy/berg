@@ -31,6 +31,12 @@ def create_project(attrs)
   end
 end
 
+def create_category(attrs)
+  if !admin["admin.persistence.repositories.categories"].by_slug(attrs[:slug])
+    admin["admin.categories.operations.create"].call(attrs).value
+  end
+end
+
 create_user(
   email: "hello@icelab.com.au",
   first_name: "Icelab",
@@ -60,4 +66,14 @@ end
     tags: Faker::Hipster.word,
     status: "draft"
   )
+end
+
+{ ruby: "Ruby",
+  dry_web: "dry-web",
+  rails: "Rails",
+  javascript: "Javascript",
+  ios: "iOS",
+  design: "Design",
+  react: "React" }.each do |slug, name|
+    create_category(name: name, slug: slug)
 end

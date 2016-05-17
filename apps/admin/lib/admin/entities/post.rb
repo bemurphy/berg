@@ -1,4 +1,5 @@
 require "types"
+require "admin/entities/category"
 
 module Admin
   module Entities
@@ -21,6 +22,10 @@ module Admin
       def published?
         status == "published"
       end
+    end
+
+    class PostWithCategories < Post
+      attribute :post_categories, Types::Strict::Array.member(Admin::Entities::Category)
     end
   end
 end

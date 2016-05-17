@@ -1,14 +1,15 @@
 module Persistence
   module Commands
-    class CreatePost < ROM::Commands::Create[:sql]
+    class UpdatePost < ROM::Commands::Update[:sql]
       relation :posts
-      register_as :create
+      register_as :update
       result :one
 
       def execute(tuple)
         result = super
 
         post_id = result.first[:id]
+        categorisations.where(post_id: post_id).delete
 
         if tuple[:post_categories]
           categories = tuple[:post_categories].product([post_id])

@@ -8,7 +8,8 @@ module Admin
       class Edit < Admin::View
         include Admin::Import(
           "admin.persistence.repositories.posts",
-          "admin.posts.forms.edit_form"
+          "admin.persistence.repositories.categories",
+          "admin.posts.forms.edit_form",
         )
 
         configure do |config|
@@ -32,8 +33,15 @@ module Admin
           if validation
             edit_form.build(validation, validation.messages)
           else
-            edit_form.build(post)
+            edit_form.build(form_input(post))
           end
+        end
+
+        def form_input(post)
+          categories = post.post_categories
+          post.to_h.merge(
+            post_categories: categories.map(&:id)
+          )
         end
       end
     end

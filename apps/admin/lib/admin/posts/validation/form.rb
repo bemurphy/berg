@@ -29,6 +29,9 @@ module Admin
         optional(:slug).filled
         optional(:previous_slug).maybe
         optional(:status).filled(inclusion?: Entities::Post::Status.values)
+        optional(:author_id).filled(:int?)
+        optional(:post_categories).each(:int?)
+        optional(:status).filled(included_in?: Entities::Post::Status.values)
         optional(:published_at).maybe(:time?)
 
         rule(slug: [:slug, :previous_slug]) do |slug, previous_slug|
