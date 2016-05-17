@@ -7,7 +7,7 @@ RSpec.feature "Admin / Projects / Create", js: true do
     sign_in(jane.email, jane.password)
   end
 
-  scenario "I can create a project, with a slug generated automatically" do
+  scenario "I can create a project" do
     find("nav a", text: "Projects").trigger("click")
 
     find("a", text: "Add a project").trigger("click")
