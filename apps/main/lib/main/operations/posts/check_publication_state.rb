@@ -10,7 +10,7 @@ module Main
         def call(slug)
           post = posts.by_slug(slug)
 
-          if post.status == "published"
+          if post && post.status == "published"
             Right(post)
           else
             Left("This post has not yet been published.")
