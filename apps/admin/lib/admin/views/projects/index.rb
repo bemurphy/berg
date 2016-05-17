@@ -17,7 +17,7 @@ module Admin
           all_projects = projects.listing(page: options[:page], per_page: options[:per_page])
 
           super.merge(
-            projects: all_projects.to_a,
+            projects: all_projects,
             paginator: Paginator.new(all_projects.pager, url_template: "/admin/projects?page=%")
           )
         end
