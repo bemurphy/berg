@@ -1,5 +1,3 @@
-# require "either_result_matcher"
-# require "kleisli"
 require "main/import"
 
 module Main
@@ -15,7 +13,7 @@ module Main
           if post.status == "published"
             Right(post)
           else
-            Left("Could not find post")
+            Left("This post has not yet been published.")
           end
         end
       end
