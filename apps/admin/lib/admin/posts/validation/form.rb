@@ -28,7 +28,6 @@ module Admin
         # Required in only the edit form
         optional(:slug).filled
         optional(:previous_slug).maybe
-        optional(:status).filled(inclusion?: Entities::Post::Status.values)
         optional(:author_id).filled(:int?)
         optional(:post_categories).each(:int?)
         optional(:status).filled(included_in?: Entities::Post::Status.values)

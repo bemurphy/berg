@@ -30,7 +30,7 @@ module Admin
         # Required in only the edit form
         optional(:slug).filled
         optional(:previous_slug).maybe
-        optional(:status).filled(inclusion?: Entities::Project::Status.values)
+        optional(:status).filled(included_in?: Entities::Project::Status.values)
         optional(:published_at).maybe(:time?)
 
         rule(slug: [:slug, :previous_slug]) do |slug, previous_slug|
