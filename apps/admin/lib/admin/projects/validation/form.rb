@@ -27,18 +27,18 @@ module Admin
         required(:body).filled
         required(:tags).filled
 
-        # Required only in the edit form
+        # Required in only the edit form
         optional(:slug).filled
         optional(:previous_slug).maybe
         optional(:status).filled(inclusion?: Entities::Project::Status.values)
         optional(:published_at).maybe(:time?)
 
-        rule(published_at: [:status, :published_at]) do |status, published_at|
-          status.eql?("published").then(published_at.filled?)
-        end
-
         rule(slug: [:slug, :previous_slug]) do |slug, previous_slug|
           slug.not_eql?(previous_slug).then(slug.slug_unique?)
+        end
+
+        rule(published_at: [:status, :published_at]) do |status, published_at|
+          status.eql?("published").then(published_at.filled?)
         end
       end
     end
