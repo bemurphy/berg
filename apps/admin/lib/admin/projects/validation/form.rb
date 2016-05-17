@@ -19,14 +19,14 @@ module Admin
           end
         end
 
-        optional(:title).filled
-        optional(:client).filled
-        optional(:url).filled
-        optional(:intro).filled
-        optional(:body).filled
+        required(:title).filled
+        required(:client).filled
+        required(:url).filled
+        required(:intro).filled
+        required(:body).filled
         optional(:slug).filled
         optional(:previous_slug).maybe
-        optional(:tags).filled
+        required(:tags).filled
         optional(:status).filled(inclusion?: Entities::Project::Status.values)
         optional(:published_at).maybe(:time?)
         rule(published_at: [:status, :published_at]) do |status, published_at|
