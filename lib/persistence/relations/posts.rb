@@ -13,6 +13,7 @@ module Persistence
 
         associate do
           belongs :author, relation: :users
+          many :categories, through: :categorisations
         end
       end
 

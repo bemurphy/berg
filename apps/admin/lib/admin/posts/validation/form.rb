@@ -25,7 +25,7 @@ module Admin
         optional(:slug).filled
         optional(:previous_slug).maybe
         optional(:author_id).filled(:int?)
-        optional(:status).filled(inclusion?: Entities::Post::Status.values)
+        optional(:status).filled(included_in?: Entities::Post::Status.values)
         optional(:published_at).maybe(:time?)
         rule(published_at: [:status, :published_at]) do |status, published_at|
           status.eql?("published").then(published_at.filled?)
@@ -34,6 +34,7 @@ module Admin
         rule(slug: [:slug, :previous_slug]) do |slug, previous_slug|
           slug.not_eql?(previous_slug).then(slug.slug_unique?)
         end
+        optional(:post_categories).each(:int?)
       end
     end
   end

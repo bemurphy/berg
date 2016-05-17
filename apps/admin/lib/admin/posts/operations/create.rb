@@ -9,6 +9,7 @@ module Admin
       class Create
         include Admin::Import(
           "admin.persistence.repositories.posts",
+          "core.persistence.commands.create_post",
           "admin.slugify"
         )
 
@@ -18,7 +19,7 @@ module Admin
           validation = Validation::Form.(attributes)
 
           if validation.success?
-            post = Entities::Post.new(posts.create(prepare_attributes(validation.output)))
+            post = Admin::Entities::Post.new(create_post.(prepare_attributes(validation.output)))
             Right(post)
           else
             Left(validation)
