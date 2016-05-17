@@ -3,26 +3,26 @@ require "admin/entities/post"
 require "kleisli"
 
 module Admin
-  module Tags
+  module Categories
     module Operations
       class Create
         include Admin::Import(
-          "admin.persistence.repositories.tags",
+          "admin.persistence.repositories.categories",
           "admin.slugify"
         )
 
         include Dry::ResultMatcher.for(:call)
 
         def call(attributes)
-          tag = Entities::Tag.new(tags.create(prepare_attributes(attributes)))
-          Right(tag)
+          category = Entities::Category.new(categories.create(prepare_attributes(attributes)))
+          Right(category)
         end
 
         private
 
         def prepare_attributes(attributes)
           attributes.merge(
-            slug: slugify.(attributes[:name], tags.method(:slug_exists?))
+            slug: slugify.(attributes[:name], categories.method(:slug_exists?))
           )
         end
       end

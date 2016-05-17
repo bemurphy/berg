@@ -6,7 +6,7 @@ module Admin
       class EditForm < Berg::Form
         include Admin::Import[
           "admin.persistence.repositories.users",
-          "admin.persistence.repositories.tags"
+          "admin.persistence.repositories.categories"
         ]
 
         prefix :post
@@ -21,10 +21,10 @@ module Admin
             ["draft", "Draft"], ["published", "Published"], ["deleted", "Deleted"]
           ]
           date_time_field :published_at, label: "Published at"
-          multi_selection_field :post_tags,
-            label: "Tags",
-            selector_label: "Choose tags",
-            options: dep(:tags_list)
+          multi_selection_field :post_categories,
+            label: "Categories",
+            selector_label: "Choose categories",
+            options: dep(:categories_list)
 
         end
 
@@ -32,12 +32,12 @@ module Admin
           users.listing.map { |user| { id: user.id, label: user.full_name } }
         end
 
-        def tags_list
-          tags.listing.to_a.map { |tag|
+        def categories_list
+          categories.listing.to_a.map { |category|
             {
-              id: tag.id,
-              label: tag.name,
-              slug: tag.slug
+              id: category.id,
+              label: category.name,
+              slug: category.slug
             }
           }
         end

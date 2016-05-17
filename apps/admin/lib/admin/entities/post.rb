@@ -1,5 +1,5 @@
 require "types"
-require "admin/entities/tag"
+require "admin/entities/category"
 
 module Admin
   module Entities
@@ -24,8 +24,8 @@ module Admin
       end
     end
 
-    class PostWithTags < Post
-      attribute :post_tags, Types::Strict::Array.member(Admin::Entities::Tag)
+    class PostWithCategories < Post
+      attribute :post_categories, Types::Strict::Array.member(Admin::Entities::Category)
     end
   end
 end

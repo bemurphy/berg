@@ -8,7 +8,7 @@ module Admin
       class Edit < Admin::View
         include Admin::Import(
           "admin.persistence.repositories.posts",
-          "admin.persistence.repositories.tags",
+          "admin.persistence.repositories.categories",
           "admin.posts.forms.edit_form",
         )
 
@@ -38,9 +38,9 @@ module Admin
         end
 
         def form_input(post)
-          tags = post.post_tags
+          categories = post.post_categories
           post.to_h.merge(
-            post_tags: tags.map(&:id)
+            post_categories: categories.map(&:id)
           )
         end
       end

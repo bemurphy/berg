@@ -1,30 +1,30 @@
 require "berg/repository"
-require "admin/entities/tag"
+require "admin/entities/category"
 
 module Admin
   module Persistence
     module Repositories
-      class Tags < Berg::Repository[:tags]
+      class Categories < Berg::Repository[:categories]
         commands :create
 
         def [](id)
-          tags.by_id(id).as(Entities::Tag).one
+          categories.by_id(id).as(Entities::Category).one
         end
 
         def by_slug(slug)
-          tags
+          categories
             .by_slug(slug)
-            .as(Entities::Tag).one
+            .as(Entities::Category).one
         end
 
         def slug_exists?(slug)
-          !!tags.matching_slugs(slug).one
+          !!categories.matching_slugs(slug).one
         end
 
         def listing
-          tags
+          categories
             .order(:name)
-            .as(Entities::Tag)
+            .as(Entities::Category)
         end
       end
     end

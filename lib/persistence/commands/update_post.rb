@@ -9,19 +9,19 @@ module Persistence
         result = super
 
         post_id = result.first[:id]
-        taggings.where(post_id: post_id).delete
+        categorisations.where(post_id: post_id).delete
 
-        if tuple[:post_tags]
-          tags = tuple[:post_tags].product([post_id])
+        if tuple[:post_categories]
+          categories = tuple[:post_categories].product([post_id])
 
-          post_tupples = tags.map do |tag_id, post_id|
+          post_tupples = categories.map do |category_id, post_id|
             {
-              tag_id: tag_id,
+              category_id: category_id,
               post_id: post_id
             }
           end
 
-          taggings.multi_insert(post_tupples)
+          categorisations.multi_insert(post_tupples)
         end
 
         result
@@ -29,8 +29,8 @@ module Persistence
 
       private
 
-      def taggings
-        relation.taggings
+      def categorisations
+        relation.categorisations
       end
     end
   end

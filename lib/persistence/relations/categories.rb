@@ -1,13 +1,13 @@
 module Persistence
   module Relations
-    class Tags < ROM::Relation[:sql]
-      schema(:tags) do
+    class Categories < ROM::Relation[:sql]
+      schema(:categories) do
         attribute :id, Types::Serial
         attribute :name, Types::Strict::String
         attribute :slug, Types::Strict::String
 
         associate do
-          many :posts, through: :taggings
+          many :posts, through: :categorisations
         end
       end
 

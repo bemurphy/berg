@@ -2,11 +2,11 @@ require "admin_app_helper"
 
 RSpec.feature "Admin / Posts / Create", js: true do
   include_context "admin users"
-  include_context "admin tags"
+  include_context "admin categories"
 
   background do
     sign_in(jane.email, jane.password)
-    create_tag("My Tag")
+    create_category("My Tag")
   end
 
   # Currently Formalist appears to not add an ID to selection_field field types so we can't
@@ -43,7 +43,7 @@ RSpec.feature "Admin / Posts / Create", js: true do
     expect(page).to have_content("must be filled")
   end
 
-  scenario "I can add an existing tag to a post" do
+  scenario "I can add an existing category to a post" do
     find("nav a", text: "Posts").trigger("click")
 
     find("a", text: "Add a post").trigger("click")

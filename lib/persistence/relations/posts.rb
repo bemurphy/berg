@@ -12,7 +12,7 @@ module Persistence
         attribute :published_at, Types::Time
 
         associate do
-          many :tags, through: :taggings
+          many :categories, through: :categorisations
         end
       end
 

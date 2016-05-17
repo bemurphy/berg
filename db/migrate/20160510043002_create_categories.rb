@@ -1,6 +1,6 @@
 ROM::SQL.migration do
   up do
-    create_table :tags do
+    create_table :categories do
       primary_key :id
       String :slug, null: false
       String :name, null: false

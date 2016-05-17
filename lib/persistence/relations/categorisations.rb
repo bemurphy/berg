@@ -1,13 +1,13 @@
 module Persistence
   module Relations
-    class Taggings < ROM::Relation[:sql]
-      schema(:taggings) do
+    class Categorisations < ROM::Relation[:sql]
+      schema(:categorisations) do
         attribute :id, Types::Serial
         attribute :post_id, Types::ForeignKey(:posts)
-        attribute :tag_id, Types::ForeignKey(:tags)
+        attribute :category_id, Types::ForeignKey(:categories)
 
         associate do
-          belongs :tags
+          belongs :categories
           belongs :posts
         end
       end

@@ -1,14 +1,14 @@
 ROM::SQL.migration do
   up do
-    create_table :taggings do
+    create_table :categorisations do
       primary_key :id
       Integer :post_id, null: false
-      Integer :tag_id, null: false
+      Integer :category_id, null: false
     end
   end
 
   down do
-    drop_table :posts
+    drop_table :categorisations
   end
 end
 
