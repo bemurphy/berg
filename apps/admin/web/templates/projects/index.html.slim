@@ -20,15 +20,8 @@ h1.h-1 Projects
               td.vertical-align--middle
                 = project.client
               td.vertical-align--middle
-                - if project.published?
-                  .label.label--success
-                    = project.status
-                - elsif project.deleted?
-                  .label.label--warning
-                    = project.status
-                - else
-                  .label.label--ghost
-                    = project.status
+                .label class="label--#{project.status_class}"
+                  = project.status_label
               - if project.published?
                 td.horizontal-align--center.vertical-align--middle
                   a href="/projects/#{project.slug}" View

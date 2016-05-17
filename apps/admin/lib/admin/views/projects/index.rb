@@ -16,8 +16,10 @@ module Admin
           options = { per_page: 20, page: 1 }.merge(options)
           all_projects = projects.listing(page: options[:page], per_page: options[:per_page])
 
+          admin_projects = all_projects.to_a.map { |a| Decorators::Project.new(a) }
+
           super.merge(
-            projects: all_projects,
+            projects: admin_projects,
             paginator: Paginator.new(all_projects.pager, url_template: "/admin/projects?page=%")
           )
         end
