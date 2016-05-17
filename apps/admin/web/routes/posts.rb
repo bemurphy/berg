@@ -3,7 +3,7 @@ class Admin::Application < Dry::Web::Application
     r.authorize do
       r.is do
         r.get do
-          r.view "posts.index", page: r[:page] || 1
+          r.view "posts.index", page: r[:page]
         end
 
         r.post do

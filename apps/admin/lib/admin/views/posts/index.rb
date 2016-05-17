@@ -13,9 +13,10 @@ module Admin
         end
 
         def locals(options = {})
-          options = { per_page: 20, page: 1 }.merge(options)
-          all_posts = posts.listing(page: options[:page], per_page: options[:per_page])
+          page      = options[:page] || 1
+          per_page  = options[:per_page] || 20
 
+          all_posts = posts.listing(page: page, per_page: per_page)
           admin_posts = all_posts.to_a.map { |a| Decorators::Post.new(a) }
 
           super.merge(
