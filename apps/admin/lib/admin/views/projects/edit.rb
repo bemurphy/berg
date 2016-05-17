@@ -16,7 +16,7 @@ module Admin
         end
 
         def locals(options = {})
-          project = projects.by_slug(options.fetch[:slug])
+          project = projects.by_slug(options.fetch(:slug))
 
           project_validation = options[:project_validation]
 
