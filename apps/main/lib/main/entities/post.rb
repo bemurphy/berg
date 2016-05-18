@@ -14,7 +14,7 @@ module Main
       attribute :slug, Types::Strict::String
       attribute :status, Status
       attribute :author_id, Types::Strict::Int
-      attribute :published_at, Types::Time
+      attribute :published_at, Types::Strict::Time
 
       class WithAuthor < Post
         attribute :author, Entities::User
