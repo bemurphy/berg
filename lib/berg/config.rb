@@ -11,6 +11,7 @@ module Berg
     attribute :database_url, RequiredString
     attribute :session_secret, RequiredString
 
+    attribute :canonical_domain, Types::String
     attribute :assets_server_url, Types::String
     attribute :precompiled_assets, Types::Form::Bool # TODO: add .default(false) when dry-types allows it
     attribute :precompiled_assets_host, Types::String
@@ -22,6 +23,10 @@ module Berg
 
     attribute :basic_auth_user, Types::String
     attribute :basic_auth_password, Types::String
+
+    attribute :attache_uploads_base_url, Types::String
+    attribute :attache_downloads_base_url, Types::String
+    attribute :attache_secret_key, Types::String
 
     def self.load(root, name, env)
       path = root.join("config").join("#{name}.yml")

@@ -23,6 +23,7 @@ module Admin
         optional(:previous_email).maybe
         optional(:first_name).filled
         optional(:last_name).filled
+        optional(:bio).maybe
         optional(:active).filled(:bool?)
         optional(:password).filled(min_size?: 8)
 

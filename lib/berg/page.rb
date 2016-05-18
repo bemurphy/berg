@@ -18,6 +18,10 @@ module Berg
       self[:csrf_tag].()
     end
 
+    def csrf_token
+      self[:csrf_token].()
+    end
+
     def assets
       self[:assets]
     end

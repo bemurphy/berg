@@ -11,6 +11,7 @@ module Admin
       attribute :access_token, Types::String
       attribute :access_token_expiration, Types::DateTime
       attribute :active, Types::Bool
+      attribute :bio, Types::Nil | Types::Strict::String
 
       alias_method :active?, :active
 

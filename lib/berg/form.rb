@@ -15,8 +15,12 @@ module Berg
         @prefix = prefix
       end
 
-      def to_h
-        { ast: output.to_ast, prefix: prefix }
+      def to_h(config = {})
+        if config.any?
+          { ast: output.to_ast, prefix: prefix, config: { global: config }}
+        else
+          { ast: output.to_ast, prefix: prefix }
+        end
       end
 
       def to_s

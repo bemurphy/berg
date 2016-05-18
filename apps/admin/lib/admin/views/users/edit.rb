@@ -26,7 +26,8 @@ module Admin
           super.merge(
             user: user,
             user_form: user_form(user, user_validation),
-            pass_form: pass_form(pass_validation)
+            pass_form: pass_form(pass_validation),
+            csrf_token: options[:scope].csrf_token
           )
         end
 
