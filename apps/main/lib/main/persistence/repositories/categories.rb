@@ -7,7 +7,7 @@ module Main
       class Categories < Berg::Repository[:categories]
         relations :categories, :posts, :users
 
-        def by_slug(slug)
+        def by_slug!(slug)
           categories
           .by_slug(slug)
           .as(Entities::Category).one!

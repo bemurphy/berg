@@ -20,7 +20,7 @@ module Main
             options = {per_page: 20, page: 1}.merge(options)
 
             category_slug    = options.fetch(:category)
-            category = categories.by_slug(category_slug)
+            category = categories.by_slug!(category_slug)
             all_posts = posts.for_category(category.id, page: options[:page], per_page: options[:per_page])
 
             category_posts = all_posts.to_a.map { |a|
