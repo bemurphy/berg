@@ -21,7 +21,8 @@ RSpec.shared_context 'main posts' do
       slug: title.to_slug.normalize.to_s,
       author_id: user[:id],
       status: status,
-      published_at: Time.now
+      published_at: Time.now,
+      colour: "blue"
     })
   end
 end

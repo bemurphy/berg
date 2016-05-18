@@ -19,6 +19,10 @@ module Admin
           selection_field :author_id, label: "Author", options: dep(:author_list)
           select_box :status, label: "Status", options: dep(:status_list)
           date_time_field :published_at, label: "Published at"
+          select_box :colour,
+            label: "Colour",
+            selector_label: "Choose colour",
+            options: dep(:colour_list)
           multi_selection_field :post_categories,
             label: "Categories",
             selector_label: "Choose categories",
@@ -42,6 +46,10 @@ module Admin
               slug: category.slug
             }
           }
+        end
+
+        def colour_list
+          Types::Colour.values.map { |value| [value, value.capitalize] }
         end
       end
     end
