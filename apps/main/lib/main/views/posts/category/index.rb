@@ -23,11 +23,9 @@ module Main
             category      = categories.by_slug!(category_slug)
             all_posts     = posts.for_category(category.id, page: options[:page], per_page: options[:per_page])
 
-            category_posts = Decorators::PublicPost.decorate(all_posts)
-
             super.merge(
               category: category,
-              posts: category_posts,
+              posts: Decorators::PublicPost.decorate(all_posts),
               paginator: all_posts.pager
             )
           end
