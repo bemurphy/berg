@@ -19,13 +19,11 @@ module Main
           def locals(options = {})
             options = {per_page: 20, page: 1}.merge(options)
 
-            category_slug    = options.fetch(:category)
-            category = categories.by_slug!(category_slug)
-            all_posts = posts.for_category(category.id, page: options[:page], per_page: options[:per_page])
+            category_slug = options.fetch(:category)
+            category      = categories.by_slug!(category_slug)
+            all_posts     = posts.for_category(category.id, page: options[:page], per_page: options[:per_page])
 
-            category_posts = all_posts.to_a.map { |a|
-              Decorators::PublicPost.new(a)
-            }
+            category_posts = Decorators::PublicPost.decorate(all_posts)
 
             super.merge(
               category: category,
