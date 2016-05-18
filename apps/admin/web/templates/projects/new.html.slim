@@ -1,0 +1,15 @@
+== actions
+
+p.link-children
+  a> href="/admin/projects" Projects
+  span.c-grey-mid
+    ' /
+h1.h-1 Create project
+
+.panel
+  .panel__primary
+    form action="/admin/projects" method="post"
+      == csrf_tag
+      div data-view-formalist=project_form
+      p
+        button.button.button--primary type="submit" Create project

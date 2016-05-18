@@ -14,4 +14,11 @@ Admin::Container.namespace "admin.persistence" do |container|
       :slug
     )
   end
+
+  container.register "project_slug_uniqueness_check" do
+    Admin::Persistence::UniquenessCheck.new(
+      container["core.persistence.rom"].relation(:projects),
+      :slug
+    )
+  end
 end

@@ -1,0 +1,31 @@
+== actions
+
+h1.h-1 Projects
+
+.panel
+  .panel__primary
+    .table.link-children
+      table
+        thead
+          tr
+            th Title
+            th Client
+            th Status
+            th.horizontal-align--center Actions
+        tbody
+          - projects.each do |project|
+            tr id="project-#{project.slug}"
+              td.vertical-align--middle
+                a href="/admin/projects/#{project.slug}/edit" = project.title
+              td.vertical-align--middle
+                = project.client
+              td.vertical-align--middle
+                .label class="label--#{project.status_class}"
+                  = project.status_label
+              - if project.published?
+                td.horizontal-align--center.vertical-align--middle
+                  a href="/projects/#{project.slug}" View
+              - else
+                td
+p
+  == paginator.pagination

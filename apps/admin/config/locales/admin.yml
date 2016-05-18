@@ -17,6 +17,9 @@ en:
     posts:
       post_created: "Post has been created"
       post_updated: "Post has been updated"
+    projects:
+      project_created: "Project has been created"
+      project_updated: "Project has been updated"
     emails:
       users:
         account_activation:

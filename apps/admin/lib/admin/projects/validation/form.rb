@@ -2,16 +2,16 @@ require "admin/import"
 require "berg/validation/form"
 
 module Admin
-  module Posts
+  module Projects
     module Validation
       Form = Berg::Validation.Form do
         configure do
           config.messages = :i18n
 
-          option :post_slug_uniqueness_check, Admin::Container["admin.persistence.post_slug_uniqueness_check"]
+          option :project_slug_uniqueness_check, Admin::Container["admin.persistence.project_slug_uniqueness_check"]
 
           def slug_unique?(value)
-            post_slug_uniqueness_check.(value)
+            project_slug_uniqueness_check.(value)
           end
 
           def not_eql?(input, value)
@@ -21,16 +21,16 @@ module Admin
 
         # Required in both the new and edit forms
         required(:title).filled
-        required(:teaser).filled
+        required(:client).filled
+        required(:url).filled
+        required(:intro).filled
         required(:body).filled
-        required(:author_id).filled(:int?)
+        required(:tags).filled
 
         # Required in only the edit form
         optional(:slug).filled
         optional(:previous_slug).maybe
-        optional(:author_id).filled(:int?)
-        optional(:post_categories).each(:int?)
-        optional(:status).filled(included_in?: Entities::Post::Status.values)
+        optional(:status).filled(included_in?: Entities::Project::Status.values)
         optional(:published_at).maybe(:time?)
 
         rule(slug: [:slug, :previous_slug]) do |slug, previous_slug|
