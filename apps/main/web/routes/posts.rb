@@ -1,6 +1,12 @@
 module Main
   class Application < Dry::Web::Application
     route "posts" do |r|
+      r.on "category" do
+        r.on ":category" do |category|
+          r.view "posts.category.index", category: category, page: r[:page] || 1
+        end
+      end
+
       r.on ":slug" do |slug|
         r.resolve("main.operations.posts.check_publication_state") do |check_publication_state|
           check_publication_state.(slug) do |m|
