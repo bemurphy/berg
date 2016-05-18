@@ -36,5 +36,4 @@ notifications:
   slack:
     on_success: change
     on_failure: change
-    rooms:
-      - icelab:6dXO9CHlWw9h4xhLSlGr9Hhv
+    secure: cm3eNphNT4FqMpw/pmlXmPjyo3TpnLeEzaN+ANRoia2qE/KpLw8rmD5RB30dyWraTrPdNM7MFauixKtLQvyOizhomn7ImcDISr7dM0imN0tkRMVF5AT1tMqThTjX5ReNKneYDu5p5aBpwdU12SMpfP8HgQ1NywLIcP5304TON8MiKNUOml8XRbvM5vWk6A+YWxVIyJ2l8px2D08fCnfENZdrNPfQLBr/NnTXsZX6NRyAsKkkc0li2vTrLACmVgbiNRRGvNgXacMrVxmlMLmZYTSO6lr2k4+NtE09uX4cETe3tyVuZfvW8cit/pME8ViaS6xrPnX9rNI6auWdcRjc4MEgBeZv0946zxwhkBH+RmjyUmhg0YvAEbK4Jo+iA2QzYIHK7VlByIlifuri5lqah3DS2qNzRNlNYzNmIIq2cFxtzosM1WNNSay7bF6Co2IINYjDxulKbLMnRJgUGP0uf1+QiU27Rh1/z9nqsnoPUaC+olFhcyD2FK+vlIe0kjkMtakJQr5a/VePEYm8tDUtFwLJNESwiZfjRN86EuLfdk//Qj+wm3v2xrrYwNqYL2/TcLorJ4Fpv7lM++eL8bPndsDzLtsOW2mi3cTUDE+zMk2pCjY4G0sGJHkL9+t/jbi2Chy7+wnN7BVAGotOQOVnROyoMNXoV8C+3stJFnITWe4=
