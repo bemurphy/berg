@@ -19,7 +19,7 @@ module Main
             .published
             .per_page(per_page)
             .page(page)
-            .order(:published_at)
+            .order(Sequel.desc(:published_at))
             .combine(one: { author: [users, author_id: :id] })
             .as(Entities::Post::WithAuthor)
         end

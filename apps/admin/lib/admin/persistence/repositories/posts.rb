@@ -36,9 +36,9 @@ module Admin
         def recent_colors
           posts
             .select(:color)
-            .order(:created_at)
+            .order(Sequel.desc(:created_at))
             .limit(5)
-            .to_a
+            .map{ |p| p[:color] }
         end
       end
     end
