@@ -18,7 +18,7 @@ Admin::Container.namespace "admin.persistence" do |container|
 
   container.register "post_color_picker" do
     Admin::Persistence::PostColorPicker.new(
-      Types::Color,
+      Types::PostHighlightColor,
       container["admin.persistence.repositories.posts"].method(:recent_colors)
     )
   end

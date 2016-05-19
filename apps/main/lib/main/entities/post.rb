@@ -14,7 +14,7 @@ module Main
       attribute :status, Status
       attribute :author_id, Types::Strict::Int
       attribute :published_at, Types::Strict::Time
-      attribute :color, Types::Strict::String
+      attribute :color, Types::PostHighlightColor
 
       class WithAuthor < Post
         attribute :author, "main.entities.user"
