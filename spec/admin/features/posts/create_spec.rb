@@ -68,4 +68,34 @@ RSpec.feature "Admin / Posts / Create", js: true do
 
     expect(page).to have_content("My Tag")
   end
+
+  scenario "A new post gets a color assigned" do
+    find("nav a", text: "Posts").trigger("click")
+
+    find("a", text: "Add a post").trigger("click")
+
+    find("#title").set("A sample title")
+    find("#teaser").set("A teaser for this sample article")
+    find("#body").set("Some sample content for this post")
+
+    find(:xpath, "//button[contains(@class, 'selection-field')]", match: :first).trigger("click")
+    find(:xpath, "//button[contains(@class, 'selection-field__optionButton')][div='#{jane.first_name} #{jane.last_name}']").trigger("click")
+
+    find("button", text: "Create post").trigger("click")
+
+    expect(page).to have_content("Post has been created")
+
+    expect(page).to have_content("A sample title")
+
+    click_link "A sample title"
+
+    select("Published", from: "Status")
+
+    find("input[name='post[published_at]']", visible: false).set(Time.now)
+    click_button "Save changes"
+
+    visit "/posts"
+
+    expect(page).to have_css("[data-test-color]:not([data-test-color=''])")
+  end
 end
