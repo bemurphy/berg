@@ -44,7 +44,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE categories (
@@ -74,7 +74,7 @@ ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
 
 
 --
--- Name: categorisations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: categorisations; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE categorisations (
@@ -104,7 +104,7 @@ ALTER SEQUENCE categorisations_id_seq OWNED BY categorisations.id;
 
 
 --
--- Name: posts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: posts; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE posts (
@@ -142,7 +142,7 @@ ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
 
 
 --
--- Name: que_jobs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: que_jobs; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE que_jobs (
@@ -184,7 +184,7 @@ ALTER SEQUENCE que_jobs_job_id_seq OWNED BY que_jobs.job_id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE schema_migrations (
@@ -193,7 +193,7 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE users (
@@ -206,8 +206,7 @@ CREATE TABLE users (
     access_token_expiration timestamp without time zone NOT NULL,
     active boolean DEFAULT true NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp without time zone DEFAULT now() NOT NULL,
-    bio text DEFAULT ''::text
+    updated_at timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
@@ -266,7 +265,7 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY categories
@@ -274,7 +273,7 @@ ALTER TABLE ONLY categories
 
 
 --
--- Name: categorisations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: categorisations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY categorisations
@@ -282,7 +281,7 @@ ALTER TABLE ONLY categorisations
 
 
 --
--- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY posts
@@ -290,7 +289,7 @@ ALTER TABLE ONLY posts
 
 
 --
--- Name: posts_slug_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: posts_slug_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY posts
@@ -298,7 +297,7 @@ ALTER TABLE ONLY posts
 
 
 --
--- Name: que_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: que_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY que_jobs
@@ -306,7 +305,7 @@ ALTER TABLE ONLY que_jobs
 
 
 --
--- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY schema_migrations
@@ -314,7 +313,7 @@ ALTER TABLE ONLY schema_migrations
 
 
 --
--- Name: users_email_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: users_email_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY users
@@ -322,7 +321,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY users
