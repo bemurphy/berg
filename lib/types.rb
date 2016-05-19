@@ -3,5 +3,5 @@ require "dry-types"
 module Types
   include Dry::Types.module
 
-  Colour = Types::Strict::String.default("blue").enum("blue", "yellow", "red")
+  Color = Types::Strict::String.enum("blue", "yellow", "red")
 end

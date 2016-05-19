@@ -52,10 +52,6 @@ module Admin
             }
           }
         end
-
-        def colour_list
-          Types::Colour.values.map { |value| [value, value.capitalize] }
-        end
       end
     end
   end

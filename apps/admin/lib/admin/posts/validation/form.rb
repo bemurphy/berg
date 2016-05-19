@@ -23,6 +23,7 @@ module Admin
         optional(:teaser).filled
         optional(:body).filled
         optional(:slug).filled
+        optional(:color).filled
         optional(:previous_slug).maybe
         optional(:author_id).filled(:int?)
         optional(:status).filled(included_in?: Entities::Post::Status.values)

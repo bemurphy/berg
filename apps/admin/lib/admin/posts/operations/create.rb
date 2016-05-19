@@ -10,7 +10,8 @@ module Admin
         include Admin::Import(
           "admin.persistence.repositories.posts",
           "core.persistence.commands.create_post",
-          "admin.slugify"
+          "admin.slugify",
+          "admin.persistence.post_color_picker",
         )
 
         include Dry::ResultMatcher.for(:call)
@@ -30,7 +31,8 @@ module Admin
 
         def prepare_attributes(attributes)
           attributes.merge(
-            slug: slugify.(attributes[:title], posts.method(:slug_exists?))
+            slug: slugify.(attributes[:title], posts.method(:slug_exists?)),
+            color: post_color_picker.()
           )
         end
       end

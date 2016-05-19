@@ -22,7 +22,7 @@ RSpec.shared_context 'main posts' do
       author_id: user[:id],
       status: status,
       published_at: Time.now,
-      colour: "blue"
+      color: "blue"
     })
   end
 end
