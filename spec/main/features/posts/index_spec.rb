@@ -22,11 +22,11 @@ RSpec.feature "Main / Posts / Index", js: false do
 
     expect(page).to have_content("Older")
     expect(page).to have_content("Newer")
-    expect(page).to_not have_content("foo 21")
+    expect(page).to_not have_css("a[href='/posts/foo-1']")
 
     click_link("Older", :match => :first)
 
-    expect(page).to have_content("foo 21")
+    expect(page).to have_css("a[href='/posts/foo-1']")
 
   end
 end
