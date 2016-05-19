@@ -6,9 +6,7 @@ RSpec.describe Admin::Persistence::PostColorPicker do
   let(:colors) { Types::Color }
   let(:recent_colors) { ->(){ ["red","green","yellow"] } }
 
-  context "user exists" do
-    it "returns the user if the password matches" do
-      expect(post_color_picker.()).to eq "blue"
-    end
+  it "returns a color that isn't in the list of recent colors" do
+    expect(post_color_picker.()).to eq "blue"
   end
 end
