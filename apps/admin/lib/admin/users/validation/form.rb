@@ -24,6 +24,7 @@ module Admin
         optional(:first_name).filled
         optional(:last_name).filled
         optional(:bio).maybe
+        optional(:short_bio).maybe
         optional(:website).maybe
         optional(:twitter).maybe
         optional(:job_title).maybe

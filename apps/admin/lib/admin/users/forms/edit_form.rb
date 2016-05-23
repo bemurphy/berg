@@ -21,6 +21,7 @@ module Admin
             text_field :job_title, label: "Job Title"
           end
           text_area :bio, label: "Bio", hint: "(optional)"
+          text_area :short_bio, label: "Short Bio", hint: "(optional)"
           upload_field :avatar,
             label: "Avatar",
             hint: "An image of this user",

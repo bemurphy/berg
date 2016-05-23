@@ -12,6 +12,7 @@ module Admin
       attribute :access_token_expiration, Types::DateTime
       attribute :active, Types::Bool
       attribute :bio, Types::Maybe::Strict::String
+      attribute :short_bio, Types::Maybe::Strict::String
       attribute :website, Types::Maybe::Strict::String
       attribute :twitter, Types::Maybe::Strict::String
       attribute :job_title, Types::Maybe::Strict::String

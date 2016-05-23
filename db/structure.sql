@@ -209,7 +209,8 @@ CREATE TABLE users (
     bio text DEFAULT ''::text,
     website text DEFAULT ''::text,
     twitter text DEFAULT ''::text,
-    job_title text DEFAULT ''::text
+    job_title text DEFAULT ''::text,
+    short_bio text DEFAULT ''::text
 );
 
 

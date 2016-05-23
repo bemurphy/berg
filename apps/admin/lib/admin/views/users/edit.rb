@@ -54,7 +54,8 @@ module Admin
             bio: user.bio.value,
             website: user.website.value,
             twitter: user.twitter.value,
-            job_title: user.job_title.value
+            job_title: user.job_title.value,
+            short_bio: user.short_bio.value
           )
         end
       end

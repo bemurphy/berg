@@ -7,6 +7,7 @@ module Persistence
         attribute :first_name, Types::String
         attribute :last_name, Types::String
         attribute :bio, Types::Strict::String.optional
+        attribute :short_bio, Types::Strict::String.optional
         attribute :website, Types::Strict::String.optional
         attribute :twitter, Types::Strict::String.optional
         attribute :job_title, Types::Strict::String.optional
