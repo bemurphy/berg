@@ -208,7 +208,8 @@ CREATE TABLE users (
     updated_at timestamp without time zone DEFAULT now() NOT NULL,
     bio text DEFAULT ''::text,
     website text DEFAULT ''::text,
-    twitter text DEFAULT ''::text
+    twitter text DEFAULT ''::text,
+    job_title text DEFAULT ''::text
 );
 
 

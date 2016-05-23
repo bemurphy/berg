@@ -14,6 +14,7 @@ module Admin
       attribute :bio, Types::Nil | Types::Strict::String
       attribute :website, Types::Nil | Types::Strict::String
       attribute :twitter, Types::Nil | Types::Strict::String
+      attribute :job_title, Types::Nil | Types::Strict::String
 
       alias_method :active?, :active
 

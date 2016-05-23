@@ -11,12 +11,15 @@ module Admin
             text_field :first_name, label: "First name"
             text_field :last_name, label: "Last name"
           end
-          text_field :email,
-            label: "Email",
-            validation: {
-              filled: true,
-              format: "/.+@.+\..+/i"
-            }
+          group do
+            text_field :email,
+              label: "Email",
+              validation: {
+                filled: true,
+                format: "/.+@.+\..+/i"
+              }
+            text_field :job_title, label: "Job Title"
+          end
           text_area :bio, label: "Bio", hint: "(optional)"
           upload_field :avatar,
             label: "Avatar",
