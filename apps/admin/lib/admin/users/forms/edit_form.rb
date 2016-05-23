@@ -7,14 +7,16 @@ module Admin
         prefix :user
 
         define do
+          group do
+            text_field :first_name, label: "First name"
+            text_field :last_name, label: "Last name"
+          end
           text_field :email,
             label: "Email",
             validation: {
               filled: true,
               format: "/.+@.+\..+/i"
             }
-          text_field :first_name, label: "First name"
-          text_field :last_name, label: "Last name"
           text_area :bio, label: "Bio", hint: "(optional)"
           upload_field :avatar,
             label: "Avatar",

@@ -10,6 +10,6 @@ h1.h-1 Create user
   .panel__primary
     form action="/admin/users" method="post"
       == csrf_tag
-      div data-view-formalist=user_form
+      div data-view-formalist=JSON.generate(user_form.to_h(csrfToken: csrf_token))
       p
         button.button.button--primary type="submit" Create user

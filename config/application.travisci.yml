@@ -12,8 +12,8 @@ development: &base
   postmark_api_key:
   basic_auth_user:
   basic_auth_password:
-  attache_uploads_base_url: "http://als.attache.icelab.com.au"
-  attache_downloads_base_url: "http://als.attache.icelab.com.au"
+  attache_uploads_base_url: "http://berg.attache.icelab.com.au"
+  attache_downloads_base_url: "http://berg.attache.icelab.com.au"
   attache_secret_key: "xxx"
 test:
   <<: *base
