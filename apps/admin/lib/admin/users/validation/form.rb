@@ -24,6 +24,8 @@ module Admin
         optional(:first_name).filled
         optional(:last_name).filled
         optional(:bio).maybe
+        optional(:website).maybe
+        optional(:twitter).maybe
         optional(:active).filled(:bool?)
         optional(:password).filled(min_size?: 8)
 

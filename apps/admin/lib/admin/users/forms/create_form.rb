@@ -22,6 +22,10 @@ module Admin
             label: "Avatar",
             hint: "An image of this user",
             presign_url: "#{Berg::Container["config"].canonical_domain}/admin/uploads/presign"
+          group label: :social do
+            text_field :website, label: "Website", placeholder: "http://foo.com", hint: "(optional)"
+            text_field :twitter, label: "Twitter", placeholder: "http://twitter.com/username", hint: "(optional)"
+          end
           check_box :active, label: "Status", question_text: "Mark as active?"
         end
       end

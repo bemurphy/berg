@@ -117,8 +117,7 @@ CREATE TABLE posts (
     published_at timestamp without time zone,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL,
-    teaser text DEFAULT ''::text NOT NULL,
-    color text DEFAULT ''::text NOT NULL
+    teaser text DEFAULT ''::text NOT NULL
 );
 
 
@@ -139,45 +138,6 @@ CREATE SEQUENCE posts_id_seq
 --
 
 ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
-
-
---
--- Name: projects; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE projects (
-    id integer NOT NULL,
-    title text NOT NULL,
-    client text NOT NULL,
-    url text NOT NULL,
-    intro text NOT NULL,
-    body text NOT NULL,
-    tags text NOT NULL,
-    slug text NOT NULL,
-    status text DEFAULT 'draft'::text,
-    published_at timestamp without time zone,
-    created_at timestamp without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp without time zone DEFAULT now() NOT NULL
-);
-
-
---
--- Name: projects_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE projects_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: projects_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE projects_id_seq OWNED BY projects.id;
 
 
 --
@@ -246,7 +206,9 @@ CREATE TABLE users (
     active boolean DEFAULT true NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL,
-    bio text DEFAULT ''::text
+    bio text DEFAULT ''::text,
+    website text DEFAULT ''::text,
+    twitter text DEFAULT ''::text
 );
 
 
@@ -288,13 +250,6 @@ ALTER TABLE ONLY categorisations ALTER COLUMN id SET DEFAULT nextval('categorisa
 --
 
 ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq'::regclass);
 
 
 --
@@ -344,22 +299,6 @@ ALTER TABLE ONLY posts
 
 
 --
--- Name: projects_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY projects
-    ADD CONSTRAINT projects_pkey PRIMARY KEY (id);
-
-
---
--- Name: projects_slug_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY projects
-    ADD CONSTRAINT projects_slug_key UNIQUE (slug);
-
-
---
 -- Name: que_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -396,13 +335,6 @@ ALTER TABLE ONLY users
 --
 
 CREATE TRIGGER set_updated_at_on_posts BEFORE UPDATE ON posts FOR EACH ROW EXECUTE PROCEDURE set_updated_at_column();
-
-
---
--- Name: set_updated_at_on_projects; Type: TRIGGER; Schema: public; Owner: -
---
-
-CREATE TRIGGER set_updated_at_on_projects BEFORE UPDATE ON projects FOR EACH ROW EXECUTE PROCEDURE set_updated_at_column();
 
 
 --
