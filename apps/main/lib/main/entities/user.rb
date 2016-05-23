@@ -7,7 +7,7 @@ module Main
       attribute :first_name, Types::Strict::String
       attribute :last_name, Types::Strict::String
       attribute :email, Types::Strict::String
-      attribute :bio, Types::Nil | Types::Strict::String
+      attribute :bio, Types::Maybe::Strict::String
 
       def full_name
         "#{first_name} #{last_name}"

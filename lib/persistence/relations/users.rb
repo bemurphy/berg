@@ -6,10 +6,10 @@ module Persistence
         attribute :email, Types::String
         attribute :first_name, Types::String
         attribute :last_name, Types::String
-        attribute :bio, Types::Nil | Types::Strict::String
-        attribute :website, Types::Nil | Types::Strict::String
-        attribute :twitter, Types::Nil | Types::Strict::String
-        attribute :job_title, Types::Nil | Types::Strict::String
+        attribute :bio, Types::Strict::String.optional
+        attribute :website, Types::Strict::String.optional
+        attribute :twitter, Types::Strict::String.optional
+        attribute :job_title, Types::Strict::String.optional
         attribute :encrypted_password, Types::String
         attribute :active, Types::Bool
         attribute :access_token, Types::String

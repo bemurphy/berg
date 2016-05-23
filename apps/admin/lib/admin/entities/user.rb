@@ -11,10 +11,10 @@ module Admin
       attribute :access_token, Types::String
       attribute :access_token_expiration, Types::DateTime
       attribute :active, Types::Bool
-      attribute :bio, Types::Nil | Types::Strict::String
-      attribute :website, Types::Nil | Types::Strict::String
-      attribute :twitter, Types::Nil | Types::Strict::String
-      attribute :job_title, Types::Nil | Types::Strict::String
+      attribute :bio, Types::Maybe::Strict::String
+      attribute :website, Types::Maybe::Strict::String
+      attribute :twitter, Types::Maybe::Strict::String
+      attribute :job_title, Types::Maybe::Strict::String
 
       alias_method :active?, :active
 

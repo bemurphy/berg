@@ -25,7 +25,7 @@ module Admin
 
           super.merge(
             user: user,
-            user_form: user_form(user, user_validation),
+            user_form: user_form(form_input(user), user_validation),
             pass_form: pass_form(pass_validation),
             csrf_token: options[:scope].csrf_token
           )
@@ -47,6 +47,15 @@ module Admin
           else
             edit_form.build(user)
           end
+        end
+
+        def form_input(user)
+          user.to_h.merge(
+            bio: user.bio.value,
+            website: user.website.value,
+            twitter: user.twitter.value,
+            job_titl: user.job_title.value
+          )
         end
       end
     end
