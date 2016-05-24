@@ -13,10 +13,10 @@ module Main
 
         def listing(per_page: 20, page: 1)
           projects
-            .where(status: "published")
+            .published
             .per_page(per_page)
             .page(page)
-            .order(Sequel.desc(:created_at))
+            .order(Sequel.desc(:published_at))
             .as(Entities::Project)
         end
       end
