@@ -8,11 +8,13 @@ nav.pagination
   - if next_gap?
     span.page.gap
       | &hellip;
-  span.prev
-    - disabled_class = (first_page? ? 'disabled' : '')
-    a href=url_for_page(prev_page) rel="prev" class=[disabled_class]
-      | &lsaquo; Newer
-  span.next
-    - disabled_class = (last_page? ? 'disabled' : '')
-    a href=url_for_page(next_page) rel="next" class=[disabled_class]
-      | Older &rsaquo;
+  - unless first_page?
+    span.prev
+      - disabled_class = (first_page? ? 'disabled' : '')
+      a href=url_for_page(prev_page) rel="prev" class=[disabled_class]
+        | &lsaquo; Newer
+  - unless last_page?
+    span.next
+      - disabled_class = (last_page? ? 'disabled' : '')
+      a href=url_for_page(next_page) rel="next" class=[disabled_class]
+        | Older &rsaquo;
