@@ -11,13 +11,8 @@ module Main
           projects.by_slug(slug).as(Entities::Project).one
         end
 
-        def listing(per_page: 20, page: 1)
-          projects
-            .published
-            .per_page(per_page)
-            .page(page)
-            .order(Sequel.desc(:published_at))
-            .as(Entities::Project)
+        def listing
+          projects.published.order(Sequel.desc(:published_at)).as(Entities::Project)
         end
       end
     end
