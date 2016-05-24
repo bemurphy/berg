@@ -16,7 +16,7 @@ module Main
         end
       end
 
-      r.view "projects.index", page: r[:page]
+      r.view "projects.index", page: r[:page] || 1
     end
   end
 end
