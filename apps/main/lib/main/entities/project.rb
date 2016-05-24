@@ -15,14 +15,6 @@ module Main
       attribute :slug, Types::Strict::String
       attribute :status, Status
       attribute :published_at, Types::DateTime
-
-      def deleted?
-        status == "deleted"
-      end
-
-      def published?
-        status == "published"
-      end
     end
   end
 end
