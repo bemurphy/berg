@@ -21,7 +21,7 @@ RSpec.feature "Main / Projects / Index", js: false do
     expect(page).to have_content("Older")
     expect(page).to have_content("Newer")
 
-    # Projects are sorted by published_at descending, so we shouldn't see the first post (Foo 1)
+    # Projects are sorted by published_at descending, so we shouldn't see the first post (Foo1Corp)
     # on the first page
     expect(page).to_not have_content("Foo1Corp")
 
