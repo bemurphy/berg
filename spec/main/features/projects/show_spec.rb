@@ -4,9 +4,8 @@ RSpec.feature "Main / Projects / Show", js: false do
   include_context "main_projects"
 
   before do
-    user = create_user(first_name: "Jane", last_name: "Doe")
     5.times do |i|
-      create_project("foo #{i + 1}", "teaser-foo-#{i + 1}", "foo-#{i + 1}", user)
+      create_project("foo #{i + 1}")
     end
   end
 
@@ -15,12 +14,11 @@ RSpec.feature "Main / Projects / Show", js: false do
     click_link "foo 1"
 
     expect(page.current_path).to eq "/projects/foo-1"
-    expect(page).to have_content "test"
+    expect(page).to have_content "the body"
   end
 
   scenario "I see a 404 page when trying to view an un-published project" do
-    user = create_user(first_name: "John", last_name: "Doe")
-    create_project("Secret project", "teaser", "secret-project", user, "draft")
+    create_project("Secret project", "draft")
 
     visit "/projects/secret-project"
 
