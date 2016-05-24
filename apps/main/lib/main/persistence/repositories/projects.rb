@@ -13,6 +13,7 @@ module Main
 
         def listing(per_page: 20, page: 1)
           projects
+            .where(status: "published")
             .per_page(per_page)
             .page(page)
             .order(Sequel.desc(:created_at))
