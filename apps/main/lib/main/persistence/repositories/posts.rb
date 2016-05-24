@@ -14,7 +14,7 @@ module Main
           .as(Entities::Post::WithAuthor).one
         end
 
-        def listing(page: 1, per_page: 20)
+        def listing(per_page: 20, page: 1)
           posts
             .published
             .per_page(per_page)

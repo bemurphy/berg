@@ -1,4 +1,0 @@
-nav.pagination
-  - (1..total_pages).each do |page|
-    span.page class=("current" if current_page == page)
-      a href="?page=#{page}" = page

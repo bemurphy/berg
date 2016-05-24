@@ -1,4 +1,5 @@
 require "main/import"
+require "main/paginator"
 require "main/view"
 require "main/decorators/public_post"
 
@@ -13,16 +14,15 @@ module Main
         end
 
         def locals(options = {})
-          options = {per_page: 20, page: 1}.merge(options)
-          all_posts = posts.listing(page: options[:page], per_page: options[:per_page])
+          page      = options[:page] || 1
+          per_page  = options[:per_page] || 20
 
-          public_posts = all_posts.to_a.map { |a|
-            Decorators::PublicPost.new(a)
-          }
+          all_posts = posts.listing(page: page, per_page: per_page)
+          public_posts = all_posts.to_a.map { |a| Decorators::PublicPost.new(a) }
 
           super.merge(
-            posts: public_posts,
-            paginator: all_posts.pager
+            posts: public_posts.to_a,
+            paginator: Paginator.new(all_posts.pager, url_template: "/posts?page=%")
           )
         end
       end

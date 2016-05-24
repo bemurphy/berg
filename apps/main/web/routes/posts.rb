@@ -16,7 +16,7 @@ module Main
         end
       end
 
-      r.view "posts.index", page: r[:page] || 1
+      r.view "posts.index", page: r[:page]
     end
   end
 end
