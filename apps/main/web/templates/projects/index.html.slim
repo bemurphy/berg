@@ -1,0 +1,9 @@
+== paginator.pager_links
+
+ul
+- projects.each do |project|
+  li == project.title
+
+p
+  == paginator.pager_numbers
+  == paginator.pager_links
