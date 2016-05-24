@@ -1,14 +1,17 @@
-h1== project.title
+h1 = project.title
 
 div.client-details
-  == project.client
-  == project.url
+  h3 Client
+  = project.client
+  = project.url
   
-div.project-intro
-  == project.intro
-
 div.project
-  == project.body
+  h3 Project
+  = project.body
 
 div.tags
   h3 Tags
+  / ul
+  /   - project.tags.each do |tag|
+  /     li
+  /       a href="/projects/tagged/#{tag.slug}" tag.name

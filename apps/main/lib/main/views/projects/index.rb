@@ -19,7 +19,7 @@ module Main
           all_projects = projects.listing(page: page, per_page: per_page)
 
           super.merge(
-            projects: all_projects,
+            projects: all_projects.to_a,
             paginator: Paginator.new(all_projects.pager, url_template: "/projects?page=%")
           )
         end

@@ -2,9 +2,8 @@
 
 ul
 - projects.each do |project|
-  li
-    a href="/projects/#{project.slug}" = project.title
-
+  li == project.snippet
+  
 p
   == paginator.pager_numbers
   == paginator.pager_links
