@@ -12,21 +12,7 @@ RSpec.feature "Main / Projects / Index", js: false do
   scenario "I can view a list of projects" do
     visit "/projects"
 
-    expect(page).to have_content("Foo21Corp")
-  end
-
-  scenario "I can paginate through the list of projects" do
-    visit "/projects"
-
-    expect(page).to have_content("Older")
-    expect(page).to have_content("Newer")
-
-    # Projects are sorted by published_at descending, so we shouldn't see the first post (Foo1Corp)
-    # on the first page
-    expect(page).to_not have_content("Foo1Corp")
-
-    click_link("Older", :match => :first)
-
     expect(page).to have_content("Foo1Corp")
+    expect(page).to have_content("Foo21Corp")
   end
 end
