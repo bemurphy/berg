@@ -8,10 +8,10 @@ module Main
         include Dry::ResultMatcher.for(:call)
 
         def call(slug)
-          post = projects.by_slug(slug)
+          project = projects.by_slug(slug)
 
           if project && project.status == "published"
-            Right(post)
+            Right(project)
           else
             Left("This project has not yet been published.")
           end
