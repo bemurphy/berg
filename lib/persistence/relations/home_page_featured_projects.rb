@@ -2,13 +2,12 @@ module Persistence
   module Relations
     class HomePageFeaturedProjects < ROM::Relation[:sql]
       schema(:home_page_featured_projects) do
-        attribute :id, Types::Serial
-        attribute :project_id, Types::Int
         attribute :position, Types::Int
-      end
+        attribute :project_id, Types::Int
 
-      def by_id(id)
-        where(id: id)
+        associate do
+          belongs :project
+        end
       end
     end
   end
