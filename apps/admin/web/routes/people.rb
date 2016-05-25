@@ -10,7 +10,7 @@ class Admin::Application < Dry::Web::Application
           r.resolve "admin.people.operations.create" do |create_post|
             create_post.(r[:person]) do |m|
               m.success do
-                flash[:notice] = t["admin.people.post_created"]
+                flash[:notice] = t["admin.people.person_created"]
                 r.redirect "/admin/people"
               end
 
