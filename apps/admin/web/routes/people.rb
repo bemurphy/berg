@@ -7,8 +7,8 @@ class Admin::Application < Dry::Web::Application
         end
 
         r.post do
-          r.resolve "admin.people.operations.create" do |create_post|
-            create_post.(r[:person]) do |m|
+          r.resolve "admin.people.operations.create" do |create_person|
+            create_person.(r[:person]) do |m|
               m.success do
                 flash[:notice] = t["admin.people.person_created"]
                 r.redirect "/admin/people"
@@ -32,15 +32,15 @@ class Admin::Application < Dry::Web::Application
         end
 
         r.post do
-          r.resolve "admin.people.operations.update" do |update_post|
-            update_post.(id, r[:post]) do |m|
+          r.resolve "admin.people.operations.update" do |update_person|
+            update_person.(id, r[:person]) do |m|
               m.success do
-                flash[:notice] = t["admin.people.post_updated"]
+                flash[:notice] = t["admin.people.person_updated"]
                 r.redirect "/admin/people"
               end
 
               m.failure do |validation|
-                r.view "people.edit", id: id, post_validation: validation
+                r.view "people.edit", id: id, person_validation: validation
               end
             end
           end

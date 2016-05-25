@@ -24,6 +24,7 @@ en:
       page_update: "Page has been updated"
     people:
       person_created: "Person has been created"
+      person_updated: "Person has been updated"
     emails:
       users:
         account_activation:
