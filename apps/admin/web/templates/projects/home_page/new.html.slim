@@ -1,0 +1,13 @@
+p.link-children
+  a> href="/admin/projects/home_page" Home Page Featured Projects
+  span.c-grey-mid
+    ' /
+h1.h-1 Feature a project on the home page
+
+.panel
+  .panel__primary
+    form action="/admin/projects/home_page" method="post"
+      == csrf_tag
+      div data-view-formalist=home_page_featured_project_form
+      p
+        button.button.button--primary type="submit" Feature project

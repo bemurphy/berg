@@ -1,0 +1,19 @@
+== actions
+
+h1.h-1 Home Page Featured Projects
+
+.panel
+  .panel__primary
+    .table.link-children
+      table
+        thead
+          tr
+            th Position
+            th Project
+        tbody
+          - home_page_featured_projects.each do |home_page_featured_project|
+            tr
+              td.vertical-align--middle
+                = home_page_featured_project.position
+              td.vertical-align--middle
+                = home_page_featured_project.project_id
