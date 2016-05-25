@@ -29,6 +29,13 @@ module Admin
             .reverse
             .as(Entities::Project)
         end
+
+        def all_projects
+          projects
+            .where(status: "published")
+            .order(:title)
+            .as(Entities::Project)
+        end
       end
     end
   end

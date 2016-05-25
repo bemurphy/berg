@@ -1,18 +1,15 @@
 require "berg/repository"
-require "admin/entities/home_page_featured_project"
 
 module Admin
   module Persistence
     module Repositories
       class HomePageFeaturedProjects < Berg::Repository[:home_page_featured_projects]
-        commands :create, :update
+        relations :home_page_featured_projects
 
-        def [](id)
-          projects.by_id(id).as(Entities::HomePageFeaturedProject).one
-        end
-
-        def listing
-          home_page_featured_projects.order(:position).as(Entities::HomePageFeaturedProject)
+        def all_project_ids
+          home_page_featured_projects
+            .order(:position)
+            .to_a
         end
       end
     end
