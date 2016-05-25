@@ -18,7 +18,7 @@ module Admin
           end
 
           def locals(options = {})
-            selected_about_page_people = about_page_people.all_people
+            selected_about_page_people = about_page_people.listing_by_position
 
             page_validation = options[:page_validation]
 

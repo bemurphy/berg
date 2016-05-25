@@ -6,7 +6,7 @@ module Admin
       class AboutPagePeople < Berg::Repository[:about_page_people]
         relations :about_page_people
 
-        def all_people
+        def listing_by_position
           about_page_people
             .order(:position)
             .to_a
