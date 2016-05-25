@@ -10,4 +10,8 @@ Berg::Container.namespace "persistence" do |container|
   container.register "commands.update_post" do
     container["persistence.rom"].command(:posts)[:update]
   end
+
+  container.register "commands.update_about_page_people" do
+    container["persistence.rom"].command(:about_page_people)[:update]
+  end
 end

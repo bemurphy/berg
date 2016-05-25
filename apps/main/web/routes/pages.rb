@@ -1,7 +1,7 @@
 module Main
   class Application < Dry::Web::Application
-    route "example" do |r|
-      # Routes go here
+    route "about" do |r|
+      r.view "pages.about"
     end
   end
 end

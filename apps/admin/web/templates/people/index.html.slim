@@ -1,0 +1,27 @@
+== actions
+
+h1.h-1 People
+
+.panel
+  .panel__primary
+    .table.link-children
+      table
+        thead
+          tr
+            th ID
+            th Email
+            th First Name
+            th Last Name
+            th Status
+            th
+        tbody
+          - people.each do |person|
+            tr id="person-#{person.id}"
+              td.f-mono = person.id
+              td.f-mono = person.email
+              td = person.first_name
+              td = person.last_name
+              td = person.active ? "Active" : "Deactivated"
+              td
+                a> href="/admin/people/#{person.id}/edit" Edit
+                a href="/admin/people/#{person.id}/password" Change password

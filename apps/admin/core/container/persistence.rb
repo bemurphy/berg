@@ -8,6 +8,13 @@ Admin::Container.namespace "admin.persistence" do |container|
     )
   end
 
+  container.register "person_email_uniqueness_check" do
+    Admin::Persistence::UniquenessCheck.new(
+      container["core.persistence.rom"].relation(:people),
+      :email
+    )
+  end
+
   container.register "post_slug_uniqueness_check" do
     Admin::Persistence::UniquenessCheck.new(
       container["core.persistence.rom"].relation(:posts),
