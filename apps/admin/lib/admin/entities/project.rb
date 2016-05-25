@@ -10,7 +10,7 @@ module Admin
       attribute :client, Types::Strict::String
       attribute :url, Types::Strict::String
       attribute :intro, Types::Strict::String
-      attribute :body, Types::Strict::String
+      attribute :body, Types::String
       attribute :tags, Types::Strict::String
       attribute :slug, Types::Strict::String
       attribute :status, Status
