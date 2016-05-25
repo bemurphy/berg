@@ -24,6 +24,10 @@ module Admin
       def published?
         status == "published"
       end
+
+      def case_study?
+        case_study == true
+      end
     end
   end
 end
