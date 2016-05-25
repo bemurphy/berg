@@ -1,6 +1,7 @@
 module Persistence
   module Commands
     class UpdateAboutPagePeople < ROM::Commands::Update[:sql]
+      relation :about_page_people
       register_as :update
       result :many
 

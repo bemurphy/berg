@@ -25,7 +25,7 @@ module Persistence
         where(active: true)
       end
 
-      def about_page_people
+      def for_about_page
         select
           .inner_join(
             :about_page_people,

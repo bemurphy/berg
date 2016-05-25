@@ -5,11 +5,11 @@ module Main
   module Persistence
     module Repositories
       class AboutPagePeople < Berg::Repository[:about_page_people]
-        relations :about_page_people, :people
+        relations :people
 
         def all_people
           people
-            .about_page_people
+            .for_about_page
             .as(Entities::Person)
         end
       end
