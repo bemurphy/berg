@@ -15,7 +15,7 @@ module Main
 
         def locals(options = {})
           super.merge(
-            projects: home_page_featured_projects.all_featured_projects
+            projects: home_page_featured_projects.listing_by_position
           )
         end
       end

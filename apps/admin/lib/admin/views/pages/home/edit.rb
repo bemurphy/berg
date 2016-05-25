@@ -18,7 +18,7 @@ module Admin
           end
 
           def locals(options = {})
-            selected_home_page_featured_projects = home_page_featured_projects.all_featured_projects
+            selected_home_page_featured_projects = home_page_featured_projects.listing_by_position
 
             page_validation = options[:page_validation]
 
