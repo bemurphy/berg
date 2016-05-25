@@ -6,7 +6,7 @@ module Admin
       class HomePageFeaturedProjects < Berg::Repository[:home_page_featured_projects]
         relations :home_page_featured_projects
 
-        def all_project_ids
+        def all_featured_projects
           home_page_featured_projects
             .order(:position)
             .to_a
