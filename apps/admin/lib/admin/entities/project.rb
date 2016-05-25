@@ -15,6 +15,7 @@ module Admin
       attribute :slug, Types::Strict::String
       attribute :status, Status
       attribute :published_at, Types::DateTime
+      attribute :case_study, Types::Bool
 
       def deleted?
         status == "deleted"
