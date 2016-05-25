@@ -13,7 +13,7 @@ module Admin
 
           define do
             multi_selection_field :home_page_featured_projects,
-              label: "Projects",
+              label: "Featured Projects",
               selector_label: "Choose projects",
               options: dep(:projects_list)
           end
