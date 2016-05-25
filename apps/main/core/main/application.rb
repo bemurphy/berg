@@ -35,7 +35,7 @@ module Main
 
     route do |r|
       r.root do
-        r.view "home"
+        r.view "pages.home"
       end
 
       r.multi_route
