@@ -4,10 +4,10 @@ require "main/entities/person"
 module Main
   module Persistence
     module Repositories
-      class AboutPagePeople < Berg::Repository[:about_page_people]
+      class People < Berg::Repository[:people]
         relations :people
 
-        def all_people
+        def for_about_page
           people
             .for_about_page
             .as(Entities::Person)

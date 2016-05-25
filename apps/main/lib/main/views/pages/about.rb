@@ -6,7 +6,7 @@ module Main
     module Pages
       class About < Main::View
         include Main::Import(
-          "main.persistence.repositories.about_page_people"
+          "main.persistence.repositories.people"
         )
 
         configure do |config|
@@ -15,7 +15,7 @@ module Main
 
         def locals(options = {})
           super.merge(
-            about_page_people: about_page_people.all_people,
+            people: people.for_about_page,
           )
         end
       end
