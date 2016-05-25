@@ -7,6 +7,8 @@ module Berg
   class Form < Formalist::Form
     setting :prefix
 
+    EMAIL_VALIDATION_REGEX = "/.+@.+\..+/i"
+
     class Result
       attr_reader :output, :prefix
 
