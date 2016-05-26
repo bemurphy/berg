@@ -17,18 +17,20 @@ module Admin
           end
 
           def locals(options = {})
+            featured_items = home_page_featured_items.listing_by_position.to_a.map(&:to_h)
+
             super.merge(
-              page_form: form_data(options[:validation])
+              page_form: form_data(featured_items, options[:validation])
             )
           end
 
           private
 
-          def form_data(validation)
+          def form_data(featured_items, validation)
             if validation
               edit_form.build(validation, validation.messages)
             else
-              edit_form.build
+              edit_form.build(featured_items)
             end
           end
         end
