@@ -9,6 +9,13 @@ module Admin
           configure do
             config.messages = :i18n
           end
+
+          required(:home_page_featured_items).each do
+            required(:title).filled
+            required(:description).filled
+            required(:url).filled
+            required(:image_id).filled
+          end
         end
       end
     end
