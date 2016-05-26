@@ -9,7 +9,7 @@ module Persistence
         if tuple[:about_page_people]
           about_page_people.delete
 
-          about_page_people_tuples = tuple[:about_page_people].each_with_index.map do |person_id, position|
+          about_page_people_tuples = tuple[:about_page_people].map.with_index do |person_id, position|
             {
               person_id: person_id,
               position: position

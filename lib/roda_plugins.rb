@@ -12,7 +12,8 @@ class Roda
         def page
           self.class["page"].with(
             csrf_metatag: -> { Rack::Csrf.metatag(request.env) },
-            csrf_tag: -> { Rack::Csrf.tag(request.env) }
+            csrf_tag: -> { Rack::Csrf.tag(request.env) },
+            csrf_token: -> { Rack::Csrf.token(request.env) }
           )
         end
       end

@@ -10,6 +10,6 @@ h1.h-1 Create person
   .panel__primary
     form action="/admin/people" method="post"
       == csrf_tag
-      div data-view-formalist=person_form
+      div data-view-formalist=JSON.generate(person_form.to_h(csrfToken: csrf_token))
       p
         button.button.button--primary type="submit" Create person

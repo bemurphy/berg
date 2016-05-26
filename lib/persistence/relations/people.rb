@@ -26,7 +26,6 @@ module Persistence
           .inner_join(
             :about_page_people,
             person_id: :id)
-          .where(active: true)
           .order(:position)
       end
     end

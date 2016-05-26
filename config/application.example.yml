@@ -3,6 +3,7 @@ development: &base
   database_url: "postgres://localhost/berg_development"
   assets_server_url: "http://localhost:8080"
   admin_url: "http://localhost:3000/admin"
+  canonical_domain: "http://localhost:3000"
   precompiled_assets: false
   precompiled_assets_host:
   app_mailer_from_email: "hello@berg.dev"
@@ -11,6 +12,9 @@ development: &base
   postmark_api_key:
   basic_auth_user:
   basic_auth_password:
+  attache_uploads_base_url: "http://berg.attache.icelab.com.au"
+  attache_downloads_base_url: "http://berg.attache.icelab.com.au"
+  attache_secret_key: "xxx"
 test:
   <<: *base
   database_url: "postgres://localhost/berg_test"

@@ -21,7 +21,8 @@ module Admin
 
           super.merge(
             person: person,
-            person_form: person_form(prepare_values(person), person_validation)
+            person_form: person_form(prepare_values(person), person_validation),
+            csrf_token: options[:scope].csrf_token
           )
         end
 
@@ -37,6 +38,7 @@ module Admin
 
         def prepare_values(person)
           person.to_h.merge(
+            avatar: person.avatar.value,
             twitter: person.twitter.value,
             website: person.website.value,
             job_title: person.job_title.value

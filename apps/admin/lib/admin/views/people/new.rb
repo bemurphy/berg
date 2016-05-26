@@ -12,7 +12,10 @@ module Admin
         end
 
         def locals(options = {})
-          super.merge(person_form: form_data(options[:validation]))
+          super.merge(
+            person_form: form_data(options[:validation]),
+            csrf_token: options[:scope].csrf_token
+          )
         end
 
         def form_data(validation)

@@ -31,8 +31,6 @@ module Admin
         optional(:job_title).maybe(:str?)
         optional(:website).maybe(:str?)
 
-        optional(:active).filled(:bool?)
-
         rule(email: [:email, :previous_email]) do |email, previous_email|
           email.not_eql?(previous_email).then(email.email_unique?)
         end
