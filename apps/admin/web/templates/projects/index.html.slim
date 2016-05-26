@@ -10,16 +10,19 @@ h1.h-1 Projects
           tr
             th Title
             th Client
-            th Status
+            th.horizontal-align--center Status
             th.horizontal-align--center Actions
         tbody
           - projects.each do |project|
             tr id="project-#{project.slug}"
               td.vertical-align--middle
-                a href="/admin/projects/#{project.slug}/edit" = project.title
+                a> href="/admin/projects/#{project.slug}/edit" = project.title
+                - if project.case_study?
+                  .label class="label--ghost"
+                    span Case Study
               td.vertical-align--middle
                 = project.client
-              td.vertical-align--middle
+              td.horizontal-align--center.vertical-align--middle
                 .label class="label--#{project.status_class}"
                   = project.status_label
               - if project.published?
@@ -27,5 +30,6 @@ h1.h-1 Projects
                   a href="/projects/#{project.slug}" View
               - else
                 td
+
 p
   == paginator.pagination
