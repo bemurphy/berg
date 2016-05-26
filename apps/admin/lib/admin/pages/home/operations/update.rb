@@ -15,8 +15,6 @@ module Admin
           def call(attributes)
             validation = Validation::Form.(attributes)
 
-            byebug
-
             if validation.success?
               home_page_featured_items = update_home_page_featured_items.(validation.output)
               Right(home_page_featured_items)
