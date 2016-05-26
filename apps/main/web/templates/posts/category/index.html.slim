@@ -1,0 +1,12 @@
+== paginator.pager_links
+
+h3
+  == "Viewing posts in '#{category.name}'"
+
+ul
+- posts.each do |post|
+  li == post.snippet
+
+p
+  == paginator.pager_numbers
+  == paginator.pager_links

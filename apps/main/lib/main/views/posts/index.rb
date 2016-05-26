@@ -16,12 +16,8 @@ module Main
           options = {per_page: 20, page: 1}.merge(options)
           all_posts = posts.listing(page: options[:page], per_page: options[:per_page])
 
-          public_posts = all_posts.to_a.map { |a|
-            Decorators::PublicPost.new(a)
-          }
-
           super.merge(
-            posts: public_posts,
+            posts: Decorators::PublicPost.decorate(all_posts),
             paginator: all_posts.pager
           )
         end

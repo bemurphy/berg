@@ -14,7 +14,7 @@ module Main
 
         def locals(options = {})
           super.merge(
-            post: Decorators::PublicPost.new(posts.by_slug(options[:slug]))
+            post: Decorators::PublicPost.decorate(posts.by_slug(options[:slug]))
           )
         end
       end

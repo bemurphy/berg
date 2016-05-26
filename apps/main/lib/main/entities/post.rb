@@ -1,5 +1,6 @@
 require "types"
 require "main/entities/user"
+require "main/entities/category"
 
 module Main
   module Entities
@@ -16,7 +17,12 @@ module Main
       attribute :published_at, Types::Strict::Time
 
       class WithAuthor < Post
-        attribute :author, "main.entities.user"
+        attribute :author, Entities::User
+      end
+
+      class WithAuthorAndCategories < Post
+        attribute :author, Entities::User
+        attribute :categories, Types::Strict::Array.member(Entities::Category)
       end
     end
   end

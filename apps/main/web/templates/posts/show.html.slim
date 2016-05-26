@@ -14,9 +14,11 @@ div.meta
   h3 Published on
   == post.published_date
 
-div.tags
-  h3 Tags
-  / ul
-    / - post.tags.each do |tag|
-      / li
-        / a href="/posts/tagged/#{tag.slug}" tag.name
+- unless post.categories.empty?
+  div.categories
+    h3 Categories
+    ul
+      - post.categories.each do |category|
+        li
+          a href="/posts/category/#{category.slug}"
+            = category.name
