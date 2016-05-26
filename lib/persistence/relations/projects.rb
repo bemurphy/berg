@@ -12,6 +12,7 @@ module Persistence
         attribute :slug, Types::String
         attribute :status, Types::String
         attribute :published_at, Types::DateTime
+        attribute :case_study, Types::Bool
       end
 
       use :pagination

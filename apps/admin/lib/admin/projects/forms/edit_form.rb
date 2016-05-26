@@ -20,6 +20,7 @@ module Admin
             ["draft", "Draft"], ["published", "Published"], ["deleted", "Deleted"]
           ]
           date_time_field :published_at, label: "Published at"
+          check_box :case_study, label: "Case Study", question_text: "Mark as a Case Study?"
         end
       end
     end

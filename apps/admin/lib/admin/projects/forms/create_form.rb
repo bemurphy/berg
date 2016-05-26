@@ -15,6 +15,7 @@ module Admin
           text_area :intro, label: "Introduction"
           text_area :body, label: "Body"
           text_field :tags, label: "Tags"
+          check_box :case_study, label: "Case Study", question_text: "Mark as a Case Study?"
         end
       end
     end
