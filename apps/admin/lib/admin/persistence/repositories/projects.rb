@@ -30,8 +30,9 @@ module Admin
             .as(Entities::Project)
         end
 
-        def all_projects
+        def case_studies
           projects
+            .where(case_study: "true")
             .where(status: "published")
             .order(:title)
             .as(Entities::Project)

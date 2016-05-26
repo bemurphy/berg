@@ -19,7 +19,7 @@ module Admin
           end
 
           def projects_list
-            projects.all_projects.to_a.map { |project|
+            projects.case_studies.to_a.map { |project|
               {
                 id: project.id,
                 label: project.title
