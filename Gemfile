@@ -33,6 +33,7 @@ gem "dry-logic", git: "https://github.com/dryrb/dry-logic", branch: "master"
 gem "dry-validation", git: "https://github.com/dryrb/dry-validation", branch: "master"
 gem "formalist", git: "https://github.com/icelab/formalist", branch: "master"
 gem "i18n"
+gem "redcarpet"
 gem "slim"
 gem "transproc", git: "https://github.com/solnic/transproc"
 

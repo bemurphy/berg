@@ -253,6 +253,7 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    redcarpet (3.3.2)
     roda (2.14.0)
       rack
     rspec (3.4.0)
@@ -329,6 +330,7 @@ DEPENDENCIES
   que
   rack_csrf
   rake
+  redcarpet
   rom!
   rom-mapper!
   rom-repository!

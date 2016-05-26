@@ -44,7 +44,37 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: about_page_people; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE about_page_people (
+    id integer NOT NULL,
+    "position" integer NOT NULL,
+    person_id integer NOT NULL
+);
+
+
+--
+-- Name: about_page_people_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE about_page_people_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: about_page_people_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE about_page_people_id_seq OWNED BY about_page_people.id;
+
+
+--
+-- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE categories (
@@ -74,7 +104,7 @@ ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
 
 
 --
--- Name: categorisations; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: categorisations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE categorisations (
@@ -104,7 +134,46 @@ ALTER SEQUENCE categorisations_id_seq OWNED BY categorisations.id;
 
 
 --
--- Name: posts; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: people; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE people (
+    id integer NOT NULL,
+    first_name text NOT NULL,
+    last_name text NOT NULL,
+    twitter text,
+    email text NOT NULL,
+    bio text NOT NULL,
+    website text,
+    avatar text,
+    job_title text,
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    updated_at timestamp without time zone DEFAULT now() NOT NULL,
+    short_bio text DEFAULT ''::text NOT NULL
+);
+
+
+--
+-- Name: people_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE people_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: people_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE people_id_seq OWNED BY people.id;
+
+
+--
+-- Name: posts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE posts (
@@ -113,11 +182,12 @@ CREATE TABLE posts (
     body text NOT NULL,
     slug text,
     status text DEFAULT 'draft'::text,
-    author_id integer NOT NULL,
+    person_id integer NOT NULL,
     published_at timestamp without time zone,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL,
-    teaser text DEFAULT ''::text NOT NULL
+    teaser text DEFAULT ''::text NOT NULL,
+    color text DEFAULT ''::text NOT NULL
 );
 
 
@@ -141,7 +211,46 @@ ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
 
 
 --
--- Name: que_jobs; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: projects; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE projects (
+    id integer NOT NULL,
+    title text NOT NULL,
+    client text NOT NULL,
+    url text NOT NULL,
+    intro text NOT NULL,
+    body text NOT NULL,
+    tags text NOT NULL,
+    slug text NOT NULL,
+    status text DEFAULT 'draft'::text,
+    published_at timestamp without time zone,
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    updated_at timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE projects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE projects_id_seq OWNED BY projects.id;
+
+
+--
+-- Name: que_jobs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE que_jobs (
@@ -183,7 +292,7 @@ ALTER SEQUENCE que_jobs_job_id_seq OWNED BY que_jobs.job_id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE schema_migrations (
@@ -192,7 +301,7 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE users (
@@ -205,7 +314,12 @@ CREATE TABLE users (
     access_token_expiration timestamp without time zone NOT NULL,
     active boolean DEFAULT true NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp without time zone DEFAULT now() NOT NULL
+    updated_at timestamp without time zone DEFAULT now() NOT NULL,
+    bio text DEFAULT ''::text,
+    website text DEFAULT ''::text,
+    twitter text DEFAULT ''::text,
+    job_title text DEFAULT ''::text,
+    short_bio text DEFAULT ''::text
 );
 
 
@@ -232,6 +346,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY about_page_people ALTER COLUMN id SET DEFAULT nextval('about_page_people_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
 
 
@@ -246,7 +367,21 @@ ALTER TABLE ONLY categorisations ALTER COLUMN id SET DEFAULT nextval('categorisa
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY people ALTER COLUMN id SET DEFAULT nextval('people_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq'::regclass);
 
 
 --
@@ -264,7 +399,15 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: about_page_people_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY about_page_people
+    ADD CONSTRAINT about_page_people_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY categories
@@ -272,7 +415,7 @@ ALTER TABLE ONLY categories
 
 
 --
--- Name: categorisations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: categorisations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY categorisations
@@ -280,7 +423,15 @@ ALTER TABLE ONLY categorisations
 
 
 --
--- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: people_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY people
+    ADD CONSTRAINT people_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY posts
@@ -288,7 +439,7 @@ ALTER TABLE ONLY posts
 
 
 --
--- Name: posts_slug_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: posts_slug_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY posts
@@ -296,7 +447,23 @@ ALTER TABLE ONLY posts
 
 
 --
--- Name: que_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: projects_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT projects_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projects_slug_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT projects_slug_key UNIQUE (slug);
+
+
+--
+-- Name: que_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY que_jobs
@@ -304,7 +471,7 @@ ALTER TABLE ONLY que_jobs
 
 
 --
--- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY schema_migrations
@@ -312,7 +479,7 @@ ALTER TABLE ONLY schema_migrations
 
 
 --
--- Name: users_email_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: users_email_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY users
@@ -320,7 +487,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY users
@@ -328,10 +495,24 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: set_updated_at_on_people; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER set_updated_at_on_people BEFORE UPDATE ON people FOR EACH ROW EXECUTE PROCEDURE set_updated_at_column();
+
+
+--
 -- Name: set_updated_at_on_posts; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER set_updated_at_on_posts BEFORE UPDATE ON posts FOR EACH ROW EXECUTE PROCEDURE set_updated_at_column();
+
+
+--
+-- Name: set_updated_at_on_projects; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER set_updated_at_on_projects BEFORE UPDATE ON projects FOR EACH ROW EXECUTE PROCEDURE set_updated_at_column();
 
 
 --
@@ -344,3 +525,4 @@ CREATE TRIGGER set_updated_at_on_users BEFORE UPDATE ON users FOR EACH ROW EXECU
 --
 -- PostgreSQL database dump complete
 --
+
