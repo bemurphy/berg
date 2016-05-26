@@ -127,7 +127,6 @@ CREATE TABLE people (
     website text,
     avatar text,
     job_title text,
-    active boolean DEFAULT true NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL
 );

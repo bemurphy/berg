@@ -10,7 +10,6 @@ ROM::SQL.migration do
       String :website, null: true
       String :avatar, null: true
       String :job_title, null: true
-      TrueClass :active, null: false, default: true
       DateTime :created_at, null: false, default: Sequel::CURRENT_TIMESTAMP
       DateTime :updated_at, null: false, default: Sequel::CURRENT_TIMESTAMP
     end
