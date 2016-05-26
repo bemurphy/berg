@@ -20,6 +20,8 @@ en:
     projects:
       project_created: "Project has been created"
       project_updated: "Project has been updated"
+    pages:
+      page_updated: "Page has been updated"
     emails:
       users:
         account_activation:
