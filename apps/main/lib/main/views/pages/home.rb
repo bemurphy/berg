@@ -6,7 +6,7 @@ module Main
     module Pages
       class Home < Main::View
         include Main::Import(
-          "main.persistence.repositories.home_page_featured_projects"
+          "main.persistence.repositories.projects"
         )
 
         configure do |config|
@@ -15,7 +15,7 @@ module Main
 
         def locals(options = {})
           super.merge(
-            projects: home_page_featured_projects.listing_by_position
+            projects: projects.for_home_page
           )
         end
       end

@@ -28,6 +28,14 @@ module Persistence
       def matching_slugs(slug)
         select(:slug).by_slug(slug)
       end
+
+      def for_home_page
+        select
+          .inner_join(
+            :home_page_featured_projects,
+            project_id: :id)
+          .order(:position)
+      end
     end
   end
 end
