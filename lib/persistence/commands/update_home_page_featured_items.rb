@@ -9,7 +9,7 @@ module Persistence
         if tuple[:home_page_featured_items]
           home_page_featured_items.delete
 
-          home_page_featured_items_tuples = tuple[:home_page_featured_items].each_with_index.map do |position, title, description, url, image_id |
+          home_page_featured_items_tuples = tuple[:home_page_featured_items].each_with_index.map do |position, title, description, url, image_id|
             {
               position: position,
               title: title,
@@ -18,6 +18,8 @@ module Persistence
               image_id: image_id
             }
           end
+
+          byebug
 
           home_page_featured_items.multi_insert(home_page_featured_items_tuples)
         end
