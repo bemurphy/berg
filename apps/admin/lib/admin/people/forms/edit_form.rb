@@ -7,16 +7,24 @@ module Admin
         prefix :person
 
         define do
-          text_field :email,
-            label: "Email",
-            validation: {
-              filled: true,
-              format: EMAIL_VALIDATION_REGEX
-            }
-          text_field :first_name, label: "First name"
-          text_field :last_name, label: "Last name"
+          group do
+            text_field :first_name, label: "First name"
+            text_field :last_name, label: "Last name"
+          end
+          group do
+            text_field :email,
+              label: "Email",
+              validation: {
+                filled: true,
+                format: EMAIL_VALIDATION_REGEX
+              }
+            text_field :job_title, label: "Job Title"
+          end
+          group do
+            text_field :twitter, label: "Twitter Username"
+            text_field :website, label: "Website URL"
+          end
           text_area :bio, label: "Bio"
-          check_box :active, label: "Status", question_text: "Mark as active?"
         end
       end
     end

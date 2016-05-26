@@ -6,8 +6,6 @@ p.link-children
     ' /
     h1.h-1 = "Editing ‘#{person.full_name}’"
 
-.tabs
-  span.tab.tab--active Edit person
 .panel
   .panel__primary
     form action="/admin/people/#{person.id}" method="post"

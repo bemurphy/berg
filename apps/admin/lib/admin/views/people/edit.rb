@@ -21,7 +21,7 @@ module Admin
 
           super.merge(
             person: person,
-            person_form: person_form(person, person_validation)
+            person_form: person_form(prepare_values(person), person_validation)
           )
         end
 
@@ -33,6 +33,14 @@ module Admin
           else
             edit_form.build(person)
           end
+        end
+
+        def prepare_values(person)
+          person.to_h.merge(
+            twitter: person.twitter.value,
+            website: person.website.value,
+            job_title: person.job_title.value
+          )
         end
       end
     end

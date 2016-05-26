@@ -6,12 +6,11 @@ module Persistence
         attribute :first_name, Types::Strict::String
         attribute :last_name, Types::Strict::String
         attribute :email, Types::Strict::String
-        attribute :twitter, Types::Strict::String
         attribute :bio, Types::Strict::String
-        attribute :website, Types::Strict::String
-        attribute :avatar, Types::Strict::String
-        attribute :job_title, Types::Strict::String
-        attribute :active, Types::Strict::Bool
+        attribute :twitter, Types::Strict::String.optional
+        attribute :website, Types::Strict::String.optional
+        attribute :avatar, Types::Strict::String.optional
+        attribute :job_title, Types::Strict::String.optional
       end
 
       use :pagination
@@ -19,10 +18,6 @@ module Persistence
 
       def by_id(id)
         where(id: id)
-      end
-
-      def active
-        where(active: true)
       end
 
       def for_about_page

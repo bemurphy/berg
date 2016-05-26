@@ -24,6 +24,12 @@ module Admin
         optional(:previous_email).maybe
         optional(:first_name).filled
         optional(:last_name).filled
+
+        optional(:avatar).maybe(:str?)
+        optional(:twitter).maybe(:str?)
+        optional(:job_title).maybe(:str?)
+        optional(:website).maybe(:str?)
+
         optional(:active).filled(:bool?)
 
         rule(email: [:email, :previous_email]) do |email, previous_email|

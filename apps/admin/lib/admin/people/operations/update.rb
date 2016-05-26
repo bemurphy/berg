@@ -16,7 +16,7 @@ module Admin
 
         def call(id, attributes)
           validation = Validation::Form.(prepare_attributes(attributes))
-
+          # raise validation.output.inspect
           if validation.success?
             people.update(id, validation.output)
             Right(people[id])

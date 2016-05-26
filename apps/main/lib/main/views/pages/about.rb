@@ -1,5 +1,6 @@
 require "main/import"
 require "main/view"
+require "main/decorators/public_person"
 
 module Main
   module Views
@@ -15,7 +16,7 @@ module Main
 
         def locals(options = {})
           super.merge(
-            people: people.for_about_page,
+            people: Decorators::PublicPerson.decorate(people.for_about_page),
           )
         end
       end
