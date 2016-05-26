@@ -1,6 +1,7 @@
 require "admin_app_helper"
 
 RSpec.feature "Admin / Posts / Edit", js: true do
+  include_context "admin people"
   include_context "admin users"
   include_context "admin posts"
 

@@ -1,5 +1,5 @@
 require "types"
-require "main/entities/user"
+require "main/entities/person"
 
 module Main
   module Entities
@@ -12,11 +12,11 @@ module Main
       attribute :teaser, Types::Strict::String
       attribute :slug, Types::Strict::String
       attribute :status, Status
-      attribute :author_id, Types::Strict::Int
+      attribute :person_id, Types::Strict::Int
       attribute :published_at, Types::Strict::Time
 
       class WithAuthor < Post
-        attribute :author, "main.entities.user"
+        attribute :author, "main.entities.person"
       end
     end
   end

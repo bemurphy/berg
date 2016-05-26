@@ -23,12 +23,12 @@ module Admin
         required(:title).filled
         required(:teaser).filled
         required(:body).filled
-        required(:author_id).filled(:int?)
+        required(:person_id).filled(:int?)
 
         # Required in only the edit form
         optional(:slug).filled
         optional(:previous_slug).maybe
-        optional(:author_id).filled(:int?)
+        optional(:person_id).filled(:int?)
         optional(:post_categories).each(:int?)
         optional(:status).filled(included_in?: Entities::Post::Status.values)
         optional(:published_at).maybe(:time?)

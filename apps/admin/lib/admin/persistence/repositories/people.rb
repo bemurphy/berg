@@ -12,6 +12,10 @@ module Admin
           people.by_id(id).as(Entities::Person).one
         end
 
+        def by_email(email)
+          people.by_email(email).as(Entities::Person).one
+        end
+
         def listing(per_page: 20, page: 1)
           people
             .per_page(per_page)
@@ -24,6 +28,7 @@ module Admin
           people
             .order(:first_name)
             .as(Entities::Person)
+            .to_a
         end
       end
     end

@@ -13,13 +13,13 @@ RSpec.shared_context 'main posts' do
     })
   end
 
-  def create_post(title, teaser, slug, user, status="published")
+  def create_post(title, teaser, slug, person, status="published")
     Berg::Container["persistence.commands.create_post"].({
       title: title,
       body: "test",
       teaser: teaser,
       slug: title.to_slug.normalize.to_s,
-      author_id: user[:id],
+      person_id: person[:id],
       status: status,
       published_at: Time.now
     })

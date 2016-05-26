@@ -1,13 +1,13 @@
 require "main_app_helper"
 
 RSpec.feature "Main / Posts / Index", js: false do
-
+  include_context 'main people'
   include_context 'main posts'
 
   before do
-    user = create_user(first_name: "Jane", last_name: "Doe")
+    author = create_person("Jane", "Doe", "person@example.com", "bio")
     21.times do |i|
-      create_post("foo #{i+1}", "teaser-foo-#{i+1}", "foo-#{i+1}", user)
+      create_post("foo #{i+1}", "teaser-foo-#{i+1}", "foo-#{i+1}", author)
     end
   end
 

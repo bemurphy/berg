@@ -12,7 +12,7 @@ module Admin
       attribute :body, Types::Strict::String
       attribute :slug, Types::Strict::String
       attribute :status, Status
-      attribute :author_id, Types::Strict::Int
+      attribute :person_id, Types::Strict::Int
       attribute :published_at, Types::Time
 
       def deleted?

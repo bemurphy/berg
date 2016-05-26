@@ -9,4 +9,6 @@ RSpec.shared_context "admin people" do
       "active" => true
     }.merge(attrs)).value
   end
+
+  let!(:sample_person) { create_person("Jane", "Doe", "person@example.com", "bio") }
 end

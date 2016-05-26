@@ -21,6 +21,10 @@ module Persistence
         where(id: id)
       end
 
+      def by_email(email)
+        where(email: email)
+      end
+
       def for_about_page
         select
           .inner_join(

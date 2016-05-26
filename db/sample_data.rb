@@ -19,6 +19,12 @@ def create_user(attrs)
   end
 end
 
+def create_person(attrs)
+  if !admin["admin.persistence.repositories.people"].by_email(attrs[:email])
+    admin["admin.people.operations.create"].call(attrs).value
+  end
+end
+
 def create_post(attrs)
   if !admin["admin.persistence.repositories.posts"].by_slug(attrs[:slug])
     admin["admin.posts.operations.create"].call(attrs).value
@@ -44,7 +50,15 @@ create_user(
   active: true
 )
 
-author = admin["admin.persistence.repositories.users"].by_email("hello@icelab.com.au")
+create_person(
+  email: "person@icelab.com.au",
+  first_name: "Icelab",
+  last_name: "Person",
+  bio: "An icelab person",
+  short_bio: "An icelab person"
+)
+
+author = admin["admin.persistence.repositories.people"].by_email("person@icelab.com.au")
 
 20.times do |n|
   create_post(
@@ -52,7 +66,7 @@ author = admin["admin.persistence.repositories.users"].by_email("hello@icelab.co
     teaser: Faker::Hipster.sentence,
     body: Faker::Hipster.paragraph,
     status: "draft",
-    author_id: author.id
+    person_id: author.id
   )
 end
 

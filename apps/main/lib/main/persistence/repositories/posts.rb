@@ -5,12 +5,12 @@ module Main
   module Persistence
     module Repositories
       class Posts < Berg::Repository[:posts]
-        relations :posts, :users
+        relations :posts, :people
 
         def by_slug(slug)
           posts
           .by_slug(slug)
-          .combine(one: { author: [users, author_id: :id] })
+          .combine(one: { author: [people, person_id: :id] })
           .as(Entities::Post::WithAuthor).one
         end
 
@@ -20,7 +20,7 @@ module Main
             .per_page(per_page)
             .page(page)
             .order(:published_at)
-            .combine(one: { author: [users, author_id: :id] })
+            .combine(one: { author: [people, person_id: :id] })
             .as(Entities::Post::WithAuthor)
         end
       end

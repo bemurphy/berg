@@ -162,7 +162,7 @@ CREATE TABLE posts (
     body text NOT NULL,
     slug text,
     status text DEFAULT 'draft'::text,
-    author_id integer NOT NULL,
+    person_id integer NOT NULL,
     published_at timestamp without time zone,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL,

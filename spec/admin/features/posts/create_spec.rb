@@ -1,6 +1,7 @@
 require "admin_app_helper"
 
 RSpec.feature "Admin / Posts / Create", js: true do
+  include_context "admin people"
   include_context "admin users"
   include_context "admin categories"
 
@@ -10,7 +11,7 @@ RSpec.feature "Admin / Posts / Create", js: true do
   end
 
   # Currently Formalist appears to not add an ID to selection_field field types so we can't
-  # target #author_id - it doesn't exist
+  # target #person_id - it doesn't exist
   scenario "I can create a post, with a slug generated automatically" do
     find("nav a", text: "Posts").trigger("click")
 
@@ -52,7 +53,7 @@ RSpec.feature "Admin / Posts / Create", js: true do
     find("#title").set("A sample title")
     find("#teaser").set("A teaser for this sample article")
     find("#body").set("Some sample content for this post")
-    find("input[name='post[author_id]']", visible: false).set(jane.id)
+    find("input[name='post[person_id]']", visible: false).set(jane.id)
 
     find(:xpath, "//button[contains(@class, 'selection-field')]", match: :first).trigger("click")
     find(:xpath, "//button[contains(@class, 'selection-field__optionButton')][div='#{jane.first_name} #{jane.last_name}']").trigger("click")

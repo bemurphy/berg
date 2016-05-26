@@ -2,12 +2,13 @@ require "main_app_helper"
 
 RSpec.feature "Main / Posts / Show", js: false do
 
+  include_context 'main people'
   include_context 'main posts'
 
   before do
-    user = create_user(first_name: "Jane", last_name: "Doe")
+    author = create_person("Jane", "Doe", "person@example.com", "bio")
     5.times do |i|
-      create_post("foo #{i+1}", "teaser-foo-#{i+1}", "foo-#{i+1}", user)
+      create_post("foo #{i+1}", "teaser-foo-#{i+1}", "foo-#{i+1}", author)
     end
   end
 
@@ -20,8 +21,8 @@ RSpec.feature "Main / Posts / Show", js: false do
   end
 
   scenario "I see a 404 page when trying to view an un-published post" do
-    user = create_user(first_name: "John", last_name: "Doe")
-    create_post("Secret post", "teaser", "secret-post", user, "draft")
+    author = create_person("Jane", "Doe", "person@example.com", "bio")
+    create_post("Secret post", "teaser", "secret-post", author, "draft")
 
     visit "/posts/secret-post"
 
