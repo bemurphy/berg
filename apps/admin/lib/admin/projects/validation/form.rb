@@ -24,14 +24,19 @@ module Admin
         required(:client).filled
         required(:url).filled
         required(:intro).filled
-        required(:body).filled
+        required(:body).maybe
         required(:tags).filled
+        required(:case_study).filled(:bool?)
 
         # Required in only the edit form
         optional(:slug).filled
         optional(:previous_slug).maybe
         optional(:status).filled(included_in?: Entities::Project::Status.values)
         optional(:published_at).maybe(:time?)
+
+        rule(body: [:body, :case_study]) do |body, case_study|
+          case_study.eql?(true).then(body.filled?)
+        end
 
         rule(slug: [:slug, :previous_slug]) do |slug, previous_slug|
           slug.not_eql?(previous_slug).then(slug.slug_unique?)
