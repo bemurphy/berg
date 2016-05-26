@@ -8,6 +8,7 @@ module Admin
       attribute :last_name, Types::Strict::String
       attribute :email, Types::Strict::String
       attribute :bio, Types::Strict::String
+      attribute :short_bio, Types::Strict::String
       attribute :avatar, Types::Maybe::Strict::String
       attribute :job_title, Types::Maybe::Strict::String
       attribute :twitter, Types::Maybe::Strict::String

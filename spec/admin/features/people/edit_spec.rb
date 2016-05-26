@@ -21,7 +21,8 @@ RSpec.feature "Admin / People / Edit", js: true do
 
     find("#first_name").set("Ben")
     find("#last_name").set("Kenobi")
-    find("#bio").set("Jedi")
+    find("#bio").set("Jedi Master")
+    find("#short_bio").set("Jedi")
 
     find("button", text: "Save changes").trigger("click")
 
@@ -40,6 +41,7 @@ RSpec.feature "Admin / People / Edit", js: true do
     find("#first_name").set("Madona")
     find("#last_name").set("")
     find("#bio").set("Singer")
+    find("#short_bio").set("Singer")
 
     find("button", text: "Save changes").trigger("click")
 

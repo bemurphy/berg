@@ -16,6 +16,7 @@ RSpec.feature "Admin / People / Create", js: true do
     find("#last_name").set("Doe")
     find("#email").set("john.doe@icelab.com.au")
     find("#bio").set("A simple bio")
+    find("#short_bio").set("A Short bio")
 
     find("button", text: "Create person").trigger("click")
 
@@ -32,6 +33,7 @@ RSpec.feature "Admin / People / Create", js: true do
     find("#first_name").set("John")
     find("#last_name").set("Doe")
     find("#bio").set("A simple bio")
+    find("#short_bio").set("A short bio")
 
     find("button", text: "Create person").trigger("click")
 

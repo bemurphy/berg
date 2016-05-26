@@ -21,6 +21,7 @@ module Admin
 
         optional(:email).filled
         optional(:bio).filled
+        optional(:short_bio).filled
         optional(:previous_email).maybe
         optional(:first_name).filled
         optional(:last_name).filled

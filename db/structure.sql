@@ -128,7 +128,8 @@ CREATE TABLE people (
     avatar text,
     job_title text,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp without time zone DEFAULT now() NOT NULL
+    updated_at timestamp without time zone DEFAULT now() NOT NULL,
+    short_bio text DEFAULT ''::text NOT NULL
 );
 
 

@@ -25,6 +25,7 @@ module Admin
             text_field :website, label: "Website URL"
           end
           text_area :bio, label: "Bio"
+          text_area :short_bio, label: "Short Bio"
         end
       end
     end
