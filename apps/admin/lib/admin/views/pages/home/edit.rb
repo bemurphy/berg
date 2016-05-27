@@ -17,7 +17,9 @@ module Admin
           end
 
           def locals(options = {})
-            featured_items = home_page_featured_items.listing_by_position.to_a.map(&:to_h)
+            featured_items = {
+              home_page_featured_items: home_page_featured_items.listing_by_position.map(&:to_h)
+            }
 
             super.merge(
               page_form: form_data(featured_items, options[:validation])
