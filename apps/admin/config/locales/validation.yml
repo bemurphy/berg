@@ -1,4 +1,5 @@
 en:
   errors:
+    email?: "is not an email address"
     email_unique?: "email address is already taken"
     slug_unique?: "slug is already taken"

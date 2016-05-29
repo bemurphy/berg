@@ -10,7 +10,7 @@ module Berg
       end
 
       def email?(input)
-        EMAIL_REGEX.match(input).size > 0
+        ! EMAIL_REGEX.match(input).nil?
       end
     end
 

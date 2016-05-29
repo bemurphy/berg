@@ -19,7 +19,7 @@ module Admin
           end
         end
 
-        optional(:email).filled
+        optional(:email).filled(:email?)
         optional(:previous_email).maybe
         optional(:first_name).filled
         optional(:last_name).filled
